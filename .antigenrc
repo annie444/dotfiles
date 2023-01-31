@@ -1,5 +1,5 @@
 # Load antigen
-if [[ ! -r "${ZDOTDIR:-$HOME}/.antigen/antigen.zsh" ]]; then
+if [[ ! -r "${ZDOTDIR:-$HOME}/antigen.zsh" ]]; then
   curl -L git.io/antigen > "${ZDOTDIR:-$HOME}/antigen.zsh"
   mkdir "${ZDOTDIR:-$HOME}/.antigen"
   touch "${ZDOTDIR:-$HOME}/.antigen/debug.log"
