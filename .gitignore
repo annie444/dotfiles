@@ -7,3 +7,9 @@
 .p10k.zsh
 .zcompdump
 .zsh_history
+.zshrc
+.zshenv
+.zprofile
+.zpreztorc
+.zlogout
+.zlogin

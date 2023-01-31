@@ -1,1 +1,0 @@
-/Users/annieehler/.dotfiles/.zprezto/runcoms/zlogin
