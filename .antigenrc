@@ -1,6 +1,9 @@
 # Load antigen
 if [[ ! -r "${ZDOTDIR:-$HOME}/.antigen/antigen.zsh" ]]; then
-  git clone https://github.com/zsh-users/antigen.git "${ZDOTDIR:-$HOME}/.antigen"
+  curl -L git.io/antigen > "${ZDOTDIR:-$HOME}/antigen.zsh"
+  mkdir "${ZDOTDIR:-$HOME}/.antigen"
+  touch "${ZDOTDIR:-$HOME}/.antigen/debug.log"
+  touch "${ZDOTDIR:-$HOME}/.antigen/antigen.log"
 fi 
 
 export ADOTDIR="${ZDOTDIR:-$HOME}/.antigen"
@@ -10,7 +13,7 @@ export ANTIGEN_COMPDUMP="${ZDOTDIR:-$HOME}/.antigen/.zcompdump"
 export ANTIGEN_BUNDLES="${ZDOTDIR:-$HOME}/.antigen/bundles"
 export ANTIGEN_LOCK="${ZDOTDIR:-$HOME}/antigen.lock"
 
-source "${ZDOTDIR:-$HOME}/.antigen/antigen.zsh"
+source "${ZDOTDIR:-$HOME}/antigen.zsh"
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh

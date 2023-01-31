@@ -1,0 +1,9 @@
+.secret
+.antigen
+.antigen.zwc
+.fzf.*
+.hatch-complete.zsh
+.iterm2_shell_integration.zsh
+.p10k.zsh
+.zcompdump
+.zsh_history
