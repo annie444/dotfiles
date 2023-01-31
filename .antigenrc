@@ -1,0 +1,46 @@
+# Load antigen
+if [[ ! -r "${ZDOTDIR:-$HOME}/.antigen/antigen.zsh" ]]; then
+  git clone https://github.com/zsh-users/antigen.git "${ZDOTDIR:-$HOME}/.antigen"
+fi 
+
+export ADOTDIR="${ZDOTDIR:-$HOME}/.antigen"
+export ANTIGEN_LOG="${ZDOTDIR:-$HOME}/.antigen/antigen.log"
+export ANTIGEN_CACHE="${ZDOTDIR:-$HOME}/.antigen/cache.zsh"
+export ANTIGEN_COMPDUMP="${ZDOTDIR:-$HOME}/.antigen/.zcompdump"
+export ANTIGEN_BUNDLES="${ZDOTDIR:-$HOME}/.antigen/bundles"
+export ANTIGEN_LOCK="${ZDOTDIR:-$HOME}/antigen.lock"
+
+source "${ZDOTDIR:-$HOME}/.antigen/antigen.zsh"
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Default bundles
+antigen bundle <<EOBUNDLES
+  git
+  heroku
+  pip 
+  lein
+  command-not-found 
+  zsh-users/zsh-completions
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-history-substring-search
+  thewtex/tmux-mem-cpu-load
+  clvv/fasd
+  b4b4r07/enhancd
+  yuhonas/zsh-aliases-lsd
+  esc/conda-zsh-completion
+  romkatav/powerlevel10k
+EOBUNDLES
+
+# get the right branch of F-Sy-H (Fast-Syntax-Highlighting))
+antigen bundle z-shell/F-Sy-H --branch=main
+
+# Load the theme.
+antigen theme romkatv/powerlevel10k
+
+# Tell Antigen that you're done.
+antigen apply
+
+# Cache antigen bundles for faster loading
+antigen cache-gen

@@ -1,0 +1,31 @@
+#
+# Paths
+#
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU fpath path
+
+# Set the list of directories that Zsh searches for programs.
+path=(
+  $HOME/{,s}bin(N)
+  $HOME/.local/{,s}bin(N)
+  $HOME/.fzf/{,s}bin(N)
+  $HOME/Library/pnpm
+  $HOME/.local/share/fig/plugins/fzf-zsh-plugin_unixorn.local/share/fig/plugins/fzf-zsh-plugin_unixorn/{,s}bin(N)
+  /opt/{homebrew,local}/{,s}bin(N)
+  /opt/homebrew/opt/opencv@3/{,s}bin(N)
+  /opt/homebrew/opt/cask/{,s}bin(N)
+  /opt/homebrew/opt/fzf/{,s}bin(N)
+  /opt/homebrew/opt/make/libexec/gnubin
+  /opt/homebrew/opt/openjdk/bin
+  /opt/homebrew/opt/llvm/bin
+  /opt/homebrew/Cellar/hdf5/1.12.2_2/bin
+  $path
+)
+
+fpath=(
+  $(brew --prefix)/share/zsh-completions
+  $(brew --prefix)/share/zsh/site-functions
+  $HOME/.config/zsh/functions
+  $fpath
+)

@@ -1,0 +1,47 @@
+# Case-insensitive globbing (used in pathname expansion)
+setopt nocaseglob
+
+# Append to the Zsh history file, rather than overwriting it
+setopt histappend
+
+# Get rid of annoying shell corrections
+setopt nobeep
+setopt nolistbeep
+
+# Add completion help instead of inferring
+setopt autolist
+setopt menucomplete
+setopt automenu
+zmodload -i zsh/complist
+zstyle ':completion:*' completer _extensions _complete _match _approximate _complete_help
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*' menu select
+zstyle ':completion:*' menuselect
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:*:-command-:*:*' group-order alias builtins functions commands
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' file-list all
+
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+h=()
+if [[ -r ~/.ssh/config ]]; then
+  h=($h ${${${(@M)${(f)"$(cat ~/.ssh/config)"}:#Host *}#Host }:#*[*?]*})
+fi
+if [[ -r ~/.ssh/known_hosts ]]; then
+  h=($h ${${${(f)"$(cat ~/.ssh/known_hosts{,2} || true)"}%%\ *}%%,*}) 2>/dev/null
+fi
+if [[ $#h -gt 0 ]]; then
+  zstyle ':completion:*:ssh:*' hosts $h
+  zstyle ':completion:*:slogin:*' hosts $h
+fi
+
+# Add tab completion for `defaults read|write NSGlobalDomain`
+# zstyle ':completion:*:defaults:*' 
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ffmpeg@5/lib/pkgconfig"
