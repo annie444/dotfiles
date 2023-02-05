@@ -8,4 +8,4 @@
 ##### Notes: run with sh -c "$(curl -fsSL raw.githubusercontent.com/annie444/dotfiles/master/install/s)"
 #}}}***********************************************************
 
-git clone https://github.com/annie444/dotfiles.git "${HOME}/.dotfiles" && cd "${HOME}/.dotfiles/install" && ./install.sh
+git clone --recursive https://github.com/annie444/dotfiles.git "${HOME}/.dotfiles" && cd "${HOME}/.dotfiles/install" && ./install.sh
