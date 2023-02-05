@@ -1,0 +1,119 @@
+: 1675496494:0;nvim
+: 1675496538:0;eval "$SHELL"
+: 1675496571:0;tmux
+: 1675547504:0;zpwr regenzsh
+: 1675547540:0;zpwr recompile
+: 1675547598:0;s romaine
+: 1675547609:0;mosh romaine
+: 1675547614:0;mosh romaine-local
+: 1675547674:0;tmux
+: 1675547745:0;tmux list-sessions
+: 1675547757:0;tmux kill-session annieehler
+: 1675547763:0;tmux kill-session 1
+: 1675547765:0;tmux kill-session 0
+: 1675547769:0;tmux kill-session
+: 1675547773:0;tmux list-sessions
+: 1675547776:0;tmux
+: 1675548024:0;nvim /Users/annieehler/.config/tmux/tmux.conf
+: 1675548309:0;exit
+: 1675548311:0;which tic
+: 1675548322:0;pyenv which tic
+: 1675548348:0;conda uninstall tic
+: 1675548374:0;conda initialization zsh
+: 1675548390:0;conda init zsh
+: 1675548396:0;eval "$SHELL"
+: 1675548406:0;conda uninstall ncurses
+: 1675548430:0;which tic
+: 1675548445:0;rm -rf /Users/annieehler/.pyenv/shims/tic
+: 1675548451:0;which tic
+: 1675548463:0;conda list
+: 1675548484:0;conda remove ncurses
+: 1675548663:0;which tic
+: 1675548676:0;curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
+: 1675548690:0;/usr/bin/tic -xe tmux-256color terminfo.src
+: 1675548713:0;sudo /usr/bin/tic -xe tmux-256color terminfo.src
+: 1675548730:0;/usr/bin/tic -xe alacritty-direct,tmux-256color terminfo.src
+: 1675548748:0;infocmp -x tmux-256color
+: 1675548778:0;tmux info | grep -e RGB -e Tc
+: 1675548793:0;tmux
+: 1675548811:0;tmux info | grep -e RGB -e Tc
+: 1675548841:0;nvim/ .CFUserTextEncoding
+: 1675548872:0;nvim /Users/annieehler/.config/tmux/tmux.conf
+: 1675548940:0;exit
+: 1675548951:0;tmux new -d -s '${}'
+: 1675548956:0;exit
+: 1675548967:0;tmux
+: 1675548979:0;nvim /Users/annieehler/.config/tmux/tmux.conf
+: 1675549000:0;exit
+: 1675549022:0;tmux new -d -s $USERpane
+: 1675549044:0;tmux
+: 1675549160:0;list-keys
+: 1675549166:0;tmux list-keys
+: 1675549288:0;exit
+: 1675549290:0;tmux
+: 1675549295:0;ls -a
+: 1675549312:0;tmux info
+: 1675549334:0;tmux source-file ~/.tmux.conf
+: 1675549354:0;exit
+: 1675549387:0;ln -s /Users/annieehler/.config/tmux/tmux.conf ~/.tmux.conf
+: 1675549403:0;rm -rf ~/.tmux.conf
+: 1675549437:0;ls -a ~/.config/tmux/
+: 1675549444:0;ln -s /Users/annieehler/.config/tmux/tmux.conf ~/.tmux.conf
+: 1675549447:0;tmux
+: 1675549459:0;quit
+: 1675549461:0;exit
+: 1675549536:0;nvim ~/.zpwr/local/.tokens.sh
+: 1675549747:0;zpwr regen
+: 1675549868:0;brew install --cask alacritty
+: 1675549911:0;brew reinstall --cask alacritty
+: 1675549931:0;zpwr github
+: 1675549950:0;nvim ~/.zpwr/local/.tokens-post.sh
+: 1675550657:0;zpwr regen
+: 1675550788:0;zpwr recompile
+: 1675550801:0;zpwr refreshzwc
+: 1675550867:0;zpwr regenzsh
+: 1675550893:0;zpwr recompile
+: 1675550907:0;eval "$SHELL"
+: 1675551017:0;nvim ~/.zpwr/local/
+: 1675551471:0;zpwr recompile
+: 1675551494:0;zpwr refreshzwc
+: 1675551550:0;zpwr regenzsh
+: 1675551649:0;zpwr recompile
+: 1675551663:0;eval "$SHELL"
+: 1675555924:0;zpwr regenconfiglinks
+: 1675555974:0;zpwr recompile
+: 1675556034:0;zpwr refreshzwc
+: 1675556973:0;zpwr recompile
+: 1675559339:0;nvim ~/.dotfiles/.zpwr_config.d/
+: 1675559456:0;zpwr recompile
+: 1675559477:0;zpwr refreshzwc
+: 1675559531:0;nvim ~/.dotfiles/.zpwr_config.d/
+: 1675559577:0;zpwr recompile
+: 1675559591:0;zpwr refreshzwc
+: 1675559646:0;zpwr regenzsh
+: 1675559682:0;zpwr recompile
+: 1675559752:0;nvim ~/.dotfiles/.zpwr_config.d/
+: 1675559930:0;ls ~/.zpwr/autoload
+: 1675559936:0;ls -a ~/.zpwr/autoload
+: 1675559949:0;ls -a ~/.zpwr/env
+: 1675560012:0;rm -rf /Users/annieehler/.zpwr/env/.p10k.zsh /Users/annieehler/.zpwr/env/.p10k.zsh.bak /Users/annieehler/.zpwr/env/.p10k.zsh.zwc
+: 1675560097:0;extundelete
+: 1675560102:0;brew install extundelete--cask alacritty
+: 1675560113:0;brew install extundelete
+: 1675560157:0;p10k configure
+: 1675560223:0;mv /Users/annieehler/.zpwr/env/.p10k.zsh ~/.dotfiles/.p10k.zsh
+: 1675560230:0;ls -a ~/.dotfiles
+: 1675560274:0;ln -s /Users/annieehler/.dotfiles/p10k.zsh /Users/annieehler/.zpwr/env/.p10k.zsh
+: 1675560334:0;nvim ~/.dotfiles/.p10k.zsh
+: 1675560882:0;zpwr recompile
+: 1675560947:0;zpwr refreshzwc
+: 1675561033:0;zpwr regenzsh
+: 1675561067:0;zpwr recompile
+: 1675561193:0;cd ~/.dotfiles
+: 1675561214:0;ls -a
+: 1675561245:0;mkdir -pv install
+: 1675561252:0;cd install
+: 1675561259:0;nvim s
+: 1675561507:0;nvim install.sh
+: 1675564820:0;cd ..
+: 1675564837:0;git add . && git commit -m "Migrate to zpwr"

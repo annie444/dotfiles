@@ -1,0 +1,244 @@
+E5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/a                                                                                
+n
+nieehler/.config/nvim/init.vim"
+E5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/an
+nieehler/.config/nvim/init.vim"
+!  <Plug>luasnip-expand-repeat * <Cmd>lua require'luasnip'.expand_repeat()<CR>
+!  <Plug>luasnip-delete-check * <Cmd>lua require'luasnip'.unlink_current_if_deleted()<CR>
+i  <Plug>luasnip-jump-prev * <Cmd>lua require'luasnip'.jump(-1)<CR>
+i  <Plug>luasnip-jump-next * <Cmd>lua require'luasnip'.jump(1)<CR>
+i  <Plug>luasnip-prev-choice * <Cmd>lua require'luasnip'.change_choice(-1)<CR>
+i  <Plug>luasnip-next-choice * <Cmd>lua require'luasnip'.change_choice(1)<CR>
+i  <Plug>luasnip-expand-snippet * <Cmd>lua require'luasnip'.expand()<CR>
+i  <Plug>luasnip-expand-or-jump * <Cmd>lua require'luasnip'.expand_or_jump()<CR>
+i  <S-Tab>     * <Lua 78: ~/.config/nvim/lua/plugins/code.lua:24>
+i  <C-F>       * <Lua 64: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Scroll forward
+i  <C-B>       * <Lua 59: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Scroll backward
+i  <C-W>       * <C-G>u<C-W>
+                 Nvim builtin
+i  <C-U>       * <C-G>u<C-U>
+                 Nvim builtin
+i  <Tab>       * <Lua 81: ~/.config/nvim/lua/plugins/code.lua:18>E5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/a                                                                                
+n
+nieehler/.config/nvim/init.vim"
+E5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/an
+nieehler/.config/nvim/init.vim"
+n  <Space>fp   * <Lua 51: ~/.config/nvim/lua/plugins/all.lua:136>
+                 Find Plugin File
+n  <Space>sl     <Plug>(iron-send-line)
+n  <Space>cm   * <Cmd>Mason<CR>
+                 Mason
+n  <Space>cs   * <Lua 96: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Symbols Outline
+n  <Space>bD   * <Lua 88: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Delete Buffer (Force)
+n  <Space>xT   * <Lua 78: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Todo/Fix/Fixme (Trouble)
+n  <Space>st   * <Lua 77: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Todo
+n  <Space>xt   * <Lua 76: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Todo (Trouble)
+n  <Space>xX   * <Lua 66: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Workspace Diagnostics (Trouble)
+n  <Space>xx   * <Lua 65: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Document Diagnostics (Trouble)
+n  <Space>qd   * <Lua 59: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Don't Save Current Session
+n  <Space>ql   * <Lua 58: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Restore Last Session
+n  <Space>qs   * <Lua 53: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Restore Session
+n  <Space>un   * <Lua 52: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Delete all Notifications
+n  <Space>sr   * <Lua 40: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Replace in files (Spectre)
+n  <Space>e      <Lua 39: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Explorer NeoTree (root dir)
+n  <Space>fE   * <Lua 38: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Explorer NeoTree (cwd)
+n  <Space>E      <Lua 36: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Explorer NeoTree (cwd)
+n  <Space>fe   * <Lua 31: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Explorer NeoTree (root dir)
+n  <Space>snl  * <Lua 29: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Noice Last Message
+n  <Space>snh  * <Lua 27: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Noice History
+n  <Space>sna  * <Lua 24: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Noice All
+n  <Space>bf   * <Lua 23: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Add Bookmark to Folder
+n  <Space>ba   * <Lua 22: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Add Bookmark to File
+n  <Space>bd   * <Lua 21: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Delete Bookmark
+n  <Space>bo   * <Lua 20: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Open Bookmarks
+n  %             <Plug>(MatchitNormalForward)
+n  &           * :&&<CR>
+                 Nvim builtin
+n  F           * <Lua 502: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+n  T           * <Lua 505: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+n  Y           * y$
+                 Nvim builtin
+n  [%            <Plug>(MatchitNormalMultiBackward)
+n  [h            <Plug>(textobj-hydrogen-p)
+n  [t          * <Lua 67: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Previous todo comment
+n  [[          * <Lua 61: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Prev Reference
+n  ]%            <Plug>(MatchitNormalMultiForward)
+n  ]h            <Plug>(textobj-hydrogen-n)
+n  ]t          * <Lua 68: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Next todo comment
+n  ]]          * <Lua 60: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Next Reference
+n  cl            <Plug>(iron-clear)
+n  cq            <Plug>(iron-exit)
+n  cst           <Plug>(iron-interrupt)
+n  c<CR>         <Plug>(iron-cr)
+n  cp            <Plug>(iron-repeat-cmd)
+n  ctr           <Plug>(iron-send-motion)
+n  f           * <Lua 508: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+n  gx            <Plug>NetrwBrowseX
+n  g%            <Plug>(MatchitNormalBackward)
+n  gzn         * <Lua 50: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Update `MiniSurround.config.n_lines`
+n  gzd         * <Lua 49: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Delete surrounding
+n  gzr         * <Lua 48: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Replace surrounding
+n  gza         * <Lua 46: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Add surrounding
+n  gzf         * <Lua 45: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Find right surrounding
+n  gzF         * <Lua 44: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Find left surrounding
+n  gzh         * <Lua 41: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Highlight surrounding
+n  mg            <Plug>BookmarkMoveToLine
+n  mjj           <Plug>BookmarkMoveDown
+n  mkk           <Plug>BookmarkMoveUp
+n  mx            <Plug>BookmarkClearAll
+n  mc            <Plug>BookmarkClear
+n  mp            <Plug>BookmarkPrev
+n  mn            <Plug>BookmarkNext
+n  mi            <Plug>BookmarkAnnotate
+n  mm            <Plug>BookmarkToggle
+n  ma            <Plug>BookmarkShowAll
+n  t           * <Lua 511: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+n  y<C-G>      & :<C-U>call setreg(v:register, fugitive#Object(@%))<CR>
+n  <Plug>(fzf-normal) * <Nop>
+n  <Plug>(fzf-insert) * i
+n  <Plug>NetrwBrowseX * :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))<CR>
+n  <Plug>(MatchitNormalMultiForward) * :<C-U>call matchit#MultiMatch("W",  "n")<CR>
+n  <Plug>(MatchitNormalMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "n")<CR>
+n  <Plug>(MatchitNormalBackward) * :<C-U>call matchit#Match_wrapper('',0,'n')<CR>
+n  <Plug>(MatchitNormalForward) * :<C-U>call matchit#Match_wrapper('',1,'n')<CR>
+n  <Plug>BookmarkMoveToLine * :<C-U>BookmarkMoveToLine v:count<CR>
+n  <Plug>BookmarkMoveDown * :<C-U>BookmarkMoveDown v:count<CR>
+n  <Plug>BookmarkMoveUp * :<C-U>BookmarkMoveUp v:count<CR>
+n  <Plug>BookmarkClearAll * :BookmarkClearAll<CR>
+n  <Plug>BookmarkClear * :BookmarkClear<CR>
+n  <Plug>BookmarkPrev * :BookmarkPrev<CR>
+n  <Plug>BookmarkNext * :BookmarkNext<CR>
+n  <Plug>BookmarkAnnotate * :BookmarkAnnotate<CR>
+n  <Plug>BookmarkToggle * :BookmarkToggle<CR>
+n  <Plug>BookmarkShowAll * :BookmarkShowAll<CR>
+   <Plug>(iron-visual-send)   <Esc><Cmd>lua require("iron").core.visual_send()<CR>
+   <Plug>(iron-send-line)   <Cmd>lua require("iron").core.send_line()<CR>
+   <Plug>(iron-send-lines)   <Cmd>set opfunc=<SNR>20_ironSendMotion|exe 'norm! 'v:count1.'g@_'<CR>
+   <Plug>(iron-send-motion)   <Cmd>call <SNR>20_save_pos()|set opfunc=<SNR>20_ironSendMotion<CR>g@
+   <Plug>(iron-clear)   <Cmd>IronSend! \12<CR>
+   <Plug>(iron-exit)   <Cmd>IronSend! \04<CR>
+   <Plug>(iron-interrupt)   <Cmd>IronSend! \03<CR>
+   <Plug>(iron-cr)   <Cmd>IronSend! \13<CR>
+   <Plug>(iron-repeat-cmd)   <Cmd>lua require("iron").core.repeat_cmd()<CR>
+n  <Plug>fugitive: & <Nop>
+n  <Plug>fugitive:y<C-G> & :<C-U>call setreg(v:register, fugitive#Object(@%))<CR>
+n  <Plug>(textobj-hydrogen-n) & <SNR>17_(save-cursor-pos):<C-U>call g:__textobj_hydrogen.do_by_function("move-n","-","n")<CR>
+n  <Plug>(textobj-hydrogen-p) & <SNR>17_(save-cursor-pos):<C-U>call g:__textobj_hydrogen.do_by_function("move-p","-","n")<CR>
+n  <SNR>17_    * <SNR>17_
+   <SNR>17_(save-cursor-pos) * <SNR>17_save_cursor_pos()
+n  <Plug>PlenaryTestFile * :lua require('plenary.test_harness').test_directory(vim.fn.expand("%:p"))<CR>
+   <Plug>luasnip-expand-repeat * <Cmd>lua require'luasnip'.expand_repeat()<CR>
+   <Plug>luasnip-delete-check * <Cmd>lua require'luasnip'.unlink_current_if_deleted()<CR>
+n  <C-F>       * <Lua 35: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Scroll forward
+n  <C-B>       * <Lua 34: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Scroll backward
+n  <C-L>       * <Cmd>nohlsearch|diffupdate|normal! <C-L><CR>
+                 Nvim builtinE5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/a                                                                                
+n
+nieehler/.config/nvim/init.vim"
+E5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/an
+nieehler/.config/nvim/init.vim"
+s  <Tab>       * <Lua 49: ~/.config/nvim/lua/plugins/code.lua:23>
+x  #           * y?\V<C-R>"<CR>
+                 Nvim builtin
+x  %             <Plug>(MatchitVisualForward)
+x  *           * y/\V<C-R>"<CR>
+                 Nvim builtin
+x  F           * <Lua 509: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+x  T           * <Lua 512: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+x  [%            <Plug>(MatchitVisualMultiBackward)
+x  [h            <Plug>(textobj-hydrogen-p)
+x  ]%            <Plug>(MatchitVisualMultiForward)
+x  ]h            <Plug>(textobj-hydrogen-n)
+x  a%            <Plug>(MatchitVisualTextObject)
+x  ah            <Plug>(textobj-hydrogen-a)
+x  a           * <Lua 88: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+v  ctr           <Plug>(iron-visual-send)
+x  f           * <Lua 506: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+x  gx            <Plug>NetrwBrowseXVis
+x  g%            <Plug>(MatchitVisualBackward)
+v  gza         * <Lua 34: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Add surrounding
+x  ih            <Plug>(textobj-hydrogen-i)
+x  i           * <Lua 86: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+x  t           * <Lua 515: ~/.local/share/nvim/lazy/flit.nvim/lua/flit.lua:146>
+x  <Plug>NetrwBrowseXVis * :<C-U>call netrw#BrowseXVis()<CR>
+x  <Plug>(MatchitVisualTextObject)   <Plug>(MatchitVisualMultiBackward)o<Plug>(MatchitVisualMultiForward)
+x  <Plug>(MatchitVisualMultiForward) * :<C-U>call matchit#MultiMatch("W",  "n")<CR>m'gv``
+x  <Plug>(MatchitVisualMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "n")<CR>m'gv``
+x  <Plug>(MatchitVisualBackward) * :<C-U>call matchit#Match_wrapper('',0,'v')<CR>m'gv``
+x  <Plug>(MatchitVisualForward) * :<C-U>call matchit#Match_wrapper('',1,'v')<CR>:if col("''") != col("$") | exe ":normal! m'" | endif<CR>gv``
+v  <Plug>(textobj-hydrogen-n) & <SNR>18_(save-cursor-pos):<C-U>call g:__textobj_hydrogen.do_by_function("move-n","-","v")<CR>
+v  <Plug>(textobj-hydrogen-p) & <SNR>18_(save-cursor-pos):<C-U>call g:__textobj_hydrogen.do_by_function("move-p","-","v")<CR>
+v  <Plug>(textobj-hydrogen-i) & <SNR>18_(save-cursor-pos):<C-U>call g:__textobj_hydrogen.do_by_function("select-i","-","v")<CR>
+v  <Plug>(textobj-hydrogen-a) & <SNR>18_(save-cursor-pos):<C-U>call g:__textobj_hydrogen.do_by_function("select-a","-","v")<CR>
+   <SNR>18_(save-cursor-pos) * <SNR>18_save_cursor_pos()
+s  <Plug>luasnip-jump-prev * <Cmd>lua require'luasnip'.jump(-1)<CR>
+s  <Plug>luasnip-jump-next * <Cmd>lua require'luasnip'.jump(1)<CR>
+s  <Plug>luasnip-prev-choice * <Cmd>lua require'luasnip'.change_choice(-1)<CR>
+s  <Plug>luasnip-next-choice * <Cmd>lua require'luasnip'.change_choice(1)<CR>
+s  <Plug>luasnip-expand-snippet * <Cmd>lua require'luasnip'.expand()<CR>
+s  <Plug>luasnip-expand-or-jump * <Cmd>lua require'luasnip'.expand_or_jump()<CR>
+   <Plug>luasnip-expand-repeat * <Cmd>lua require'luasnip'.expand_repeat()<CR>
+   <Plug>luasnip-delete-check * <Cmd>lua require'luasnip'.unlink_current_if_deleted()<CR>
+s  <S-Tab>     * <Lua 53: ~/.config/nvim/lua/plugins/code.lua:24>
+   <Plug>(iron-visual-send)   <Esc><Cmd>lua require("iron").core.visual_send()<CR>
+   <Plug>(iron-send-line)   <Cmd>lua require("iron").core.send_line()<CR>
+   <Plug>(iron-send-lines)   <Cmd>set opfunc=<SNR>8_ironSendMotion|exe 'norm! 'v:count1.'g@_'<CR>
+   <Plug>(iron-send-motion)   <Cmd>call <SNR>8_save_pos()|set opfunc=<SNR>8_ironSendMotion<CR>g@
+   <Plug>(iron-clear)   <Cmd>IronSend! \12<CR>
+   <Plug>(iron-exit)   <Cmd>IronSend! \04<CR>
+   <Plug>(iron-interrupt)   <Cmd>IronSend! \03<CR>
+   <Plug>(iron-cr)   <Cmd>IronSend! \13<CR>
+   <Plug>(iron-repeat-cmd)   <Cmd>lua require("iron").core.repeat_cmd()<CR>
+s  <C-B>       * <Lua 89: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Scroll backward
+s  <C-F>       * <Lua 97: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Scroll forwardE5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/a                                                                                
+n
+nieehler/.config/nvim/init.vim"
+E5422: Conflicting configs: "/Users/annieehler/.config/nvim/init.lua" "/Users/an
+nieehler/.config/nvim/init.vim"
+c  <Plug>(TelescopeFuzzyCommandSearch) * <C-\>e "lua require('telescope.builtin').command_history { default_text = [=[" . escape(getcmdline(), '"') . "]=] }"<CR><CR>
+c  <C-R><C-G>  & fnameescape(fugitive#Object(@%))
+!  <Plug>luasnip-expand-repeat * <Cmd>lua require'luasnip'.expand_repeat()<CR>
+!  <Plug>luasnip-delete-check * <Cmd>lua require'luasnip'.unlink_current_if_deleted()<CR>
+c  <S-CR>      * <Lua 75: ~/.local/share/nvim/lazy/lazy.nvim/lua/lazy/core/handler/keys.lua:102>
+                 Redirect Cmdline

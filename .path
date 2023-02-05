@@ -1,5 +1,3 @@
-echo "path"
-
 #
 # Paths
 #
@@ -29,5 +27,7 @@ fpath=(
   $(brew --prefix)/share/zsh-completions
   $(brew --prefix)/share/zsh/site-functions
   $HOME/.config/zsh/functions
+  $HOME/.config/gh/completions
+  $ASDF_DIR/completions
   $fpath
 )

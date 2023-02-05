@@ -1,0 +1,4 @@
+__fasd_dirs=( ${(Q)"${(z)$(<<\EO:__fasd_dirs
+'\/Users\/annieehler\/\.zpwr\/install:29\.9851' '\/Users\/annieehler:23\.0068' '\/Users\/annieehler\/Desktop:13\.4903' '\/Users\/annieehler\/\.zpwr:12' '\/Users:2'
+EO:__fasd_dirs
+)}"} )

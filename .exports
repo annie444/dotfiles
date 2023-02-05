@@ -47,3 +47,7 @@ fi;
 export HDF5_DIR='/opt/homebrew/Cellar/hdf5/1.12.2_2';
 
 export PNPM_HOME='/Users/annieehler/Library/pnpm';
+
+export ZINIT_HOME="${HOME}/.zinit/zinit.git";
+
+

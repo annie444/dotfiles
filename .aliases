@@ -13,6 +13,7 @@ alias desk="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
 alias s='ssh'
+alias m="mosh"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

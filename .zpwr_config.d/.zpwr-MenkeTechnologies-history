@@ -1,0 +1,68 @@
+: 1675490920:0;tmux source-file /Users/annieehler/.zpwr/tmux/control-window.conf; tmux select-pane -t zpwr:0.4; tmux send-keys 'cmatrix -C blue -abs' C-m
+: 1675490920:0;TERM=xterm-256color sudo -E /usr/local/sbin/iftop -f "not port mdns and not port ssdp and not port llmnr and not port upnp-discovery" -c "/Users/annieehler/.iftop.conf" || TERM=xterm-256color sudo -E iftop -f "not port mdns and not port ssdp and not port llmnr and not port upnp-discovery" -c "/Users/annieehler/.iftop.conf"
+: 1675490920:0;storageShower.sh 8 1
+: 1675491776:0;exit
+: 1675491791:0;TERM=xterm-256color sudo -E /usr/local/sbin/iftop -f "not port mdns and not port ssdp and not port llmnr and not port upnp-discovery" -c "/Users/annieehler/.iftop.conf" || TERM=xterm-256color sudo -E iftop -f "not port mdns and not port ssdp and not port llmnr and not port upnp-discovery" -c "/Users/annieehler/.iftop.conf"
+: 1675491817:0;cd ..
+: 1675491826:0;ls -a
+: 1675491829:0;git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+: 1675492062:0;ls -a
+: 1675492100:0;exit
+: 1675490920:0;cmatrix -C blue -abs
+: 1675490514:0;sudo rm -rf .zshrc.zwc .zshrc.pre-plugins.d .zshrc.d .zshrc .zsh_functions .zsh_aliases .zsh-quickstart-last-update .zsh-quickstart-kit-prompt-switch-warning .zsh .zqs-zgenom .zpwr .zinit .zgen-setup
+: 1675490636:0;sudo rm -rf .ctags conf.whois conf.mount conf.ifconfig conf.gls conf.df .z .vimrc .inputrc .tmux.conf .inputrc .iftopcolors .ideavimrc .ctags
+: 1675490659:0;rm -rf .iftop.conf
+: 1675490670:2424;sh -c "$(curl -fsSL raw.githubusercontent.com/MenkeTechnologies/zpwr/master/install/s)"
+: 1675493117:0;eval $SHELL
+: 1675493154:0;nvim
+: 1675493481:0;p10k configure
+: 1675493619:0;ls -a
+: 1675493653:0;ls ~/.zpwr
+: 1675493663:0;ls ~/.zpwr/autoload
+: 1675493677:0;ls ~/.zpwr/local
+: 1675493688:0;ls ~/.zpwr/env
+: 1675493694:0;ls ~/.zpwr/
+: 1675493706:0;ls ~/.zpwr/scripts
+: 1675493711:0;ls ~/.zpwr
+: 1675493725:0;ls -a ~/.zpwr
+: 1675493746:0;ls -a ~/.zpwr/tmux
+: 1675493759:0;nvim
+: 1675493839:0;mv /Users/annieehler/.zpwr/env/.p10k.zsh /Users/annieehler/.zpwr/env/.p10k.zsh.bak
+: 1675493850:0;p10k configure
+: 1675493909:0;cd .zpwr
+: 1675493915:0;nvim
+: 1675494333:0;eval $SHELL
+: 1675494340:0;eval "$SHELL"
+: 1675494390:0;tmux
+: 1675494427:0;ls -a
+: 1675494431:0;exit
+: 1675494433:0;tmux
+: 1675494482:0;git add . && git commit -m "Lean P10k"
+: 1675494497:0;gpg
+: 1675494598:0;git remote -v
+: 1675494919:0;nvim ~/.zpwr/local/.tokens.sh
+: 1675494966:0;exit
+: 1675494984:0;eval "$SHELL"
+: 1675494987:0;tmux
+: 1675495382:0;cd .zpwr
+: 1675495384:0;nvim
+: 1675495440:0;cd ..
+: 1675495449:0;t
+: 1675495466:0;cd 
+: 1675495469:0;cd ~
+: 1675495471:0;h
+: 1675495476:0;r
+: 1675495478:0;a
+: 1675495530:0;brew install coreutils curl git
+: 1675495556:0;git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.1
+: 1675495587:0;git config
+: 1675495779:0;nvim
+: 1675496401:0;eval
+: 1675496408:0;eval "$SHELL"
+: 1675496579:0;exit
+: 1675551757:0;nvim ~/.zpwr/local/
+: 1675554286:0;zpwr recompile
+: 1675554349:0;zpwr refreshzwc
+: 1675554403:0;zpwr regenzsh
+: 1675554428:0;zpwr recompile
+: 1675554443:0;eval "$SHELL"

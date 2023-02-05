@@ -1,0 +1,197 @@
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/nfi1____.flf
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/modern__.flf
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/64f1____.flf
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/vortron_.flf
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/catwalk.flf
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/ti_pan__.flf
+Fri Feb  3 22:08:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/mcg_____.flf
+[0;34m_____________[0;32;44mFri Feb  3 22:12:29 PST 2023[0m[0;34m____INFO: _[0;35m<<([0;37;45mForced to create ZPWR_COMPSYS_CACHE '/Users/annieehler/.zpwr/local/zcompcache'[0m[0;35m)>>[0;34m_[0m
+Fri Feb  3 22:45:17 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/stealth_.flf
+Fri Feb  3 23:05:33 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/caus_in_.flf
+Fri Feb  3 23:05:40 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/alphabet.flf
+Fri Feb  3 23:06:05 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/e__fist_.flf
+Fri Feb  3 23:06:17 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/zig_zag_.flf
+Fri Feb  3 23:06:20 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/hades___.flf
+Fri Feb  3 23:06:21 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/subteran.flf
+Fri Feb  3 23:06:22 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/64f1____.flf
+Fri Feb  3 23:06:24 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/dotmatrix.flf
+Fri Feb  3 23:07:14 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/bdffonts/xhelv.flf
+Fri Feb  3 23:16:24 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/krak_out.flf
+Fri Feb  3 23:16:28 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/alphabet.flf
+Fri Feb  3 23:22:27 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/unarmed_.flf
+Fri Feb  3 23:40:08 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/jerusalem.flf
+Fri Feb  3 23:40:39 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/barbwire.flf
+Fri Feb  3 23:42:18 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/rozzo.flf
+Fri Feb  3 23:43:03 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/twopoint.flf
+Sat Feb  4 13:47:50 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/cybermedium.flf
+zrecompile:zcompile:133: can't open file: /opt/homebrew/share/zsh/site-functions/_alacritty
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+Sat Feb  4 13:55:02 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/isometric3.flf
+Sat Feb  4 13:55:38 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/b_m__200.flf
+Sat Feb  4 13:56:17 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/caligraphy.flf
+Sat Feb  4 14:06:36 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/contessa.flf
+Sat Feb  4 14:13:14 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/eftirobot.flf
+Sat Feb  4 14:15:52 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/coinstak.flf
+Sat Feb  4 14:15:52 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/banner3-D.flf
+Sat Feb  4 14:16:01 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/serifcap.flf
+Sat Feb  4 14:16:49 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/ti_pan__.flf
+Sat Feb  4 14:17:02 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/calgphy2.flf
+Sat Feb  4 14:17:11 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/bdffonts/brite.flf
+Sat Feb  4 14:17:21 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/battlesh.flf
+Sat Feb  4 14:29:46 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/ntgreek.flf
+zrecompile:zcompile:133: can't open file: /opt/homebrew/share/zsh/site-functions/_alacritty
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+Sat Feb  4 14:48:27 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/bubble__.flf
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+Sat Feb  4 15:01:03 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/characte.flf
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+Sat Feb  4 16:02:26 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/house_of.flf
+Sat Feb  4 16:11:27 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/usa_pq__.flf
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+Sat Feb  4 17:06:48 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/bdffonts/sansbi.flf
+Sat Feb  4 17:10:34 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/bdffonts/sbooki.flf
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+/Users/annieehler/.asdf/completions/asdf.fish:3: parse error near `else'
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/calendar_read:23: no such file or directory: 
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/regexp-replace:91: $5 not found
+/opt/homebrew/Cellar/zsh/5.9/share/zsh/functions/tcp_point:26: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/zui-usetty-wrapper:38: file number expected
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
+/Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
+Sat Feb  4 17:39:16 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/gothic__.flf

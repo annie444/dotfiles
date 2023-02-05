@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#{{{                    MARK:Header
+#**************************************************************
+##### Author: Analetta Rae Marie
+##### GitHub: https://github.com/annie444
+##### Date: Sat Feb 4, 2023 @ 17:41 PST
+##### Purpose: bash script to install custom configs to zpwr
+##### Notes: run with sh -c "$(curl -fsSL raw.githubusercontent.com/annie444/dotfiles/master/install/s)"
+#}}}***********************************************************
+
+git clone https://github.com/annie444/dotfiles.git "${HOME}/.dotfiles" && cd "${HOME}/.dotfiles/install" && ./install.sh

@@ -1,0 +1,330 @@
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_env.sh
+loaded /Users/annieehler/.zpwr/scripts/lib.sh
+loaded /Users/annieehler/.zpwr/scripts/crossOSExecute.sh
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_re_env.sh
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_env.sh
+loaded /Users/annieehler/.zpwr/scripts/lib.sh
+loaded /Users/annieehler/.zpwr/scripts/crossOSExecute.sh
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_re_env.sh
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+///////////////////  [0;34;4m1>>> Installing cargo-update with Cargo[0;32;1m  //////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+//////////////////////////  [0;34;4m1>>> Installing Pathogen[0;32;1m  //////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+    Updating crates.io index
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_env.sh
+loaded /Users/annieehler/.zpwr/scripts/lib.sh
+loaded /Users/annieehler/.zpwr/scripts/crossOSExecute.sh
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_re_env.sh
+Installing plugin lrvick/Conque-Shell.
+fatal: destination path 'Conque-Shell' already exists and is not an empty directory.
+Installing plugin MenkeTechnologies/VimColorSchemes.
+fatal: destination path 'VimColorSchemes' already exists and is not an empty directory.
+Installing plugin VundleVim/Vundle.vim.
+fatal: destination path 'Vundle.vim' already exists and is not an empty directory.
+Installing plugin ycm-core/YouCompleteMe.
+fatal: destination path 'YouCompleteMe' already exists and is not an empty directory.
+Installing plugin mileszs/ack.vim.
+fatal: destination path 'ack.vim' already exists and is not an empty directory.
+Installing plugin w0rp/ale.
+fatal: destination path 'ale' already exists and is not an empty directory.
+Installing plugin prabirshrestha/async.vim.
+fatal: destination path 'async.vim' already exists and is not an empty directory.
+Installing plugin prabirshrestha/asyncomplete.vim.
+fatal: destination path 'asyncomplete.vim' already exists and is not an empty directory.
+Installing plugin vim-scripts/camelcasemotion.
+fatal: destination path 'camelcasemotion' already exists and is not an empty directory.
+Installing plugin sjl/clam.vim.
+fatal: destination path 'clam.vim' already exists and is not an empty directory.
+Installing plugin ctrlpvim/ctrlp.vim.
+fatal: destination path 'ctrlp.vim' already exists and is not an empty directory.
+Installing plugin raimondi/delimitmate.
+fatal: destination path 'delimitmate' already exists and is not an empty directory.
+Installing plugin deoplete-plugins/deoplete-zsh.
+fatal: destination path 'deoplete-zsh' already exists and is not an empty directory.
+Installing plugin Shougo/deoplete.nvim.
+fatal: destination path 'deoplete.nvim' already exists and is not an empty directory.
+Installing plugin mattn/emmet-vim.
+fatal: destination path 'emmet-vim' already exists and is not an empty directory.
+Installing plugin apalmer1377/factorus.
+fatal: destination path 'factorus' already exists and is not an empty directory.
+Installing plugin junegunn/fzf.vim.
+fatal: destination path 'fzf.vim' already exists and is not an empty directory.
+Installing plugin othree/html5.vim.
+fatal: destination path 'html5.vim' already exists and is not an empty directory.
+Installing plugin Yggdroot/indentLine.
+fatal: destination path 'indentLine' already exists and is not an empty directory.
+Installing plugin Shougo/neobundle.vim.
+fatal: destination path 'neobundle.vim' already exists and is not an empty directory.
+Installing plugin Shougo/neosnippet-snippets.
+fatal: destination path 'neosnippet-snippets' already exists and is not an empty directory.
+Installing plugin Shougo/neosnippet.vim.
+fatal: destination path 'neosnippet.vim' already exists and is not an empty directory.
+Installing plugin scrooloose/nerdcommenter.
+fatal: destination path 'nerdcommenter' already exists and is not an empty directory.
+Installing plugin scrooloose/nerdtree.
+fatal: destination path 'nerdtree' already exists and is not an empty directory.
+Installing plugin roxma/nvim-yarp.
+fatal: destination path 'nvim-yarp' already exists and is not an empty directory.
+Installing plugin luochen1990/rainbow.
+fatal: destination path 'rainbow' already exists and is not an empty directory.
+Installing plugin Houl/repmo-vim.
+fatal: destination path 'repmo-vim' already exists and is not an empty directory.
+Installing plugin ervandew/supertab.
+fatal: destination path 'supertab' already exists and is not an empty directory.
+Installing plugin vim-syntastic/syntastic.
+fatal: destination path 'syntastic' already exists and is not an empty directory.
+Installing plugin godlygeek/tabular.
+fatal: destination path 'tabular' already exists and is not an empty directory.
+Installing plugin vim-scripts/tagexplorer.vim.
+fatal: destination path 'tagexplorer.vim' already exists and is not an empty directory.
+Installing plugin wellle/targets.vim.
+fatal: destination path 'targets.vim' already exists and is not an empty directory.
+Installing plugin tomtom/tlib_vim.
+fatal: destination path 'tlib_vim' already exists and is not an empty directory.
+Installing plugin wellle/tmux-complete.vim.
+fatal: destination path 'tmux-complete.vim' already exists and is not an empty directory.
+Installing plugin tomtom/ttags_vim.
+fatal: destination path 'ttags_vim' already exists and is not an empty directory.
+Installing plugin SirVer/ultisnips.
+fatal: destination path 'ultisnips' already exists and is not an empty directory.
+Installing plugin mbbill/undotree.
+fatal: destination path 'undotree' already exists and is not an empty directory.
+Installing plugin tsukkee/unite-tag.
+fatal: destination path 'unite-tag' already exists and is not an empty directory.
+Installing plugin junegunn/vader.vim.
+fatal: destination path 'vader.vim' already exists and is not an empty directory.
+Installing plugin tpope/vim-abolish.
+fatal: destination path 'vim-abolish' already exists and is not an empty directory.
+Installing plugin vim-airline/vim-airline.
+fatal: destination path 'vim-airline' already exists and is not an empty directory.
+Installing plugin vim-airline/vim-airline-themes.
+fatal: destination path 'vim-airline-themes' already exists and is not an empty directory.
+Installing plugin haya14busa/vim-asterisk.
+fatal: destination path 'vim-asterisk' already exists and is not an empty directory.
+Installing plugin 907th/vim-auto-save.
+fatal: destination path 'vim-auto-save' already exists and is not an empty directory.
+Installing plugin MenkeTechnologies/vim-autocorrect.
+fatal: destination path 'vim-autocorrect' already exists and is not an empty directory.
+Installing plugin craigemery/vim-autotag.
+fatal: destination path 'vim-autotag' already exists and is not an empty directory.
+Installing plugin MattesGroeger/vim-bookmarks.
+fatal: destination path 'vim-bookmarks' already exists and is not an empty directory.
+Installing plugin rhysd/vim-crystal.
+fatal: destination path 'vim-crystal' already exists and is not an empty directory.
+Installing plugin ryanoasis/vim-devicons.
+fatal: destination path 'vim-devicons' already exists and is not an empty directory.
+Installing plugin MenkeTechnologies/vim-dispatch.
+fatal: destination path 'vim-dispatch' already exists and is not an empty directory.
+Installing plugin easymotion/vim-easymotion.
+fatal: destination path 'vim-easymotion' already exists and is not an empty directory.
+Installing plugin tpope/vim-fugitive.
+fatal: destination path 'vim-fugitive' already exists and is not an empty directory.
+Installing plugin airblade/vim-gitgutter.
+fatal: destination path 'vim-gitgutter' already exists and is not an empty directory.
+Installing plugin roxma/vim-hug-neovim-rpc.
+fatal: destination path 'vim-hug-neovim-rpc' already exists and is not an empty directory.
+Installing plugin dahu/vim-lotr.
+fatal: destination path 'vim-lotr' already exists and is not an empty directory.
+Installing plugin jeetsukumaran/vim-markology.
+fatal: destination path 'vim-markology' already exists and is not an empty directory.
+Installing plugin severin-lemaignan/vim-minimap.
+fatal: destination path 'vim-minimap' already exists and is not an empty directory.
+Installing plugin xolox/vim-misc.
+fatal: destination path 'vim-misc' already exists and is not an empty directory.
+Installing plugin TerryMa/vim-multiple-cursors.
+fatal: destination path 'vim-multiple-cursors' already exists and is not an empty directory.
+Installing plugin tiagofumo/vim-nerdtree-syntax-highlight.
+fatal: destination path 'vim-nerdtree-syntax-highlight' already exists and is not an empty directory.
+Installing plugin tpope/vim-obsession.
+fatal: destination path 'vim-obsession' already exists and is not an empty directory.
+Installing plugin beloglazov/vim-online-thesaurus.
+fatal: destination path 'vim-online-thesaurus' already exists and is not an empty directory.
+Installing plugin LucHermitte/vim-refactor.
+fatal: destination path 'vim-refactor' already exists and is not an empty directory.
+Installing plugin tpope/vim-repeat.
+fatal: destination path 'vim-repeat' already exists and is not an empty directory.
+Installing plugin tpope/vim-rsi.
+fatal: destination path 'vim-rsi' already exists and is not an empty directory.
+Installing plugin xolox/vim-session.
+fatal: destination path 'vim-session' already exists and is not an empty directory.
+Installing plugin guns/vim-sexp.
+fatal: destination path 'vim-sexp' already exists and is not an empty directory.
+Installing plugin tpope/vim-sexp-mappings-for-regular-people.
+fatal: destination path 'vim-sexp-mappings-for-regular-people' already exists and is not an empty directory.
+Installing plugin justinmk/vim-sneak.
+fatal: destination path 'vim-sneak' already exists and is not an empty directory.
+Installing plugin honza/vim-snippets.
+fatal: destination path 'vim-snippets' already exists and is not an empty directory.
+Installing plugin mhinz/vim-startify.
+fatal: destination path 'vim-startify' already exists and is not an empty directory.
+Installing plugin tpope/vim-surround.
+fatal: destination path 'vim-surround' already exists and is not an empty directory.
+Installing plugin tpope/vim-unimpaired.
+fatal: destination path 'vim-unimpaired' already exists and is not an empty directory.
+Installing plugin Valodim/vim-zsh-completion.
+fatal: destination path 'vim-zsh-completion' already exists and is not an empty directory.
+Installing plugin lervag/vimtex.
+fatal: destination path 'vimtex' already exists and is not an empty directory.
+Installing plugin benmills/vimux.
+fatal: destination path 'vimux' already exists and is not an empty directory.
+Installing plugin gcmt/wildfire.vim.
+fatal: destination path 'wildfire.vim' already exists and is not an empty directory.
+Installing Taglist Plugin
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+/////////////////////  [0;34;4m2>>> Installing UltiSnips snippets[0;32;1m  /////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////////////  [0;34;4m3>>> Installing neovim config[0;32;1m  ///////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+     Ignored package `cargo-update v11.1.1` is already installed, use --force to override
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////////  [0;34;4m4>>> Installing Tmux Powerline Config[0;32;1m  ///////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sfn /Users/annieehler/.zpwr/local/.config/powerline/ /Users/annieehler/.config/powerline
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+/////////////////////  [0;34;4m5>>> Installing Tmux Plugin Manager[0;32;1m  ////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+fatal: destination path '/Users/annieehler/.tmux/plugins/tpm' already exists and is not an empty directory.
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////////  [0;34;4m6>>> Linking .ctags to home directory[0;32;1m  ///////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/.ctags /Users/annieehler/.ctags
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+///////////////  [0;34;4m7>>> Installing .tmux.conf to /Users/annieehler[0;32;1m  //////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/.tmux.conf /Users/annieehler/.tmux.conf
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+///////////////  [0;34;4m8>>> Installing .ideavimrc to /Users/annieehler[0;32;1m  //////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/.ideavimrc /Users/annieehler/.ideavimrc
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+/////////////////  [0;34;4m9>>> Installing .vimrc to /Users/annieehler[0;32;1m  ////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/.vimrc /Users/annieehler/.vimrc
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+///////////////  [0;34;4m10>>> Installing conf.gls to /Users/annieehler[0;32;1m  ///////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/conf.gls /Users/annieehler/conf.gls
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////  [0;34;4m11>>> Installing conf.df to /Users/annieehler[0;32;1m  ///////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/conf.df /Users/annieehler/conf.df
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+/////////////  [0;34;4m12>>> Installing conf.ifconfig to /Users/annieehler[0;32;1m  ////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/conf.ifconfig /Users/annieehler/conf.ifconfig
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+//////////////  [0;34;4m13>>> Installing conf.mount to /Users/annieehler[0;32;1m  //////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/conf.mount /Users/annieehler/conf.mount
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+//////////////  [0;34;4m14>>> Installing conf.whois to /Users/annieehler[0;32;1m  //////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/conf.whois /Users/annieehler/conf.whois
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+/////////////  [0;34;4m15>>> Installing .iftopcolors to /Users/annieehler[0;32;1m  /////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/.iftopcolors /Users/annieehler/.iftopcolors
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+///////////////  [0;34;4m16>>> Installing .inputrc to /Users/annieehler[0;32;1m  ///////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+ln -sf /Users/annieehler/.zpwr/install/.inputrc /Users/annieehler/.inputrc
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////////////  [0;34;4m17>>> Installing Tmux plugins[0;32;1m  ///////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_env.sh
+loaded /Users/annieehler/.zpwr/scripts/lib.sh
+loaded /Users/annieehler/.zpwr/scripts/crossOSExecute.sh
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_re_env.sh
+Installing plugin tmux-plugins/tmux-battery.
+fatal: destination path 'tmux-battery' already exists and is not an empty directory.
+Installing plugin tmux-plugins/tmux-continuum.
+fatal: destination path 'tmux-continuum' already exists and is not an empty directory.
+Installing plugin MenkeTechnologies/tmux-fzf-url.
+fatal: destination path 'tmux-fzf-url' already exists and is not an empty directory.
+Installing plugin tmux-plugins/tmux-prefix-highlight.
+fatal: destination path 'tmux-prefix-highlight' already exists and is not an empty directory.
+Installing plugin tmux-plugins/tmux-resurrect.
+fatal: destination path 'tmux-resurrect' already exists and is not an empty directory.
+Installing plugin tmux-plugins/tmux-sensible.
+fatal: destination path 'tmux-sensible' already exists and is not an empty directory.
+Installing plugin MenkeTechnologies/tmux-thumbs.
+fatal: destination path 'tmux-thumbs' already exists and is not an empty directory.
+Installing plugin tmux-plugins/tmux-yank.
+fatal: destination path 'tmux-yank' already exists and is not an empty directory.
+Installing plugin tmux-plugins/tpm.
+fatal: destination path 'tpm' already exists and is not an empty directory.
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////////  [0;34;4m18>>> HushLogin to /Users/annieehler[0;32;1m  ////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////  [0;34;4m19>>> Installing my.cnf to /Users/annieehler[0;32;1m  ////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+//////////////////////  [0;34;4m20>>> Installing htoprc file....[0;32;1m  //////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+cp: /Users/annieehler/.config/htop/htoprc: Permission denied
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_env.sh
+loaded /Users/annieehler/.zpwr/scripts/lib.sh
+loaded /Users/annieehler/.zpwr/scripts/crossOSExecute.sh
+loaded /Users/annieehler/.zpwr/local/.tokens.sh
+/Users/annieehler/.zpwr/env/.zpwr_re_env.sh: line 18: typeset: -A: invalid option
+typeset: usage: typeset [-afFirtx] [-p] name[=value] ...
+loaded /Users/annieehler/.zpwr/env/.zpwr_re_env.sh
+[0;32;1m////////////////////////////////////////////////////////////////////////////////
+////////////////////////  [0;34;4m1>>> Installing YouCompleteMe[0;32;1m  ///////////////////////
+////////////////////////////////////////////////////////////////////////////////
+[0m
+fatal: destination path 'YouCompleteMe' already exists and is not an empty directory.
+Generating ycmd build configuration...OK
+Compiling ycmd target: ycm_core...OK
+Building regex module...OK
+Building watchdog module...OK
+Installing Omnisharp for C# support...OK
+Building gopls for go completion...OK
+Setting up Tern for JavaScript completion...OK
+Installing rust-analyzer for Rust support...OK
+Installing jdt.ls for Java support...OK
+Setting up TSserver for TypeScript completion...OK
+Setting up Clangd completer...OK

@@ -1,0 +1,4 @@
+__fasd_files=( ${(Q)"${(z)$(<<\EO:__fasd_files
+'\/Users\/annieehler\/\.zshrc:15' '\/usr\/local\/sbin\/iftop:6' '\/opt\/homebrew\/bin\/zsh:1'
+EO:__fasd_files
+)}"} )
