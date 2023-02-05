@@ -195,3 +195,4 @@ Sat Feb  4 17:10:34 PST 2023 random font is /opt/homebrew/opt/figlet/share/figle
 /Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:17: no such file or directory: /opts.txt
 /Users/annieehler/.local/share/zinit/plugins/zdharma-continuum---zui/demos/zui-demo-nmap:19: no such file or directory: /hosts.txt
 Sat Feb  4 17:39:16 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/gothic__.flf
+Sat Feb  4 19:25:11 PST 2023 random font is /opt/homebrew/opt/figlet/share/figlet/fonts/C64-fonts/charact2.flf

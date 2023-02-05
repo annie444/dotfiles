@@ -32,7 +32,6 @@ export ZPWR_COLORS_SECTIONS=true;
 
 export ZPWR_PLUGIN_MANAGER=zinit
 export ZPWR_LOCAL="${ZDOTDIR:-$HOME}/.zpwr_config.d"
-export ZPWR_PLUGIN_DIR="${ZDOTDIR:-$HOME}/.plugins"
 export ZPWR_PROMPT_FILE="${ZDOTDIR:-$HOME}/.p10k.zsh"
 export ZPWR_TOKEN_PRE="${ZDOTDIR:-$HOME}/.tokens-pre.sh"
 export ZPWR_TOKEN_POST="${ZDOTDIR:-$HOME}/.tokens-post.sh"

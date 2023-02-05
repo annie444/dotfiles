@@ -117,3 +117,12 @@
 : 1675561507:0;nvim install.sh
 : 1675564820:0;cd ..
 : 1675564837:0;git add . && git commit -m "Migrate to zpwr"
+: 1675564878:0;git push
+: 1675564889:0;git pull
+: 1675565022:0;mosh romaine-local
+: 1675567550:0;cd ~/.dotfiles/.zpwr_config.d
+: 1675567552:0;nvim
+: 1675567601:0;ls -a
+: 1675567606:0;cd ~
+: 1675567624:0;cd ~/.dotfiles
+: 1675567633:0;git add . && git commit -m "Migrate to zpwr"
