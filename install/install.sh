@@ -147,8 +147,6 @@ if [[ $fullInstall == true ]]; then
   pluginsInstall
 fi 
 
-git clone --recursive https://github.com/annie444/dotfiles.git "${ZDOTDIR:-$HOME}"
-
 ln -s "${ZDOTDIR:-$HOME}/.zpwr_config.d" "$HOME/.zpwr/local"
 
 rm -rf "$HOME/.zpwr/env/.p10k.zsh" "$HOME/.zpwr/env/.p10k.zsh.zwc"
