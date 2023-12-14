@@ -7,7 +7,7 @@ command = "nvim"
 
 encryption = "age"
 [age]
-identity = {{ .chezmoi.homeDir | trim | printf "%q/key.txt" | quote }} 
+identity = {{ printf '%s/key.txt' .chezmoi.homeDir | quote }} 
 recipient = "age182m4twx3hsj505dfgujjhtyxj5wx9du9ud8s9huw9lylvclzlakqm48pk9"
 
 [data]
