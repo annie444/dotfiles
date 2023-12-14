@@ -35,10 +35,10 @@
 
 {{ if lookPath "delta" }}
 [core]
-  pager = {{ output "which" "delta" | trim | quote }}
+  pager = {{ output "which delta" | trim | quote }}
 
 [interactive]
-	diffFilter = {{ (output "which" "delta" | trim) "--color-only" | quote }} 
+	diffFilter = {{ (output "which delta" | trim) "--color-only" | quote }} 
 
 [delta]
   navigate = true
