@@ -1,0 +1,17 @@
+[git]
+autoCommit = true
+autoPush = true
+
+[edit]
+command = "nvim"
+
+encryption = "age"
+[age]
+identity = "/Users/annieehler/key.txt"
+recipient = "age182m4twx3hsj505dfgujjhtyxj5wx9du9ud8s9huw9lylvclzlakqm48pk9"
+
+[data]
+{{ $email := promptString "GitHub email" -}}
+email = {{ $email | quote }}
+{{ $fullName := promptString "Full name" -}}
+name = {{ $fullName | quote }}
