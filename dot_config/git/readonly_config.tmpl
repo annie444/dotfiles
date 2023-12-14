@@ -68,7 +68,5 @@
 	rebase = true
 
 [user]
-  {{ $email := promptString "GitHub email" -}}
-  email = {{ $email | quote }}
-  {{ $fullName := promptString "Full name" -}}
-	name = {{ $fullName | quote }} 
+  email = {{ .email | quote }}
+	name = {{ .name | quote }} 
