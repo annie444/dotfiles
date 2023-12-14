@@ -39,6 +39,16 @@
 
 [interactive]
 	diffFilter = {{ (output "which" "delta" | trim) "--color-only" | quote }} 
+
+[delta]
+  navigate = true
+  light = false
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
 {{ end }}
 
 {{ if lookPath "gh" }}
@@ -50,9 +60,6 @@
 	helper = 
 	helper = !{{ output "which" "gh" | trim }} auth git-credential
 {{ end }}
-
-[diff]
-	colorMoved = "default"
 
 [init]
 	defaultBranch = "main"
