@@ -53,3 +53,4 @@ case "$(uname -s)" in
     ;;
 esac
 
+op read op://Dev/age\ key/key.txt >> ~/key.txt
