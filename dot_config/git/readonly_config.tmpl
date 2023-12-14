@@ -33,22 +33,33 @@
 	spu = "stash push"
 	spua = "stash push --all"
 
+{{ if lookPath "delta" }}
 [core]
-  pager = "/etc/profiles/per-user/annieehler/bin/delta"
+  pager = {{ output "which" "delta" | trim | quote }}
 
 [interactive]
-	diffFilter = "/etc/profiles/per-user/annieehler/bin/delta --color-only"
+	diffFilter = {{ printf "%q --color-only" ( output "which" "delta" | trim ) | quote }} 
 
+[delta]
+  navigate = true
+  light = false
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+{{ end }}
+
+{{ if lookPath "gh" }}
 [credential "https://github.com"]
 	helper = 
-  helper = !/Users/annieehler/.nix-profile/bin/gh auth git-credential
+  helper = !{{ output "which" "gh" | trim }} auth git-credential
 
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/Users/annieehler/.nix-profile/bin/gh auth git-credential
-
-[diff]
-	colorMoved = "default"
+	helper = !{{ output "which" "gh" | trim }} auth git-credential
+{{ end }}
 
 [init]
 	defaultBranch = "main"
@@ -57,5 +68,7 @@
 	rebase = true
 
 [user]
-  email = "annie.ehler.4@gmail.com"
-	name = "Annie Ehler" 
+  {{ $email := promptString "GitHub email" -}}
+  email = {{ $email | quote }}
+  {{ $fullName := promptString "Full name" -}}
+	name = {{ $fullName | quote }} 
