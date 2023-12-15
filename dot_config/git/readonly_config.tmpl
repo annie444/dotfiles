@@ -53,9 +53,11 @@
 
 {{ if lookPath "gh" }}
 [credential "https://github.com"]
+  helper = 
   helper = !{{ output "which" "gh" | trim }} auth git-credential
 
 [credential "https://gist.github.com"]
+  helper = 
 	helper = !{{ output "which" "gh" | trim }} auth git-credential
 {{ end }}
 
