@@ -41,15 +41,36 @@
 	diffFilter = {{ printf "%q --color-only" ( output "which" "delta" | trim ) | quote }} 
 
 [delta]
-  navigate = true
-  light = false
+  true-color = always
+  side-by-side = true
+  features = side-by-side line-numbers decorations
+  syntax-theme = Dracula
+  plus-style = syntax "#003800"
+  minus-style = syntax "#3f0001"
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = cyan box ul
+  commit-style = raw
+  hunk-header-style = file line-number syntax
+
+[delta "line-numbers"]
+  line-numbers-left-style = cyan
+  line-numbers-right-style = cyan
+  line-numbers-minus-style = 124
+  line-numbers-plus-style = 28
+{{ end }}
 
 [merge]
   conflictstyle = diff3
 
 [diff]
   colorMoved = default
-{{ end }}
 
 {{ if lookPath "gh" }}
 [credential "https://github.com"]
