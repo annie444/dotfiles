@@ -2,7 +2,7 @@ set -U fish_term24bit 1
 
 zoxide init fish | source
 
-{{ if lookPath "nix" or lookPath "nix-env" }}
+{{ if or (lookPath "nix") (lookPath "nix-env") }}
 if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
   source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
 end
@@ -16,7 +16,7 @@ status --is-interactive; and begin
     alias .. 'cd ..'
     alias :q exit
     alias cat 'bat'
-    {{ if lookPath "nix" or lookPath "nix-env" }}
+    {{ if or (lookPath "nix") (lookPath "nix-env") }}
     alias drb 'darwin-rebuild build --flake $HOME/.config/nixpkgs'
     alias drs 'darwin-rebuild switch --flake $HOME/.config/nixpkgs'
     alias nb 'nix build'
