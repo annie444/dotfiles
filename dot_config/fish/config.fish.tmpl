@@ -67,12 +67,16 @@ status --is-interactive; and begin
     set -g BAT_THEME dracula
     set -g TERM "xterm-256color"
     
-    {{ if (eq .chezmoi.os "darwin") and ((ge (len (glob "/Applications/Android Studio")) 1) or (ge (len (glob "/*/Library/Android")) 1)) }}
+    {{ if (and (eq .chezmoi.os "darwin") (or (ge (len (glob "/Applications/Android Studio")) 1) (ge (len (glob "/*/Library/Android")) 1))) }} 
     set -g JAVA_HOME "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
     set -g ANDROID_HOME "$HOME/Library/Android/sdk"
     set -g NDK_HOME "$ANDROID_HOME/ndk/25.0.8775105"
+    {{ end }}
+
+    {{ if lookPath "op" }}
     set -g SSH_AUTH_SOCK "~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    
+    {{ end }}   
+
     starship init fish | source
     source ~/.config/op/plugins.sh
 end
