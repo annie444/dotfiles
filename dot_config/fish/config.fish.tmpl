@@ -67,7 +67,7 @@ status --is-interactive; and begin
     set -g BAT_THEME dracula
     set -g TERM "xterm-256color"
     
-    {{ if eq .chezmoi.os "darwin" and (ge len glob "/Applications/Android Studio" 1 or ge len glob "/*/Library/Android" 1) }}
+    {{ if (eq .chezmoi.os "darwin") and ((ge (len (glob "/Applications/Android Studio")) 1) or (ge (len (glob "/*/Library/Android")) 1)) }}
     set -g JAVA_HOME "/Applications/Android Studio.app/Contents/jbr/Contents/Home"
     set -g ANDROID_HOME "$HOME/Library/Android/sdk"
     set -g NDK_HOME "$ANDROID_HOME/ndk/25.0.8775105"
