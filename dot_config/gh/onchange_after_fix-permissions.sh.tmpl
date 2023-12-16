@@ -1,0 +1,7 @@
+#!/bin/sh
+
+{{ if lookPath "gh" }}
+sudo gh auth setup-git
+{{ else }}
+echo "gh not installed"
+{{ end }}
