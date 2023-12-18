@@ -1,5 +1,7 @@
 #!/bin/bash
 
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+
 op signin
 
 op read op://Dev/age\ key/key.txt >> ~/key.txt

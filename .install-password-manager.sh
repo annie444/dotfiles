@@ -39,28 +39,28 @@ opmenu() {
 
 find_shell() {
   passed_str="$1"
-  case "${SHELL}" in
+  case "${shell}" in
     */bash*)
       if [[ -n "${passed_str-}" ]]
       then
-        shell_rcfile="${HOME}/.bashrc"
+        export SHELL_RCFILE="${HOME}/.bashrc"
       else
-        shell_rcfile="${HOME}/.bash_profile"
+        export SHELL_RCFILE="${HOME}/.bash_profile"
       fi
       ;;
     */zsh*)
       if [[ -n "${passed_str-}" ]]
       then
-        shell_rcfile="${ZDOTDIR:-"${HOME}"}/.zshrc"
+        export SHELL_RCFILE="${ZDOTDIR:-"${HOME}"}/.zshrc"
       else
-        shell_rcfile="${ZDOTDIR:-"${HOME}"}/.zprofile"
+        export SHELL_RCFILE="${ZDOTDIR:-"${HOME}"}/.zprofile"
       fi
       ;;
     */fish*)
-      shell_rcfile="${HOME}/.config/fish/config.fish"
+      export SHELL_RCFILE="${HOME}/.config/fish/config.fish"
       ;;
     *)
-      shell_rcfile="${ENV:-"${HOME}/.profile"}"
+      export SHELL_RCFILE="${env:-"${HOME}/.profile"}"
       ;;
   esac
 }
@@ -77,18 +77,18 @@ case "$(uname -s)" in
     UNAME_MACHINE="$(/usr/bin/uname -m)"
     if [[ "${UNAME_MACHINE}" == "arm64" ]]; then
       # On ARM macOS, this script installs to /opt/homebrew only
-      HOMEBREW_PREFIX="/opt/homebrew"
+      export HOMEBREW_PREFIX="/opt/homebrew"
       HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
     else
       # On Intel macOS, this script installs to /usr/local only
-      HOMEBREW_PREFIX="/usr/local"
+      export HOMEBREW_PREFIX="/usr/local"
       HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
     fi
 
     find_shell "${HOMEBREW_ON_LINUX}"
 
-    echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${shell_rcfile}
-    eval $($HOMEBREW_PREFIX/bin/brew shellenv)
+    echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${SHELL_RCFILE}
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
     
     brew install --cask 1password
     brew install 1password-cli

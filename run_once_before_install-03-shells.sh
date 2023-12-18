@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+
 if ! sudo grep -q "$(brew --prefix)/bin/fish" /etc/shells; then
   brew install fish
   echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells

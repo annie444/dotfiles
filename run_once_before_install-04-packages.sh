@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+
 declare -a casks
 
 casks=("1password" "1password-cli" "anki" "arduino-ide" "balenaetcher" "breaktimer" "discord" "firefox" "fontforge" "google-chrome" "google-drive" "gpg-suite" "hex-fiend" "inkscape" "malwarebytes" "messenger" "nextcloud" "pastebot" "pocket-casts" "loopback" "postman" "qbittorrent" "mullvadvpn" "signal" "spotify" "steam" "tor-browser" "transmit" "vlc" "zoom" "libreoffice" "kitty" "slack" "docker" "julia" "mambaforge")
