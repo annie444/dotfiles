@@ -1,13 +1,16 @@
+encryption = "age"
+[age]
+identity = "{{ .chezmoi.homeDir }}/key.txt" 
+recipient = "age182m4twx3hsj505dfgujjhtyxj5wx9du9ud8s9huw9lylvclzlakqm48pk9"
+
+[hooks.read-source-state.pre]
+  command = ".local/share/chezmoi/.install-password-manager.sh"
+
 [git]
 autoCommit = true
 
 [edit]
 command = "nvim"
-
-encryption = "age"
-[age]
-identity = "{{ .chezmoi.homeDir }}/key.txt" 
-recipient = "age182m4twx3hsj505dfgujjhtyxj5wx9du9ud8s9huw9lylvclzlakqm48pk9"
 
 [data]
 {{ $email := promptString "GitHub email" -}}
