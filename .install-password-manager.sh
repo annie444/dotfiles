@@ -1,7 +1,69 @@
-#!/bin/sh
+#!/bin/bash
 
 # exit immediately if password-manager-binary is already in $PATH
 type op >/dev/null 2>&1 && exit
+
+declare -g shell_rcfile=""
+
+opmenu() {
+  echo "Press `w` to wait for the 1Password GUI to be setup before continuing"
+  echo "Press `n` to setup 1Password with the CLI"
+  echo "Press `x` to exit"
+  read -n 1 -p "Input Selection:" opmenuinput
+
+  case "$opmenuinput" in
+    "n")
+      ;;
+    "w")
+      echo "Please log in to the 1Password application"
+      echo "and turn on CLI integration"
+      echo "(Settings > Developter > CLI)"
+      echo ""
+      echo "Press any key to continue..."
+      read -n 1
+      ;;
+    "x")
+      exit 1
+      ;;
+    *)
+      echo "You have entered an invallid selection!"
+      echo "Please try again!"
+      echo ""
+      echo "Press any key to continue..."
+      read -n 1
+      clear
+      opmenu
+      ;;
+  esac
+}
+
+find_shell() {
+  passed_str="$1"
+  case "${SHELL}" in
+    */bash*)
+      if [[ -n "${passed_str-}" ]]
+      then
+        shell_rcfile="${HOME}/.bashrc"
+      else
+        shell_rcfile="${HOME}/.bash_profile"
+      fi
+      ;;
+    */zsh*)
+      if [[ -n "${passed_str-}" ]]
+      then
+        shell_rcfile="${ZDOTDIR:-"${HOME}"}/.zshrc"
+      else
+        shell_rcfile="${ZDOTDIR:-"${HOME}"}/.zprofile"
+      fi
+      ;;
+    */fish*)
+      shell_rcfile="${HOME}/.config/fish/config.fish"
+      ;;
+    *)
+      shell_rcfile="${ENV:-"${HOME}/.profile"}"
+      ;;
+  esac
+}
 
 case "$(uname -s)" in
   Darwin)
@@ -23,39 +85,15 @@ case "$(uname -s)" in
       HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
     fi
 
-    case "${SHELL}" in
-      */bash*)
-        if [[ -n "${HOMEBREW_ON_LINUX-}" ]]
-        then
-          shell_rcfile="${HOME}/.bashrc"
-        else
-          shell_rcfile="${HOME}/.bash_profile"
-        fi
-        ;;
-      */zsh*)
-        if [[ -n "${HOMEBREW_ON_LINUX-}" ]]
-        then
-          shell_rcfile="${ZDOTDIR:-"${HOME}"}/.zshrc"
-        else
-          shell_rcfile="${ZDOTDIR:-"${HOME}"}/.zprofile"
-        fi
-        ;;
-      */fish*)
-        shell_rcfile="${HOME}/.config/fish/config.fish"
-        ;;
-      *)
-        shell_rcfile="${ENV:-"${HOME}/.profile"}"
-        ;;
-    esac
+    find_shell "${HOMEBREW_ON_LINUX}"
 
-    echo 'eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ${shell_rcfile}
-    eval $(${HOMEBREW_PREFIX}/bin/brew shellenv)
+    echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${shell_rcfile}
+    eval $($HOMEBREW_PREFIX/bin/brew shellenv)
     
     brew install --cask 1password
     brew install 1password-cli
-    op signin
 
-    op read op://Dev/age\ key/key.txt > ~/key.txt
+    opmenu
     ;;
   Linux)
     # commands to install password-manager-binary on Linux
@@ -78,9 +116,11 @@ case "$(uname -s)" in
     sudo chgrp onepassword-cli /usr/local/bin/op
     sudo chmod g+s /usr/local/bin/op
 
-    op signin
+    find_shell
 
-    op read op://Dev/age\ key/key.txt > ~/key.txt
+    type op >/dev/null 2>&1 || echo "export PATH=\$PATH:/usr/local/bin" >> ${shell_rcfile}
+
+    opmenu
     ;;
   *)
     echo "unsupported OS"
