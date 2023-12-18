@@ -72,14 +72,22 @@
 [diff]
   colorMoved = default
 
-{{ if lookPath "gh" }}
+{{ if lookPath "op" }}
+[credential "https://github.com"]
+  helper = 
+  helper = !{{ output "which" "op" | trim }} plugin run -- gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper = 
+  helper = !{{ output "which" "op" | trim }} plugin run -- gh auth git-credential
+{{ else }}
 [credential "https://github.com"]
   helper = 
   helper = !{{ output "which" "gh" | trim }} auth git-credential
 
 [credential "https://gist.github.com"]
   helper = 
-	helper = !{{ output "which" "gh" | trim }} auth git-credential
+  helper = !{{ output "which" "gh" | trim }} auth git-credential
 {{ end }}
 
 [init]

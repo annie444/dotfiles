@@ -1,7 +1,8 @@
 #!/bin/sh
 
 {{ if lookPath "gh" }}
-sudo gh auth setup-git
+op plugin init gh 
+sudo op plugin run -- gh auth setup-git
 {{ else }}
 echo "gh not installed"
 {{ end }}
