@@ -2,7 +2,7 @@
 
 {{ if lookPath "gh" }}
 op plugin init gh 
-sudo op plugin run -- gh auth setup-git
+sudo gh config set editor nvim
 {{ else }}
 echo "gh not installed"
 {{ end }}
