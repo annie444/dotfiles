@@ -3,7 +3,8 @@
 # exit immediately if password-manager-binary is already in $PATH
 type op >/dev/null 2>&1 && exit
 
-declare -g shell_rcfile=""
+declare -g SHELL_RCFILE=""
+declare -g OP_PATH=""
 
 opmenu() {
   echo "Press `w` to wait for the 1Password GUI to be setup before continuing"
@@ -93,9 +94,67 @@ case "$(uname -s)" in
     brew install --cask 1password
     brew install 1password-cli
 
+    export OP_PATH="$HOMEBREW_PREFIX/bin/op"
+
     opmenu
     ;;
   Linux)
+    declare -A osInfo;
+    osInfo[/etc/debian_version]="apt"
+    osInfo[/etc/alpine-release]="apk"
+    osInfo[/etc/centos-release]="yum"
+    osInfo[/etc/fedora-release]="dnf"
+    osInfo[/etc/arch-release]="pacman"
+    osInfo[/etc/gentoo-release]="emerge"
+    osInfo[/etc/suse-release]="zypper"
+
+    for f in ${!osInfo[@]}; do
+        if [[ -f $f ]]; then
+            PACKAGE_MANAGER=${osInfo[$f]}
+        fi
+    done
+
+    case $PACKAGE_MANAGER in
+      "apt")
+        sudo apt update
+        sudo apt install -y build-essential
+        sudo apt install -y make git wget unzip
+        ;;
+      "apk")
+        apk update 
+        apk add --no-cache build-basa
+        apk add --no-cache git make wget unzip
+        ;;
+      "yum")
+        sudo yum update
+        sudo yum groupinstall "Development Tools"
+        sudo yum install -y make git wget unzip
+        ;;
+      "dnf")
+        sudo dnf update
+        sudo dnf groupinstall "Development Tools"
+        sudo dnf install -y make git wget unzip
+        ;;
+      "pacman")
+        sudo pacman -Syyu
+        sudo pacman -Sy base-devel
+        sudo pacman -Sy make git wget unzip
+        ;;
+      "emerge")
+        sudo emerge app-crypt/age
+        ;;
+      "zypper")
+        sudo zypper refresh
+        sudo zypper update
+        sudo zypper install -t pattern devel_C_C++
+        sudo zypper install make git wget unzip
+        ;;
+      *)
+        echo "Unsupported OS"
+        exit 0
+        ;;
+    esac
+    
     # commands to install password-manager-binary on Linux
     cpu_arch=$(lscpu | grep -w "Architecture:" | awk 'END{/([a-zA-Z0-9_-]*)/} {print $2}')
 
@@ -118,7 +177,9 @@ case "$(uname -s)" in
 
     find_shell
 
-    type op >/dev/null 2>&1 || echo "export PATH=\$PATH:/usr/local/bin" >> ${shell_rcfile}
+    export OP_PATH="/usr/local/bin/op"
+
+    type op >/dev/null 2>&1 || echo "export PATH=\$PATH:/usr/local/bin" >> ${SHELL_RCFILE}
 
     opmenu
     ;;
