@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # exit immediately if password-manager-binary is already in $PATH
-type op >/dev/null 2>&1 && exit
+
 
 declare -g SHELL_RCFILE=""
 declare -g OP_PATH=""
+export PWDIR="$(pwd)"
 
 opmenu() {
   echo "Press w to wait for the 1Password GUI to be setup before continuing"
@@ -90,7 +91,7 @@ case "$(uname -s)" in
 
     echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${SHELL_RCFILE}
     eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-    
+
     brew install --cask 1password
     brew install 1password-cli
 
@@ -188,3 +189,5 @@ case "$(uname -s)" in
     exit 1
     ;;
 esac
+
+bash "$PWDIR/setup_encryption.sh"
