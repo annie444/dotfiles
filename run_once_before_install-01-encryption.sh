@@ -5,8 +5,7 @@ eval "$OP_PATH signin"
 eval "$OP_PATH read op://Dev/age\ key/key.txt >> ~/key.txt"
 
 export PWDIR="$(pwd)"
-
-source "$PWDIR/install_shells.sh"
+eval "source $PWDIR/install_shells.sh"
 
 case "$(uname -s)" in
   Darwin)

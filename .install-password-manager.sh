@@ -7,9 +7,9 @@ declare -g SHELL_RCFILE=""
 declare -g OP_PATH=""
 
 opmenu() {
-  echo "Press `w` to wait for the 1Password GUI to be setup before continuing"
-  echo "Press `n` to setup 1Password with the CLI"
-  echo "Press `x` to exit"
+  echo "Press w to wait for the 1Password GUI to be setup before continuing"
+  echo "Press n to setup 1Password with the CLI"
+  echo "Press x to exit"
   read -n 1 -p "Input Selection:" opmenuinput
 
   case "$opmenuinput" in
