@@ -60,6 +60,7 @@ cask_install() {
   for cask in "${casks[@]}"; do
     install $cask
   done
+  conda init "$(basename "${SHELL}")"
   mamba install pynvim 
   echo ""
 }
@@ -76,7 +77,6 @@ formula_install() {
   for formula in "${formulae[@]}"; do
     brew install "$formula"
   done
-  conda init "$(basename "${SHELL}")"
   echo ""
 }
 
@@ -160,7 +160,6 @@ install_bun() {
   echo "Installing Bun..."
   curl -fsSL https://bun.sh/install | bash
   echo ""
-  $HOME/.cargo/bin/cargo install cargo-udeps --locked
 }
 
 install_pnpm() {
