@@ -58,6 +58,8 @@ status --is-interactive; and begin
     end
     {{ end }}
 
+    set -gx NVM_DIR "$HOME/.nvm"
+
     set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
     
     {{ if lookPath "gcloud" }}
