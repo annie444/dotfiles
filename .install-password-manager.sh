@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
-# exit immediately if password-manager-binary is already in $PATH
-
-
 declare -g SHELL_RCFILE=""
 declare -g OP_PATH=""
-export PWDIR="$(pwd)"
+export PWDIR="$HOME/.local/share/chezmoi"
 
 opmenu() {
   echo "Press w to wait for the 1Password GUI to be setup before continuing"
