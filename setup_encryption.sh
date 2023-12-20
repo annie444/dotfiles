@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-eval "$OP_PATH signin"
+eval "$($OP_PATH signin)"
 sleep 2
-eval "$OP_PATH signin"
+eval "$($OP_PATH signin)"
 eval "$OP_PATH read op://Dev/age\ key/key.txt >> ~/key.txt"
 
 install_shell_brew() {
