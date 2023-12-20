@@ -1,7 +1,6 @@
 #!/usr/bin/env fish
 
-source "$PWDIR/install_packages_functions.fish"
-fish_add_path "$HOME/.local/share/chezmoi/bin"
+source "$PWDIR/.install-utils.fish"
 
 switch (uname -s)
   case Darwin
@@ -41,7 +40,7 @@ switch (uname -s)
     brew tap homebrew/cask-fonts
     darwinmenu
   case Linux
-    set -g fonts "Meslo" "Mononoki" "FiraCode" "FiraMono" "Iosevka" "Ubuntu" "Hack" "UbunutMono" "Inconsolata" "EnvyCodeR" "MartianMono" "Terminus" "JetBrainsMono" "FantasqueSansMono" 
+    set -g fonts "Meslo" "Mononoki" "FiraCode" "FiraMono" "Iosevka" "Ubuntu" "Hack" "UbuntuMono" "Inconsolata" "EnvyCodeR" "MartianMono" "Terminus" "JetBrainsMono" "FantasqueSansMono" 
     set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack com.fyralabs.SkiffDesktop
     switch $PACKAGE_MANAGER
       case apt
@@ -60,11 +59,13 @@ switch (uname -s)
       case dnf
         sudo dnf update
       case pacman
-        git clone https://aur.archlinux.org/paru.git
-        cd paru
-        makepkg -si
-        paru --gendb 
-        paru -Sua
+        if not command -q paru
+          git clone https://aur.archlinux.org/paru.git
+          cd paru
+          makepkg -si
+          paru --gendb 
+          paru -Sua
+        end
         set -Ux INSTALL_COMMAND "paru -Sy"
         modprobe kvm_amd
         ls -al /dev/kvm

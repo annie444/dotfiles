@@ -86,8 +86,12 @@ function install_typography
   echo ""
   mkdir -p ~/.local/share/fonts
   for font in $fonts
-    curl -L -O "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.tar.xz"
-    tar -xzvf "$font.tar.xz" -C "~/.local/share/fonts/$font"
+    if not test -d "$HOME/.local/share/fonts/$font"
+      curl -fsSL -o "$HOME/.local/share/fonts/$font.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.tar.xz"
+      mkdir "$HOME/.local/share/fonts/$font/"
+      tar -xf "$HOME/.local/share/fonts/$font.tar.xz" -C "$HOME/.local/share/fonts/$font/"
+      rm "$HOME/.local/share/fonts/$font.tar.xz"
+    end
   end
   fc-cache -f -v
   echo ""
@@ -129,7 +133,6 @@ function install_mambaforge
   echo ""
 end
 
-
 function install_bun
   clear
   echo "Installing Bun..."
@@ -141,6 +144,15 @@ function install_pnpm
   clear
   echo "Installing pnpm..."
   curl -fsSL https://get.pnpm.io/install.sh | sh -
+  echo ""
+end
+
+function install_flatpaks
+  clear
+  echo "Installing Flatpaks..."
+  for pack in $flatpaks
+    flatpak install flathub $pack
+  end
   echo ""
 end
 
@@ -298,6 +310,12 @@ function linuxmenu
   read -n 1 -P "Input Selection:" linuxmenuinput
 
   switch $linuxmenuinput
+    case f
+      install_flatpaks
+      echo "Done!"
+      sleep 2
+      clear
+      linuxmenu
     case m
       install_mambaforge
       echo "Done!"
@@ -341,6 +359,7 @@ function linuxmenu
       install_pnpm
       install_bun
       install_mambaforge
+      install_flatpaks
       echo "Done!"
       sleep 2
       clear

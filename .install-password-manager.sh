@@ -4,6 +4,18 @@ declare -g SHELL_RCFILE=""
 declare -g OP_PATH=""
 export PWDIR="$HOME/.local/share/chezmoi"
 
+unlock_op() {
+  eval "$($OP_PATH signin)"
+  sleep 2
+  eval "$($OP_PATH signin)"
+  eval "$OP_PATH read op://Dev/age\ key/key.txt >> ~/key.txt"
+}
+
+gotonext() {
+  unlock_op
+  bash "$PWDIR/.encryption.sh"
+}
+
 opmenu() {
   echo "Press w to wait for the 1Password GUI to be setup before continuing"
   echo "Press n to setup 1Password with the CLI"
@@ -14,6 +26,8 @@ opmenu() {
     "n")
       ;;
     "w")
+      echo ""
+      echo ""
       echo "Please log in to the 1Password application"
       echo "and turn on CLI integration"
       echo "(Settings > Developter > CLI)"
@@ -25,6 +39,7 @@ opmenu() {
       exit 1
       ;;
     *)
+      clear
       echo "You have entered an invallid selection!"
       echo "Please try again!"
       echo ""
@@ -34,6 +49,7 @@ opmenu() {
       opmenu
       ;;
   esac
+  gotonext
 }
 
 find_shell() {
@@ -64,127 +80,191 @@ find_shell() {
   esac
 }
 
-case "$(uname -s)" in
-  Darwin)
-    # Install xcode cli tools
-    xcode-select --install
+install_op() {
+  case "$(uname -s)" in
+    Darwin)
+       
+      # Install xcode cli tools
+      xcode-select --install
 
-    # Install Homebrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      # Install Homebrew
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+      UNAME_MACHINE="$(/usr/bin/uname -m)"
+      if [[ "${UNAME_MACHINE}" == "arm64" ]]; then
+        # On ARM macOS, this script installs to /opt/homebrew only
+        export HOMEBREW_PREFIX="/opt/homebrew"
+        HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
+      else
+        # On Intel macOS, this script installs to /usr/local only
+        export HOMEBREW_PREFIX="/usr/local"
+        HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
+      fi
 
-    UNAME_MACHINE="$(/usr/bin/uname -m)"
-    if [[ "${UNAME_MACHINE}" == "arm64" ]]; then
-      # On ARM macOS, this script installs to /opt/homebrew only
-      export HOMEBREW_PREFIX="/opt/homebrew"
-      HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
-    else
-      # On Intel macOS, this script installs to /usr/local only
-      export HOMEBREW_PREFIX="/usr/local"
-      HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
-    fi
+      find_shell "${HOMEBREW_ON_LINUX}"
 
-    find_shell "${HOMEBREW_ON_LINUX}"
+      echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${SHELL_RCFILE}
+      eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
-    echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${SHELL_RCFILE}
-    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+      brew install --cask 1password
+      brew install 1password-cli
 
-    brew install --cask 1password
-    brew install 1password-cli
+      export OP_PATH="$HOMEBREW_PREFIX/bin/op"
+      type op >/dev/null 2>&1 || echo "export PATH=\$PATH:$OP_PATH" >> ${SHELL_RCFILE}
 
-    export OP_PATH="$HOMEBREW_PREFIX/bin/op"
+      opmenu
+      ;;
+    Linux)
+      declare -A osInfo;
+      osInfo[/etc/debian_version]="apt"
+      osInfo[/etc/alpine-release]="apk"
+      osInfo[/etc/centos-release]="yum"
+      osInfo[/etc/fedora-release]="dnf"
+      osInfo[/etc/arch-release]="pacman"
+      osInfo[/etc/gentoo-release]="emerge"
+      osInfo[/etc/suse-release]="zypper"
 
-    opmenu
-    ;;
-  Linux)
-    declare -A osInfo;
-    osInfo[/etc/debian_version]="apt"
-    osInfo[/etc/alpine-release]="apk"
-    osInfo[/etc/centos-release]="yum"
-    osInfo[/etc/fedora-release]="dnf"
-    osInfo[/etc/arch-release]="pacman"
-    osInfo[/etc/gentoo-release]="emerge"
-    osInfo[/etc/suse-release]="zypper"
+      for f in ${!osInfo[@]}; do
+          if [[ -f $f ]]; then
+              PACKAGE_MANAGER=${osInfo[$f]}
+          fi
+      done
 
-    for f in ${!osInfo[@]}; do
-        if [[ -f $f ]]; then
-            PACKAGE_MANAGER=${osInfo[$f]}
-        fi
-    done
+      case $PACKAGE_MANAGER in
+        "apt")
+          sudo apt update
+          sudo apt install -y build-essential
+          sudo apt install -y make git wget unzip
+          ;;
+        "apk")
+          apk update 
+          apk add --no-cache build-basa
+          apk add --no-cache git make wget unzip
+          ;;
+        "yum")
+          sudo yum update
+          sudo yum groupinstall "Development Tools"
+          sudo yum install -y make git wget unzip
+          ;;
+        "dnf")
+          sudo dnf update
+          sudo dnf groupinstall "Development Tools"
+          sudo dnf install -y make git wget unzip
+          ;;
+        "pacman")
+          sudo pacman -Syyu
+          sudo pacman -Sy base-devel
+          sudo pacman -Sy make git wget unzip
+          ;;
+        "emerge")
+          sudo emerge app-crypt/age
+          ;;
+        "zypper")
+          sudo zypper refresh
+          sudo zypper update
+          sudo zypper install -t pattern devel_C_C++
+          sudo zypper install make git wget unzip
+          ;;
+        *)
+          echo "Unsupported OS"
+          exit 0
+          ;;
+      esac
+      
+      # commands to install password-manager-binary on Linux
+      cpu_arch=$(lscpu | grep -w "Architecture:" | awk 'END{/([a-zA-Z0-9_-]*)/} {print $2}')
 
-    case $PACKAGE_MANAGER in
-      "apt")
-        sudo apt update
-        sudo apt install -y build-essential
-        sudo apt install -y make git wget unzip
+      case $cpu_arch in
+        x86_64)
+          ARCH="amd64" 
+          ;;
+        * ) 
+          ARCH=$cpu_arch
+          ;;
+      esac
+
+      wget "https://cache.agilebits.com/dist/1P/op2/pkg/v2.24.0/op_linux_${ARCH}_v2.24.0.zip" -O op.zip
+      unzip -d op op.zip
+      sudo mv op/op /usr/local/bin
+      rm -r op.zip op
+      sudo groupadd -f onepassword-cli
+      sudo chgrp onepassword-cli /usr/local/bin/op
+      sudo chmod g+s /usr/local/bin/op
+
+      find_shell
+
+      export OP_PATH="/usr/local/bin/op"
+
+      type op >/dev/null 2>&1 || echo "export PATH=\$PATH:/usr/local/bin" >> ${SHELL_RCFILE}
+
+      opmenu
+      ;;
+    *)
+      echo "unsupported OS"
+      exit 1
+      ;;
+  esac
+}
+
+check_again() {
+  clear
+  echo "Would you like to install any other programs?"
+  echo "Press i to install other packages"
+  echo "Press c to continue with chezmoi"
+  echo "Press x to cancel"
+  echo ""
+  read -n 1 -p "Input your selection: " checkstat
+
+  case "$checkstat" in
+    "i" | "I" | i | I)
+      gotonext
+      ;;
+    "c" | "C" | C | c)
+      clear
+      ;;
+    "x" | "X" | X | x)
+      exit
+      ;;
+    *)
+      clear
+      echo "You have entered an invallid selection!"
+      echo "Please try again!"
+      echo ""
+      echo "Press any key to continue..."
+      read -n 1
+      check_again
+      ;;
+  esac
+}
+
+check_status() {
+  if command -v op; then
+    clear
+    echo "It appears the 1Password CLI tools are already installed"
+    echo "Would you like to install them again?"
+    echo ""
+    read -n 1 -p "(Y/N) " continuestatus
+
+    case "$continuestatus" in
+      "Y" | "y" | Y | y)
+        install_op
         ;;
-      "apk")
-        apk update 
-        apk add --no-cache build-basa
-        apk add --no-cache git make wget unzip
-        ;;
-      "yum")
-        sudo yum update
-        sudo yum groupinstall "Development Tools"
-        sudo yum install -y make git wget unzip
-        ;;
-      "dnf")
-        sudo dnf update
-        sudo dnf groupinstall "Development Tools"
-        sudo dnf install -y make git wget unzip
-        ;;
-      "pacman")
-        sudo pacman -Syyu
-        sudo pacman -Sy base-devel
-        sudo pacman -Sy make git wget unzip
-        ;;
-      "emerge")
-        sudo emerge app-crypt/age
-        ;;
-      "zypper")
-        sudo zypper refresh
-        sudo zypper update
-        sudo zypper install -t pattern devel_C_C++
-        sudo zypper install make git wget unzip
+      "N" | "n" | N | n)
+        check_again
         ;;
       *)
-        echo "Unsupported OS"
-        exit 0
+        clear
+        echo "You have entered an invallid selection!"
+        echo "Please try again!"
+        echo ""
+        echo "Press any key to continue..."
+        read -n 1
+        check_status
         ;;
     esac
-    
-    # commands to install password-manager-binary on Linux
-    cpu_arch=$(lscpu | grep -w "Architecture:" | awk 'END{/([a-zA-Z0-9_-]*)/} {print $2}')
+  else
+    install_op
+  fi
+}
 
-    case $cpu_arch in
-      x86_64)
-        ARCH="amd64" 
-        ;;
-      * ) 
-        ARCH=$cpu_arch
-        ;;
-    esac
-
-    wget "https://cache.agilebits.com/dist/1P/op2/pkg/v2.24.0/op_linux_${ARCH}_v2.24.0.zip" -O op.zip
-    unzip -d op op.zip
-    sudo mv op/op /usr/local/bin
-    rm -r op.zip op
-    sudo groupadd -f onepassword-cli
-    sudo chgrp onepassword-cli /usr/local/bin/op
-    sudo chmod g+s /usr/local/bin/op
-
-    find_shell
-
-    export OP_PATH="/usr/local/bin/op"
-
-    type op >/dev/null 2>&1 || echo "export PATH=\$PATH:/usr/local/bin" >> ${SHELL_RCFILE}
-
-    opmenu
-    ;;
-  *)
-    echo "unsupported OS"
-    exit 1
-    ;;
-esac
-
-bash "$PWDIR/setup_encryption.sh"
+check_status
