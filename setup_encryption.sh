@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 eval "$OP_PATH signin"
-
+sleep 2
+eval "$OP_PATH signin"
 eval "$OP_PATH read op://Dev/age\ key/key.txt >> ~/key.txt"
-
-export PWDIR="$(pwd)"
 
 install_shell_brew() {
   if ! sudo grep -q "$(brew --prefix)/bin/fish" /etc/shells; then
@@ -34,17 +33,17 @@ install_shell_brew() {
 }
 
 install_shell_apt() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then 
     sudo apt install fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo apt install zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo apt install bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
@@ -60,17 +59,17 @@ install_shell_apt() {
 }
 
 install_shell_apk() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then
     apk add --no-cache fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo apk add --no-cache zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo apk add --no-cache bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
@@ -86,17 +85,17 @@ install_shell_apk() {
 }
 
 install_shell_yum() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then
     sudo yum install fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo yum install zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo yum install bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
@@ -112,17 +111,17 @@ install_shell_yum() {
 }
 
 install_shell_dnf() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then
     sudo dnf install fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo dnf install zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo dnf install bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
@@ -138,17 +137,17 @@ install_shell_dnf() {
 }
 
 install_shell_pacman() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then
     sudo pacman -Sy fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo pacman -Sy zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo pacman -Sy bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
@@ -164,17 +163,17 @@ install_shell_pacman() {
 }
 
 install_shell_emerge() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then
     sudo emerge sys-apps/fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo emerge sys-apps/zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo emerge sys-apps/bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
@@ -191,17 +190,17 @@ install_shell_emerge() {
 }
 
 install_shell_zypper() {
-  if ! sudo grep -q "$(which fish)" /etc/shells; then
+  if ! command -v fish &> /dev/null; then
     sudo zypper install fish 
     echo "$(which fish)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which zsh)" /etc/shells; then
+  if ! command -v zsh &> /dev/null; then
     sudo zypper install zsh
     echo "$(which zhs)" | sudo tee -a /etc/shells
   fi
 
-  if ! sudo grep -q "$(which bash)" /etc/shells; then
+  if ! command -v bash &> /dev/null; then
     sudo zypper install bash 
     echo "$(which bash)" | sudo tee -a /etc/shells
   fi
