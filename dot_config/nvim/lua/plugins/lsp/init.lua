@@ -5,6 +5,13 @@ return {
   config = function()
     require("plugins.lsp.handlers").setup()
   end,
+  init_options = {
+    userLanguages = {
+      eelixir = "html-eex",
+      eruby = "erb",
+      rust = "html",
+    },
+  },
   dependencies = {
     {
       "folke/neodev.nvim",
