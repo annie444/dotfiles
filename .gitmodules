@@ -1,0 +1,6 @@
+[submodule "dot_config/external_nvim"]
+	path = dot_config/external_nvim
+	url = https://github.com/annie444/nvim-dots.git
+[submodule "dot_config/external_fish"]
+	path = dot_config/external_fish
+	url = https://github.com/annie444/fish-dots.git
