@@ -217,8 +217,8 @@ install_shell_zypper() {
 install_age_and_shells() {
   case "$(uname -s)" in
     Darwin)
-      exec "${PWDIR}/.macos-settings.sh"
-      exec "${PWDIR}/.finder-defaults.sh"
+      source "${PWDIR}/.macos-settings.sh"
+      source "${PWDIR}/.finder-defaults.sh"
       eval "$(${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew shellenv)"
       brew install age
       if ! [ -n "$(echo $SHELL | grep fish)" ]; then
