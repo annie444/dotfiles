@@ -85,11 +85,15 @@ install_op() {
     Darwin)
        
       # Install xcode cli tools
-      xcode-select --install
+      if [ $(xcode-select -p 1>/dev/null;echo $?) -ge 1 ]; then 
+        xcode-select --install
+      fi
 
       # Install Homebrew
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
+      if ! command -v brew &> /dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      fi
+      
       UNAME_MACHINE="$(/usr/bin/uname -m)"
       if [[ "${UNAME_MACHINE}" == "arm64" ]]; then
         # On ARM macOS, this script installs to /opt/homebrew only
@@ -101,13 +105,15 @@ install_op() {
         HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
       fi
 
-      find_shell "${HOMEBREW_ON_LINUX}"
+      find_shell "${HOMEBREW_ON_LINUX:-''}"
 
       echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${SHELL_RCFILE}
       eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
-      brew install --cask 1password
-      brew install 1password-cli
+      if ! command -v op &> /dev/null; then
+        brew install --cask 1password
+        brew install 1password-cli
+      fi
 
       export OP_PATH="$HOMEBREW_PREFIX/bin/op"
       type op >/dev/null 2>&1 || echo "export PATH=\$PATH:$OP_PATH" >> ${SHELL_RCFILE}

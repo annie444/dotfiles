@@ -1,3 +1,5 @@
+#!/bin/sh
+
 defaults write "com.apple.finder" "AppleShowAllExtensions" -boolean true
 defaults write "com.apple.finder" "AppleShowAllFiles" -boolean true
 defaults write "com.apple.finder" "CopyProgressWindowLocation" -string "{-integer 1304, 404}"
@@ -21,7 +23,6 @@ defaults write "com.apple.finder" "FK_StandardViewSettings.ExtendedListViewSetti
 defaults write "com.apple.finder" "FK_StandardViewSettings.ExtendedListViewSettingsV2.textSize" -integer 13
 defaults write "com.apple.finder" "FK_StandardViewSettings.ExtendedListViewSettingsV2.useRelativeDates" -boolean true
 defaults write "com.apple.finder" "FK_StandardViewSettings.ExtendedListViewSettingsV2.viewOptionsVersion" -boolean true
-defaults write "com.apple.finder" "FK_StandardViewSettings.IconViewSettings.arrangeBy" none
 defaults write "com.apple.finder" "FK_StandardViewSettings.IconViewSettings.gridOffsetX" -boolean false
 defaults write "com.apple.finder" "FK_StandardViewSettings.IconViewSettings.gridOffsetY" -boolean false
 defaults write "com.apple.finder" "FK_StandardViewSettings.IconViewSettings.gridSpacing" -integer 54

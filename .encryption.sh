@@ -217,12 +217,14 @@ install_shell_zypper() {
 install_age_and_shells() {
   case "$(uname -s)" in
     Darwin)
-      eval "$(cat $PWDIR/darwin_defaults.sh)"
-      eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+      exec "${PWDIR}/.macos-settings.sh"
+      exec "${PWDIR}/.finder-defaults.sh"
+      eval "$(${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew shellenv)"
       brew install age
-      install_shell_brew
-      set_defaults_darwin 
-      export INSTALL_COMMAND="brew install -y"
+      if ! [ -n "$(echo $SHELL | grep fish)" ]; then
+        install_shell_brew
+      fi
+      export INSTALL_COMMAND="brew install"
       gotonext
       ;;
     Linux)
@@ -364,3 +366,5 @@ check_status() {
     install_age_and_shells
   fi
 }
+
+check_status
