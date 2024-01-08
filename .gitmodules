@@ -4,3 +4,6 @@
 [submodule "dot_config/external_fish"]
 	path = dot_config/external_fish
 	url = https://github.com/annie444/fish-dots.git
+[submodule "dot_tmux/plugins/external_tpm"]
+	path = dot_tmux/plugins/external_tpm
+	url = https://github.com/tmux-plugins/tpm
