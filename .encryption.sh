@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-gotonext() {
-  fish "$PWDIR/.install-packages.fish"
-}
-
 install_shell_brew() {
   if ! sudo grep -q "$(brew --prefix)/bin/fish" /etc/shells; then
     brew install fish
@@ -296,8 +292,6 @@ install_age_and_shells() {
           exit 0
           ;;
       esac
-
-      gotonext
       ;;
     *)
       echo "Unsupported OS"

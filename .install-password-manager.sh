@@ -136,11 +136,14 @@ install_op() {
           fi
       done
 
+      declare -u DEB_OR_RPM
+
       case $PACKAGE_MANAGER in
         "apt")
           sudo apt update
           sudo apt install -y build-essential
           sudo apt install -y make git wget unzip
+          DEB_OR_RPM="DEB"
           ;;
         "apk")
           apk update 
@@ -151,11 +154,13 @@ install_op() {
           sudo yum update
           sudo yum groupinstall "Development Tools"
           sudo yum install -y make git wget unzip
+          DEB_OR_RPM="RPM"
           ;;
         "dnf")
           sudo dnf update
           sudo dnf groupinstall "Development Tools"
           sudo dnf install -y make git wget unzip
+          DEB_OR_RPM="RPM"
           ;;
         "pacman")
           sudo pacman -Syyu
@@ -170,6 +175,7 @@ install_op() {
           sudo zypper update
           sudo zypper install -t pattern devel_C_C++
           sudo zypper install make git wget unzip
+          DEB_OR_RPM="RPM"
           ;;
         *)
           echo "Unsupported OS"
@@ -196,6 +202,17 @@ install_op() {
       sudo groupadd -f onepassword-cli
       sudo chgrp onepassword-cli /usr/local/bin/op
       sudo chmod g+s /usr/local/bin/op
+
+      case $DEB_OR_RPM in
+        "DEB" | DEB)
+          wget -O 1password-latest.deb https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
+          exec "sudo $PACKAGE_MANAGER install -y 1password-latest.deb"
+          ;;
+        "RPM" | RPM)
+          wget -O 1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
+          exec "sudo $PACKAGE_MANAGER install -y 1password-latest.rpm"
+          ;;
+      esac
 
       find_shell
 
