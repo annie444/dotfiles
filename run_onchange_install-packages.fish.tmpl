@@ -11,4 +11,6 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{ end -}}
 EOF
+{{ else }}
+echo "Not setup yet"
 {{ end -}}
