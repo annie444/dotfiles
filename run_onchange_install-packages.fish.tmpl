@@ -1,16 +1,19 @@
-#!/bin/usr/env fish
+{{ if eq .chezmoi.os "darwin" }}
+#!/usr/bin/env fish
 
-{{ if eq .chezmoi.os "darwin" -}}
 brew tap browsh-org/homebrew-browsh
 brew tap homebrew/cask-fonts
 brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ range .packages.darwin.brews -}}
+{{ range .packages.darwin.brews }}
 brew {{ . | quote }}
-{{ end -}}
-{{ range .packages.darwin.casks -}}
+{{ end }}
+{{ range .packages.darwin.casks }}
 cask {{ . | quote }}
-{{ end -}}
+{{ end }}
 EOF
-{{ else }}
+{{ end }}
+{{ else if ne .chezmoi.os "linux" }}
+#!/usr/bin/env fish
+
 echo "Not setup yet"
-{{ end -}}
+{{ end }}
