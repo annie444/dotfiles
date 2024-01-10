@@ -303,16 +303,12 @@ install_age_and_shells() {
 check_again() {
   clear
   echo "Would you like to install any other programs?"
-  echo "Press i to install other packages"
   echo "Press c to continue with chezmoi"
   echo "Press x to cancel"
   echo ""
   read -n 1 -p "Input your selection: " checkstat
 
   case "$checkstat" in
-    "i" | "I" | i | I)
-      gotonext
-      ;;
     "c" | "C" | C | c)
       clear
       ;;
