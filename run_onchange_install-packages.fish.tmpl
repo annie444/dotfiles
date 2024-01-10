@@ -12,7 +12,7 @@ cask {{ . | quote }}
 {{ end }}
 EOF
 {{ end }}
-{{ else if ne .chezmoi.os "linux" }}
+{{ if ne .chezmoi.os "linux" }}
 #!/usr/bin/env fish
 
 echo "Not setup yet"
