@@ -21,3 +21,5 @@ fullname = {{ $fullName | quote }}
 {{ $choices :=  list "work" "personal" "server" "device" }}
 {{ $hosttype := promptChoiceOnce . "hosttype" "What host type is this" $choices }}
 hosttype = {{ $hosttype | quote }}
+{{ $nic := promptStringOnce . "nic" "Primary network device" }}
+nic = {{ $nic | quote }}
