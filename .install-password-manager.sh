@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-declare -g SHELL_RCFILE=""
-declare -g OP_PATH=""
 export PWDIR="$HOME/.local/share/chezmoi"
+
 
 unlock_op() {
   eval "$($OP_PATH signin)"
@@ -266,14 +265,19 @@ check_status() {
     echo "It appears the 1Password CLI tools are already installed"
     echo "Would you like to install them again?"
     echo ""
-    read -n 1 -p "(Y/N) " continuestatus
+    read -n 1 -p "[Y]es | [N]o | [S]top [A]sking) " continuestatus
 
     case "$continuestatus" in
       "Y" | "y" | Y | y)
+        declare -g SHELL_RCFILE=""
+        declare -g OP_PATH=""
         install_op
         ;;
       "N" | "n" | N | n)
         check_again
+        ;;
+      "S" | "s" | S | s | "A" | "a" | A | a)
+        echo "STOP" > "${PWDIR}/.store"
         ;;
       *)
         clear
@@ -290,4 +294,6 @@ check_status() {
   fi
 }
 
-check_status
+if [ ! "$(cat $PWDIR/.store)" = "STOP" ]; then
+  check_status
+fi
