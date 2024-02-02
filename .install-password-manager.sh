@@ -2,7 +2,6 @@
 
 export PWDIR="$HOME/.local/share/chezmoi"
 
-
 unlock_op() {
   eval "$($OP_PATH signin)"
   sleep 2
@@ -243,9 +242,10 @@ check_again() {
       ;;
     "c" | "C" | C | c)
       clear
+      exit 0
       ;;
     "x" | "X" | X | x)
-      exit
+      exit 1
       ;;
     *)
       clear
@@ -278,6 +278,7 @@ check_status() {
         ;;
       "S" | "s" | S | s | "A" | "a" | A | a)
         echo "STOP" > "${PWDIR}/.store"
+        exit 0
         ;;
       *)
         clear
