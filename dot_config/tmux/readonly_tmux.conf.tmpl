@@ -217,48 +217,7 @@ bind c new-window -c "#{pane_current_path}"
 set-hook -g after-new-window 'command-prompt -I "#{window_name}" "rename-window '%%'"'
 
 bind r command-prompt -I "#{window_name}" "rename-window '%%'"
-bind R command-prompt -I "#{session_name}" "rename-session '%%'"
-bind | split-window -h -c "#{pane_current_path}"
-bind _ split-window -v -c "#{pane_current_path}"
-bind -r C-[ previous-window
-bind -r C-] next-window
-bind -r [ select-pane -t :.-
-bind -r ] select-pane -t :.+
-bind -r Tab last-window   # cycle thru MRU tabs
-bind -r C-o swap-pane -D
-bind + resize-pane -Z
-
-bind-key J resize-pane -D 5
-bind-key K resize-pane -U 5
-bind-key H resize-pane -L 5
-bind-key L resize-pane -R 5
-
-bind-key M-j resize-pane -D
-bind-key M-k resize-pane -U
-bind-key M-h resize-pane -L
-bind-key M-l resize-pane -R
-
-# Vim style pane selection
-bind h select-pane -L
-bind j select-pane -D 
-bind k select-pane -U
-bind l select-pane -R
-
-# Use Alt-vim keys without prefix key to switch panes
-bind -n M-h select-pane -L
-bind -n M-j select-pane -D 
-bind -n M-k select-pane -U
-bind -n M-l select-pane -R 
-
-bind L command-prompt -p "Link window from (session:window): " "link-window -s %% -a"
-
-bind '\' if '[ #{pane_index} -eq 1 ]' \
-     'swap-pane -s "!"' \
-     'select-pane -t:.1 ; swap-pane -d -t 1 -s "!"'
-
-bind x kill-pane
-bind X kill-window
-
+bind R command-prompt -I "#{session_name}" "rename-session '%%'
 bind C-x confirm-before -p "kill other windows? (y/n)" "kill-window -a"
 bind Q confirm-before -p "kill-session #S? (y/n)" kill-session
 
