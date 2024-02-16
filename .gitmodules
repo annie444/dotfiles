@@ -12,3 +12,6 @@
 [submodule "dot_config/cheat/cheatsheets/external_community"]
 	path = dot_config/cheat/cheatsheets/external_community
 	url = https://github.com/cheat/cheatsheets.git
+[submodule "dot_config/cheat/cheatsheets/external_personal"]
+	path = dot_config/cheat/cheatsheets/external_personal
+	url = https://github.com/annie444/cheatsheets.git
