@@ -83,7 +83,7 @@ cheatpaths:
     readonly: false
     
 
-  - name: euclid
+  - name: neos
     path: ~/.config/cheat/cheatsheets/personal/projects/neos
     tags:
       - personal
