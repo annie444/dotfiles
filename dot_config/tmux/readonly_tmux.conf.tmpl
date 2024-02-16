@@ -87,7 +87,7 @@ set -g @plugin 'tmux-plugins/tmux-open'
 
 # tmuxplugin-dracula
 # ---------------------
-set -g @dracula-plugins "battery cpu-usage ram-usage network-bandwidth git ssh-session attached-clients weather time synchronize-panes"
+set -g @dracula-plugins "battery cpu-usage ram-usage network-bandwidth git ssh-session weather time"
 
 # Color options ([background] [foreground/text])
 set -g @dracula-battery-colors "pink dark_gray"
@@ -137,12 +137,12 @@ set -g @dracula-show-battery true
 set -g @dracula-ram-usage-label ""
 
 # Network options
-set -g @dracula-network-bandwidth {{ .nic }}
+set -g @dracula-network-bandwidth {{ .nic | squote }}
 set -g @dracula-network-bandwidth-interval 2
 set -g @dracula-network-bandwidth-show-interface true
 
 # SSH options
-set -g @dracula-show-ssh-session-port false 
+set -g @dracula-show-ssh-session-port false
 
 # Time options
 set -g @dracula-show-timezone true
@@ -151,13 +151,13 @@ set -g @dracula-military-time true
 set -g @dracula-time-format "%a, %b %d, %Y at %H:%M"
 
 # Version control options
-set -g @dracula-git-disable-status false
+set -g @dracula-git-disable-status true
 set -g @dracula-git-show-current-symbol ✓
 set -g @dracula-git-show-diff-symbol !
 set -g @dracula-git-no-repo-message ""
 set -g @dracula-git-no-untracked-files true
 set -g @dracula-git-show-remote-status true
-set -g @dracula-hg-disable-status false
+set -g @dracula-hg-disable-status true
 set -g @dracula-hg-show-current-symbol ✓
 set -g @dracula-hg-show-diff-symbol !
 set -g @dracula-hg-no-repo-message ""
@@ -212,12 +212,14 @@ unbind M-Up  # resize 5 rows up
 unbind M-Down # resize 5 rows down
 unbind M-Right # resize 5 rows right
 unbind M-Left # resize 5 rows left
+unbind r # refresh client
+
 bind c new-window -c "#{pane_current_path}"
 
 set-hook -g after-new-window 'command-prompt -I "#{window_name}" "rename-window '%%'"'
 
-bind r command-prompt -I "#{window_name}" "rename-window '%%'"
-bind R command-prompt -I "#{session_name}" "rename-session '%%'
+bind a command-prompt -I "#{window_name}" "rename-window '%%'"
+bind A command-prompt -I "#{session_name}" "rename-session '%%'
 bind C-x confirm-before -p "kill other windows? (y/n)" "kill-window -a"
 bind Q confirm-before -p "kill-session #S? (y/n)" kill-session
 
@@ -269,5 +271,64 @@ bind -T copy-mode-vi MouseDragEnd1Pane \
     send-keys -X copy-pipe "$yank"
 bind -T copy-mode-vi MouseDown1Pane select-pane \;\
    send-keys -X clear-selection
+
+# switch panes using CMD-arrow without prefix
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# open a man page in new window
+bind / command-prompt "split-window 'exec man %%'"
+
+# quick view of system stats
+bind "~" split-window "exec btop"
+
+# listen for activity on all windows
+set -g bell-action any
+
+# instructs tmux to expect UTF-8 sequences
+setw -g utf8 on
+sest -g utf8 on
+
+# choose a client to detach
+bind D choose-client
+
+# choose window/session
+bind "'" choose-window
+bind '"' choose-session
+
+# navigate panes using CMD+jk (no prefix)
+bind -r M-j select-pane -t :.-
+bind -r M-k select-pane -t :.+
+
+# navigate windows using CMD-hl (no prefix)
+bind -r M-h select-window -t :-
+bind -r M-l select-window -t :+
+
+# swap panes
+bind -r J swap-pane -D
+bind -r K swap-pane -U
+
+# list all paste buffers
+bind b list-buffers
+
+# choose buffer to paste interactively
+bind Space choose-buffer
+
+# delete the most recently copied buffer of text
+bind x delete-buffer
+
+# new window
+bind C new-window
+
+# quit
+bind \ confirm-before kill-server
+
+# reload settings
+bind R source-file ~/.tmux.conf
+
+# redisplay
+bind r refresh-client
 
 run '~/.tmux/plugins/tpm/tpm'
