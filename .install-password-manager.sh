@@ -134,6 +134,19 @@ install_op() {
           fi
       done
 
+      if [[ -v PACKAGE_MANAGER && -z $PACKAGE_MANAGER ]]; then
+          . /etc/os-release
+          case $ID in
+            "rhel" | "fedora")
+              export PACKAGE_MANAGER="dnf"
+              ;;
+            *)
+              echo "Unable to determine your package manager"
+	            exit 2
+	            ;;
+	        esac
+      fi
+
       declare -u DEB_OR_RPM
 
       case $PACKAGE_MANAGER in
@@ -295,6 +308,4 @@ check_status() {
   fi
 }
 
-if [ ! "$(cat $PWDIR/.store)" = "STOP" ]; then
-  check_status
-fi
+check_status

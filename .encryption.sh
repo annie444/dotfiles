@@ -212,7 +212,7 @@ install_shell_zypper() {
 
 install_age_and_shells() {
   case "$(uname -s)" in
-    Darwin)
+    Darwin | "Darwin")
       source "${PWDIR}/.macos-settings.sh"
       source "${PWDIR}/.finder-defaults.sh"
       eval "$(${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew shellenv)"
@@ -223,7 +223,7 @@ install_age_and_shells() {
       export INSTALL_COMMAND="brew install"
       gotonext
       ;;
-    Linux)
+    Linux | "Linux")
       declare -A osInfo;
       osInfo[/etc/debian_version]="apt"
       osInfo[/etc/alpine-release]="apk"
@@ -238,6 +238,19 @@ install_age_and_shells() {
               export PACKAGE_MANAGER=${osInfo[$f]}
           fi
       done
+
+      if [[ -v PACKAGE_MANAGER && -z $PACKAGE_MANAGER ]]; then
+          . /etc/os-release
+          case $ID in
+            "rhel" | "fedora")
+              export PACKAGE_MANAGER="dnf"
+              ;;
+            *)
+              echo "Unable to determine your package manager"
+	            exit 2
+	            ;;
+	        esac
+      fi
 
       case $PACKAGE_MANAGER in
         "apt")

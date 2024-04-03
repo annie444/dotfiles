@@ -1,8 +1,8 @@
 # Shell integration is sourced and configured manually
 shell_integration enabled
-{{ if eq .chezmoi.os "darwin" }}
+{{ if eq "darwin" .chezmoi.os }}
 notify_on_cmd_finish unfocused 10.0 command /opt/homebrew/bin/terminal-notifier -title 'Kitty' -appIcon file:///Users/annieehler/.config/kitty/kitty.png -execute open focus://focus -message "A command has finished executing"
-{{ else if .chezmoi.os "linux" }}
+{{ else if eq "linux" .chezmoi.os }}
 notify_on_cmd_finish unfocused 10.0 command notify-send "Kitty" "A command has finished executing"
 {{ end }}
 
