@@ -308,4 +308,6 @@ check_status() {
   fi
 }
 
-check_status
+if [ ! -d "$PWDIR/.store" ]; then
+  check_status
+fi
