@@ -137,8 +137,11 @@ install_op() {
       if [[ -v PACKAGE_MANAGER && -z $PACKAGE_MANAGER ]]; then
           . /etc/os-release
           case $ID in
-            "rhel" | "fedora")
+            "rhel" | "fedora" | rhel | fedora)
               export PACKAGE_MANAGER="dnf"
+              ;;
+            "ubuntu" | "debian" | "mint" | "pop" | "raspbian" | "kali" | ubuntu | debian | mint | pop | raspbian | kali)
+              export PACKAGE_MANAGER="apt"
               ;;
             *)
               echo "Unable to determine your package manager"
