@@ -52,7 +52,7 @@ switch (uname -s)
         sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
         curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
         sudo apt update
-        set -g packages 1password
+        set -g packages 1password 1password-cli balena-etcher breaktimer-bin discord firefox insync gnupg kitty podman glibc pam lxc libcap apparmor libselinux libseccomp gnutls lua python310 docker-desktop julia cmake nodejs bat htop bandwhich bfs browsh-bin browsh bottom btop cheat-bin curl dooit eza fzf gawk github-cli git hyperfine iftop openssh mosh most neofetch nmap libwebp notcurses parallel ripgrep rsync tealdeer thefuck tmux tree unrar vivid wget xz boost-libs openblas hdf5 imagemagick gnuplot graphviz vtk spotify-tui armadillo libdlibxx gsl pango ncurses opencv thrift lazydocker dive cloc ruby cargo-udeps ghostscript jq dejagnu flex mpfr autogen libisl libffi zlib libxcrypt texinfo bison prettierd pkgconf lua-language-server marksman perl coursier scala php texlive-latex terraform typescript certbot git-extras grpcurl helm kubectx kubectl kustomize lazygit mkcert sampler subversion upx wireguard-tools chromedriver powershell ninja sqlite python-poetry ruff mercurial tree-sitter gzip gofumpt go neovim starship zoxide make pinentry obsidian
       case apk
         apk update 
       case yum
