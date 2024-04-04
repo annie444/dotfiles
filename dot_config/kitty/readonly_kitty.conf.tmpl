@@ -46,11 +46,14 @@ url_color #8be9fd
 window_padding_width 10
 
 # OS specific settings
-wayland_titlebar_color background
+{{ if eq "darwin" .chezmoi.os }}
 macos_titlebar_color background
 macos_quit_when_last_window_closed yes
 macos_window_resizable yes
+{{ else if eq "linux" .chezmoi.os }}
 linux_display_server wayland
+wayland_titlebar_color background
+{{ end }}
 
 # Fonts 
 font_family JetBrainsMono Nerd Font Mono
