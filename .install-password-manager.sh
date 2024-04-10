@@ -220,11 +220,11 @@ install_op() {
       case $DEB_OR_RPM in
         "DEB" | DEB)
           wget -O 1password-latest.deb https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
-          exec "sudo $PACKAGE_MANAGER install -y 1password-latest.deb"
+          bash -c "sudo $PACKAGE_MANAGER install -y $HOME/1password-latest.deb"
           ;;
         "RPM" | RPM)
           wget -O 1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
-          exec "sudo $PACKAGE_MANAGER install -y 1password-latest.rpm"
+          bash -c "sudo $PACKAGE_MANAGER install -y $HOME/1password-latest.rpm"
           ;;
       esac
 
