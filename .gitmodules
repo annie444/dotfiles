@@ -1,19 +1,23 @@
-[submodule "dot_config/external_nvim"]
-	path = dot_config/external_nvim
+[submodule "dot_config/nvim"]
+	path = dot_config/nvim
 	url = https://github.com/annie444/nvim-dots.git
-	branch = main
-[submodule "dot_config/external_fish"]
-	path = dot_config/external_fish
+  branch = main
+
+[submodule "dot_config/fish"]
+	path = dot_config/fish
 	url = https://github.com/annie444/fish-dots.git
-	branch = main
+  branch = main
+
 [submodule "dot_tmux/plugins/external_tpm"]
 	path = dot_tmux/plugins/external_tpm
 	url = https://github.com/tmux-plugins/tpm
-	branch = master
+  branch = master
+
 [submodule "dot_config/cheat/cheatsheets/external_community"]
 	path = dot_config/cheat/cheatsheets/external_community
 	url = https://github.com/cheat/cheatsheets.git
-	branch = master
+  branch = master
+
 [submodule "dot_config/cheat/cheatsheets/external_personal"]
 	path = dot_config/cheat/cheatsheets/external_personal
 	url = https://github.com/annie444/cheatsheets.git
