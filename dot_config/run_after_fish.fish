@@ -1,16 +1,24 @@
 #!/usr/bin/env fish
 
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source 
-fisher install jorgebucaran/fisher
-fisher install patrickf1/fzf.fish
-fisher install franciscolourenco/done
-fisher install jorgebucaran/spark.fish
-fisher install joseluisq/gitnow@latest
-fisher install meaningful-ooo/sponge
-fisher install jorgebucaran/autopair.fish
-fisher install jorgebucaran/getopts.fish
-fisher install nickeb96/puffer-fish
-fisher install z11i/github-copilot-cli.fish
-fisher install gazorby/fish-abbreviation-tips
-fisher install fabioantunes/base16-fish-shell
-fisher install dracula/fish
+function install_plugin
+  if test -z (grep "$argv[0]" ~/.config/fish/fish_plugins)
+      fisher install $argv[0]
+  end
+end
+
+if ! test -f ~/.config/fish/functions/fisher.fish
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+end
+install_plugin jorgebucaran/fisher
+install_plugin patrickf1/fzf.fish
+install_plugin franciscolourenco/done
+install_plugin jorgebucaran/spark.fish
+install_plugin joseluisq/gitnow@latest
+install_plugin meaningful-ooo/sponge
+install_plugin jorgebucaran/autopair.fish
+install_plugin jorgebucaran/getopts.fish
+install_plugin nickeb96/puffer-fish
+install_plugin z11i/github-copilot-cli.fish
+install_plugin gazorby/fish-abbreviation-tips
+install_plugin fabioantunes/base16-fish-shell
+install_plugin dracula/fish
