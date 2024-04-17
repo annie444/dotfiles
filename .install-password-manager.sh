@@ -311,6 +311,6 @@ check_status() {
   fi
 }
 
-if [ ! -d "$PWDIR/.store" ]; then
+if [ ! -f "$PWDIR/.store" ]; then
   check_status
 fi
