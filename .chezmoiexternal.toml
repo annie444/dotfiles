@@ -1,7 +1,0 @@
-[".config/fish/completions/"]
-type = "archive"
-url = "https://api.github.com/repos/joseluisq/gitnow/tarball/2.11.0"
-executable = true
-path = "completions/*"
-refreshPeriod = "128h"
-stripComponents = 1
