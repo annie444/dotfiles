@@ -13,7 +13,7 @@ install_plugin jorgebucaran/fisher
 install_plugin patrickf1/fzf.fish
 install_plugin franciscolourenco/done
 install_plugin jorgebucaran/spark.fish
-install_plugin joseluisq/gitnow@latest
+install_plugin joseluisq/gitnow
 install_plugin meaningful-ooo/sponge
 install_plugin jorgebucaran/autopair.fish
 install_plugin jorgebucaran/getopts.fish
