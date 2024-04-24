@@ -10,7 +10,7 @@ if ! test -f ~/.config/fish/functions/fisher.fish
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 end
 install_plugin jorgebucaran/fisher
-install_plugin patrickf1/fzf.fish
+install_plugin PatrickF1/fzf.fish
 install_plugin franciscolourenco/done
 install_plugin jorgebucaran/spark.fish
 install_plugin joseluisq/gitnow
