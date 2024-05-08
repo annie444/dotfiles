@@ -20,4 +20,5 @@ install_plugin jorgebucaran/getopts.fish
 install_plugin nickeb96/puffer-fish
 install_plugin z11i/github-copilot-cli.fish
 install_plugin gazorby/fish-abbreviation-tips
+install_plugin jorgebucaran/nvm.fish
 install_plugin dracula/fish
