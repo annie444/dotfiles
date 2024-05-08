@@ -3,10 +3,10 @@
 export PWDIR="$HOME/.local/share/chezmoi"
 
 unlock_op() {
-  eval "$($OP_PATH signin)"
+  eval "$(${OP_PATH:-op} signin)"
   sleep 2
-  eval "$($OP_PATH signin)"
-  eval "$OP_PATH read op://Dev/age\ key/key.txt >> ~/key.txt"
+  eval "$(${OP_PATH:-op} signin)"
+  eval "${OP_PATH:-op} read op://Dev/age\ key/key.txt >> ~/key.txt"
 }
 
 gotonext() {
@@ -114,7 +114,7 @@ install_op() {
       fi
 
       export OP_PATH="$HOMEBREW_PREFIX/bin/op"
-      type op >/dev/null 2>&1 || echo "export PATH=\$PATH:$OP_PATH" >> ${SHELL_RCFILE}
+      type op >/dev/null 2>&1 || echo "export PATH=\$PATH:${OP_PATH:-op}" >> ${SHELL_RCFILE}
 
       opmenu
       ;;
