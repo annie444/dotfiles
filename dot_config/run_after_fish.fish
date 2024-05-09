@@ -14,7 +14,6 @@ install_plugin PatrickF1/fzf.fish
 install_plugin franciscolourenco/done
 install_plugin jorgebucaran/spark.fish
 install_plugin joseluisq/gitnow
-install_plugin meaningful-ooo/sponge
 install_plugin jorgebucaran/autopair.fish
 install_plugin jorgebucaran/getopts.fish
 install_plugin nickeb96/puffer-fish
