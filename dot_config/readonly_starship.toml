@@ -1,8 +1,11 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 add_newline = true
 continuation_prompt = "❯"
 format = "[╭─](dimmed white) $os$shell$directory$vcsh$fossil_branch$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$dotnet$golang$java$nodejs$php$rust$conda $fill $cmd_duration$sudo$jobs$status$shlvl$singularity$kubernetes$pijul_channel$docker_context$package$c$cmake$cobol$daml$dart$deno$elixir$elm$erlang$fennel$guix_shell$haskell$haxe$helm$julia$kotlin$gradle$lua$nim$ocaml$opa$perl$pulumi$purescript$python$raku$rlang$red$ruby$scala$solidity$swift$terraform$vlang$vagrant$zig$buf$nix_shell$meson$spack$aws$gcloud$openstack$azure$env_var$crystal$container$shell$time [─╮](dimmed white)\n[╰─](dimmed white) $character"
 right_format = "$username$hostname$localip$battery$memory_usage [─╯](dimmed white)"
-command_timeout = 1000
+scan_timeout = 300
+command_timeout = 2000
 
 [aws]
 disabled = false
@@ -83,12 +86,24 @@ disabled = false
 symbol = " "
 
 [git_branch]
+always_show_remote = true
+only_attached = true
 disabled = false
 symbol = " "
 
 [git_commit]
 disabled = false
 tag_symbol = " "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+rebase = '[⚗️ REBASING](bold red)'
+merge = '[⚗️ MERGING](bold red)'
+revert = '[⏪ REVERTING](bold red)'
+bisect = '[🔍 BISECTING](bold red)'
+am = '[AM 📬](bold red)'
+am_or_rebase = '[AM 📬/⏪ REBASE](bold red)'
 
 [git_status]
 ahead = " "
@@ -103,6 +118,7 @@ renamed = " "
 staged = " "
 stashed = " "
 untracked = " "
+ignore_submodules = true
 
 [golang]
 disabled = false
