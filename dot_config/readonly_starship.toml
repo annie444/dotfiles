@@ -86,7 +86,6 @@ disabled = false
 symbol = " "
 
 [git_branch]
-always_show_remote = true
 only_attached = true
 disabled = false
 symbol = " "
