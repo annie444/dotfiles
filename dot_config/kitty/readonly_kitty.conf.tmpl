@@ -16,21 +16,39 @@ allow_remote_control yes
 
 # Colors
 include dracula.conf
-listen_on unix:/tmp/mykitty
-tab_bar_edge top
-tab_bar_style powerline
-tab_title_template Tab {index}: {title}
-window_padding_width 10
+
 
 # OS specific settings
 {{ if eq "darwin" .chezmoi.os }}
 macos_titlebar_color background
+macos_thicken_font 0.35
 macos_quit_when_last_window_closed yes
+macos_option_as_alt yes
 macos_window_resizable yes
+macos_show_window_title_in all
+macos_colorspace displayp3
 {{ else if eq "linux" .chezmoi.os }}
 linux_display_server wayland
 wayland_titlebar_color background
 {{ end }}
+
+# General settings
+shell fish --login --interactive
+shell_integration no-complete no-title no-cwd
+allow_remote_control yes
+editor nvim
+
+# Tab settings
+enabled_layouts splits:split_axis=horizontal
+listen_on unix:/tmp/mykitty
+tab_bar_edge top
+tab_bar_style separator 
+tab_title_template Tab {index}: {title}
+tab_separator " | "
+tab_title_template "{fmt.fg._f64832}{index}:{fmt.fg.tab}{title.split()[0]}"
+active_tab_title_template
+active_tab_font_style   bold-italic
+inactive_tab_font_style normal
 
 # Fonts 
 font_family JetBrainsMono Nerd Font Mono
@@ -38,18 +56,10 @@ bold_font JetBrainsMono Nerd Font Mono Bold
 italic_font JetBrainsMono Nerd Font Mono Italic
 bold_italic_font JetBrainsMono Nerd Font Mono Bold Italic
 font_size 12.0
+font_features           +liga +calt +dlig +frac +ordn +subs +sups
 
 # Glyphs
-disable_ligatures never
-symbol_map U+E5FA-U+E6AC,U+E700-U+E7C5,U+F000-U+F2E0,U+E200-U+E2A9,U+F0001-U+F1AF0,U+E300-U+E3E3,U+F400-U+F532,U+2665,U+26A1,U+E0A0-U+E0A2,U+E0B0-U+E0B3,U+E0A3,U+E0B4-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+23FB-U+23FE,U+2B58,U+F300-U+F32F,U+E000-U+E00A,U+EA60-U+EBEB,U+2500-U+259F JetBrainsMono Nerd Font Mono
 tab_activity_symbol 
-
-# Ligatures
-font_features JetBrainsMonoNFM-Regular +cv14 +ss02 +calt
-font_features JetBrainsMonoNFM-Italic +cv14 +ss02 +calt 
-font_features JetBrainsMonoNFM-BoldItalic +cv14 +ss02 +calt 
-font_features JetBrainsMonoNFM-Italic +cv14 +ss02 +calt
-
 
 # Keyboard shortcuts
 # Switch focus left
@@ -73,3 +83,28 @@ map ctrl+f3 detach_window tab-left
 map ctrl+f3 detach_window new-tab-left
 # asks which tab to move the window into
 map ctrl+f4 detach_window ask
+
+map opt+s launch --cwd=current
+map opt+v launch --location=vsplit --cwd=current
+map kitty_mod+n no_op
+map opt+k next_window
+map opt+j previous_window
+map opt+1 previous_tab
+map kitty_mod+right no_op
+map shift+cmd+]     no_op
+map ctrl+tab        no_op
+map opt+2 next_tab
+map kitty_mod+left no_op
+map shift+cmd+[    no_op
+map ctrl+shift+tab no_op
+map opt+c new_tab_with_cwd
+map kitty_mod+t no_op
+map opt+x close_tab
+map opt+, set_tab_title
+
+map opt+left resize_window narrower
+map opt+right resize_window wider
+map opt+up resize_window taller
+map opt+down resize_window shorter 3
+# reset all windows in the tab to default sizes
+map opt+h resize_window reset
