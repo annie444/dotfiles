@@ -63,44 +63,45 @@ tab_activity_symbol 
 
 # Keyboard shortcuts
 # Switch focus left
-map ctrl+left neighboring_window left
+map opt+left neighboring_window left
 # Retile window right
-map shift+left move_window right
+map opt+left move_window right
 # Switch focus down
-map ctrl+down neighboring_window down
+map opt+down neighboring_window down
 # Retile window up
-map shift+down move_window up
+map opt+down move_window up
 
 # moves the window into a new OS window
-map ctrl+f2 detach_window
+map opt+f2 detach_window
 # moves the window into a new tab
-map ctrl+f3 detach_window new-tab
+map opt+f3 detach_window new-tab
 # moves the window into the previously active tab
-map ctrl+f3 detach_window tab-prev
+map opt+f3 detach_window tab-prev
 # moves the window into the tab at the left of the active tab
-map ctrl+f3 detach_window tab-left
+map opt+f3 detach_window tab-left
 # moves the window into a new tab created to the left of the active tab
-map ctrl+f3 detach_window new-tab-left
+map opt+f3 detach_window new-tab-left
 # asks which tab to move the window into
-map ctrl+f4 detach_window ask
+map opt+f4 detach_window ask
 
-map opt+s launch --cwd=current
-map opt+v launch --location=vsplit --cwd=current
+map kitty_mod+s launch --cwd=current
+map kitty_mod+v launch --location=vsplit --cwd=current
+map kitty_mod+k next_window
+map kitty_mod+j previous_window
+map kitty_mod+h previous_tab
+map kitty_mod+l next_tab
+map kitty_mod+. new_tab_with_cwd
+map kitty_mod+x close_tab
+map kitty_mod+, set_tab_title
+
 map kitty_mod+n no_op
-map opt+k next_window
-map opt+j previous_window
-map opt+1 previous_tab
+map kitty_mod+t no_op
 map kitty_mod+right no_op
 map shift+cmd+]     no_op
 map ctrl+tab        no_op
-map opt+2 next_tab
 map kitty_mod+left no_op
 map shift+cmd+[    no_op
 map ctrl+shift+tab no_op
-map opt+c new_tab_with_cwd
-map kitty_mod+t no_op
-map opt+x close_tab
-map opt+, set_tab_title
 
 map opt+left resize_window narrower
 map opt+right resize_window wider
