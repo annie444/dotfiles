@@ -1,33 +1,28 @@
-# Shell integration is sourced and configured manually
-shell_integration enabled
-{{ if eq "darwin" .chezmoi.os }}
-notify_on_cmd_finish unfocused 10.0 command /opt/homebrew/bin/terminal-notifier -title 'Kitty' -appIcon file:///Users/annieehler/.config/kitty/kitty.png -execute open focus://focus -message "A command has finished executing"
-{{ else if eq "linux" .chezmoi.os }}
-notify_on_cmd_finish unfocused 10.0 command notify-send "Kitty" "A command has finished executing"
-{{ end }}
 
 # Background
 background_opacity 0.9
 dynamic_background_opacity yes
 background_blur 20
-active_tab_font_style bold
+
+# Window config
+window_padding_width 2
+enabled_layouts splits:split_axis=horizontal
 adjust_line_height 110%
-allow_remote_control yes
 
 # Colors
 include dracula.conf
 
-
 # OS specific settings
 {{ if eq "darwin" .chezmoi.os }}
+notify_on_cmd_finish unfocused 10.0 command /opt/homebrew/bin/terminal-notifier -title 'Kitty' -appIcon file:///Users/annieehler/.config/kitty/kitty.png -execute open focus://focus -message "A command has finished executing"
 macos_titlebar_color background
-macos_thicken_font 0.35
 macos_quit_when_last_window_closed yes
 macos_option_as_alt yes
 macos_window_resizable yes
 macos_show_window_title_in all
 macos_colorspace displayp3
 {{ else if eq "linux" .chezmoi.os }}
+notify_on_cmd_finish unfocused 10.0 command notify-send "Kitty" "A command has finished executing"
 linux_display_server wayland
 wayland_titlebar_color background
 {{ end }}
@@ -38,16 +33,18 @@ allow_remote_control yes
 editor nvim
 
 # Tab settings
-enabled_layouts splits:split_axis=horizontal
+tab_bar_min_tabs 1 
 listen_on unix:/tmp/mykitty
 tab_bar_edge top
 tab_bar_style separator 
 tab_title_template Tab {index}: {title}
-tab_separator " | "
-tab_title_template "{fmt.fg._f64832}{index}:{fmt.fg.tab}{title.split()[0]}"
+tab_separator " ┇ " 
+tab_title_template "{fmt.fg._bd93f9}{index}:{fmt.fg.tab}{title.split()[0]}"
 active_tab_title_template
 active_tab_font_style   bold-italic
 inactive_tab_font_style normal
+tab_bar_margin_width 0.5
+tab_bar_margin_height 1.0 0.5
 
 # Fonts 
 font_family JetBrainsMono Nerd Font Mono
@@ -55,10 +52,7 @@ bold_font JetBrainsMono Nerd Font Mono Bold
 italic_font JetBrainsMono Nerd Font Mono Italic
 bold_italic_font JetBrainsMono Nerd Font Mono Bold Italic
 font_size 12.0
-font_features           +liga +calt +dlig +frac +ordn +subs +sups
-
-# Glyphs
-tab_activity_symbol 
+font_features +liga +calt +dlig +frac +ordn +subs +sups
 
 # Keyboard shortcuts
 # Switch focus left
