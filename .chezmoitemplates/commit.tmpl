@@ -1,5 +1,7 @@
 {{- with .chezmoi.status }}
 
+{{with (print . ) }}{{ end }}
+
 {{- range .Ordinary -}}
 {{ if and (eq .X 'A') (eq .Y '.') -}}Add {{ .Path }}
 {{ else if and (eq .X 'D') (eq .Y '.') -}}Remove {{ .Path }}

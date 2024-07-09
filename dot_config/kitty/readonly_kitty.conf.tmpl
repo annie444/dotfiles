@@ -5,8 +5,7 @@ dynamic_background_opacity yes
 background_blur 20
 
 # Window config
-window_padding_width 2
-enabled_layouts splits:split_axis=horizontal
+window_padding_width 4
 adjust_line_height 110%
 
 # Colors
@@ -28,9 +27,10 @@ wayland_titlebar_color background
 {{ end }}
 
 # General settings
-shell_integration no-complete no-title no-cwd
+shell_integration no-title no-cwd
 allow_remote_control yes
 editor nvim
+enabled_layouts splits
 
 # Tab settings
 tab_bar_min_tabs 1 
