@@ -9,7 +9,7 @@ command = ".local/share/chezmoi/.install-password-manager.sh"
 [git]
 autoCommit = true
 autoPush = true
-commitMessageTemplate = "{{ .Message }}"
+commitMessageTemplateFile = ".chezmoitemplates/commit.tmpl"
 
 [edit]
 command = "nvim"
