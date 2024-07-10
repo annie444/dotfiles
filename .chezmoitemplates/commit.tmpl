@@ -6,14 +6,14 @@
 {{ if and (eq .X 'A') (eq .Y '.') -}}Add {{ .Path }}
 {{ else if and (eq .X 'D') (eq .Y '.') -}}Remove {{ .Path }}
 {{ else if and (eq .X 'M') (eq .Y '.') -}}Update {{ .Path }}
-{{ else }}{{with (printf "unsupported XY: %q" (printf "%c%c" .X .Y)) }}{{ fail . }}{{ end }}
+{{ else }}{{ .X }} {{ .Y }} Unknown Edits {{ .Path }}
 {{ end }}
 {{- end -}}
 
 {{- range .RenamedOrCopied -}}
 {{ if and (eq .X 'R') (eq .Y '.') }}Change attributes of {{ .Path }}
 {{ else if and (eq .X 'C') (eq .Y '.') -}}Copy {{ .OrigPath }} to {{ .Path }}
-{{ else }}{{with (printf "unsupported XY: %q" (printf "%c%c" .X .Y)) }}{{ fail . }}{{ end }}
+{{ else }}{{ .X }} {{ .Y }} Unknown Edits {{ .Path }}
 {{ end }}
 {{- end -}}
 

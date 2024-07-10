@@ -76,11 +76,11 @@ map opt+d detach_window ask
 
 # Create a new window splitting the space used by the existing one so that
 # the two windows are placed one above the other
-map kitty_mod+_ launch --location=hsplit
+map kitty_mod+- launch --location=hsplit
 
 # Create a new window splitting the space used by the existing one so that
 # the two windows are placed side by side
-map kitty_mod+| launch --location=vsplit
+map kitty_mod+\ launch --location=vsplit
 
 # Create a new window splitting the space used by the existing one so that
 # the two windows are placed side by side if the existing window is wide or
@@ -94,7 +94,6 @@ map kitty_mod+r layout_action rotate
 # Move the active window in the indicated direction
 map opt+j move_window up
 map opt+h move_window left
-map opt+l move_window right
 map opt+k move_window down
 
 # Move the active window to the indicated screen edge
