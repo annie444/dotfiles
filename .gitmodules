@@ -22,3 +22,6 @@
 	path = dot_config/cheat/cheatsheets/external_personal
 	url = https://github.com/annie444/cheatsheets.git
 	branch = main
+[submodule "dot_local/share/rmtrash"]
+	path = dot_local/share/rmtrash
+	url = https://github.com/PhrozenByte/rmtrash.git
