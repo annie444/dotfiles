@@ -49,20 +49,6 @@
 [merge]
   conflictstyle = diff3
 
-{{ if lookPath "op" }}
-[credential "https://github.com"]
-  helper = !{{ output "which" "op" | trim }} plugin run -- gh auth git-credential
-
-[credential "https://gist.github.com"]
-  helper = !{{ output "which" "op" | trim }} plugin run -- gh auth git-credential
-{{ else }}
-[credential "https://github.com"]
-  helper = !{{ output "which" "gh" | trim }} auth git-credential
-
-[credential "https://gist.github.com"]
-  helper = !{{ output "which" "gh" | trim }} auth git-credential
-{{ end }}
-
 [init]
 	defaultBranch = "main"
 
