@@ -1,0 +1,32 @@
+#!/usr/bin/env fish
+
+set keyservers "keyserver.ubuntu.com" \
+  "hkp://keyserver.ubuntu.com:80" \
+  "hkps://keyserver.ubuntu.com:443" \
+  "pgp.mit.edu" \
+  "hkp://pgp.mit.edu:80" \
+  "hkps://pgp.mit.edu:443" \
+  "keys.mailvelope.com" \
+  "hkp://keys.mailvelope.com:80" \
+  "hkps://keys.mailvelope.com:443" \
+  "keys.openpgp.org" \
+  "hkp://keys.openpgp.org:80" \
+  "hkps://keys.openpgp.org:443"
+
+set keys (gpg --list-secret-keys | grep sec | awk '{ print $2 }' | sed 's/^\([a-z0-9]*\)\/0x//g' )
+
+for key in $keys
+  for server in $keyservers
+    echo "Sending GPG key $key to $server"
+    gpg --keyserver $server --send-keys $key
+    if test "$status" -eq 0
+      echo "Key '$key' successful sent to server '$server'"
+      break
+    else
+      echo "Failed add key '$key' from server '$server'. Try another server"
+      continue
+    end
+  end 
+end
+
+# vim: set ft=fish ts=2 sw=2 :
