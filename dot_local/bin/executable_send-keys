@@ -13,7 +13,7 @@ set keyservers "keyserver.ubuntu.com" \
   "hkp://keys.openpgp.org:80" \
   "hkps://keys.openpgp.org:443"
 
-set keys (gpg --list-secret-keys | grep sec | awk '{ print $2 }' | sed 's/^\([a-z0-9]*\)\/0x//g' )
+set keys (gpg --list-secret-keys 2> /dev/null | grep sec | awk '{ print $2 }' | sed 's/^\([a-z0-9]*\)\/0x//g')
 
 for key in $keys
   for server in $keyservers
