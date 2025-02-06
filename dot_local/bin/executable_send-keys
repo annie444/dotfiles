@@ -18,7 +18,7 @@ set keys (gpg --list-secret-keys | grep sec | awk '{ print $2 }' | sed 's/^\([a-
 for key in $keys
   for server in $keyservers
     echo "Sending GPG key $key to $server"
-    gpg --keyserver $server --send-keys $key
+    gpg --keyserver $server --send-keys $key 2&>1 /dev/null
     if test "$status" -eq 0
       echo "Key '$key' successful sent to server '$server'"
       break
