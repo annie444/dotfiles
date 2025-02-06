@@ -3,7 +3,6 @@
 set keyservers "keyserver.ubuntu.com" \
   "hkp://keyserver.ubuntu.com:80" \
   "hkps://keyserver.ubuntu.com:443" \
-  "pgp.mit.edu" \
   "hkp://pgp.mit.edu:80" \
   "hkps://pgp.mit.edu:443" \
   "keys.mailvelope.com" \
