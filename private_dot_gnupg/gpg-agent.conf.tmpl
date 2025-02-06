@@ -17,7 +17,7 @@ default-cache-ttl 86400
 {{ if eq .chezmoi.os "darwin" }}
 pinentry-program /opt/homebrew/bin/pinentry-curses
 {{ else if eq .chezmoi.os "linux" }}
-pinentry-program /usr/bin/pinentry-curses
+pinentry-program /usr/bin/pinentry
 {{ else }}
 pinentry-program /usr/bin/pinentry-tty
 {{ end }}
