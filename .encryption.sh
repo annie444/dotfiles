@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 gotonext() {
-  fish "$PWDIR/.install-packages.fish"
+  echo "Done!"
+  exit 0
 }
 
 install_shell_brew() {
@@ -214,20 +215,35 @@ install_shell_zypper() {
   fi
 }
 
+asdf_age() {
+  asdf plugin add age
+  asdf plugin add age-plugin-yubikey
+  asdf install age latest
+  asdf install age-plugin-yubikey latest
+  asdf set age latest
+  asdf set age-plugin-yubikey latest
+}
+
 install_age_and_shells() {
   case "$(uname -s)" in
-    Darwin | "Darwin")
+    Darwin)
       source "${PWDIR}/.macos-settings.sh"
       source "${PWDIR}/.finder-defaults.sh"
       eval "$(${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew shellenv)"
-      brew install age
+
+      asdf_age
+
       if ! [ -n "$(echo $SHELL | grep fish)" ]; then
         install_shell_brew
       fi
       export INSTALL_COMMAND="brew install"
+
       gotonext
       ;;
-    Linux | "Linux")
+
+    Linux)
+      asdf_age
+
       declare -A osInfo;
       osInfo[/etc/debian_version]="apt"
       osInfo[/etc/alpine-release]="apk"
@@ -259,51 +275,33 @@ install_age_and_shells() {
 	        esac
       fi 
 
+
+
       case $PACKAGE_MANAGER in
         "apt")
-          sudo apt update
-          sudo apt install build-essential
-          sudo apt install -y age
           install_shell_apt
           export INSTALL_COMMAND="sudo apt install -y"
           ;;
         "apk")
-          apk update 
-          apk add --no-cache build-base
-          apk --update add age
           install_shell_apk
           export INSTALL_COMMAND="apk add --no-cache"
           ;;
         "yum")
-          sudo yum update
-          sudo yum groupinstall "Development Tools"
-          sudo yum install -y age
           install_shell_yum
           export INSTALL_COMMAND="sudo yum install -y"
           ;;
         "dnf")
-          sudo dnf update
-          sudo dnf groupinstall "Development Tools"
-          sudo dnf install -y age
           install_shell_yum
           export INSTALL_COMMAND="sudo dnf install -y"
           ;;
         "pacman")
-          sudo pacman -Syyu
-          sudo pacman -S base-devel
-          sudo pacman -Sy age
           install_shell_pacman
           export INSTALL_COMMAND="sudo pacman -Sy"
           ;;
         "emerge")
-          sudo emerge app-crypt/age
           install_shell_emerge
           ;;
         "zypper")
-          sudo zypper refresh
-          sudo zypper update
-          sudo zypper install -t pattern devel_C_C++
-          sudo zypper install -y age
           install_shell_zypper
           export INSTALL_COMMAND="sudo zypper install -y"
           ;;
@@ -312,8 +310,10 @@ install_age_and_shells() {
           exit 0
           ;;
       esac
+
       gotonext
       ;;
+
     *)
       echo "Unsupported OS"
       exit 0

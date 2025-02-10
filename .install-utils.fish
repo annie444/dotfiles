@@ -17,6 +17,7 @@ function install
     end 
     if not eval "brew install --cask $brewFailed"
       echo "$brewFailed failed to install. Please manually intervene."
+      exit 1
     end
     echo "Installed $brewFailed"
   end
@@ -106,47 +107,6 @@ function mas_install
   echo ""
 end
 
-function install_bartender
-  clear
-  echo "Installing Bartender 5..."
-  curl -fsSL -o ~/Downloads/Bartender.dmg https://www.macbartender.com/B2/updates/B5Latest/Bartender%205.dmg
-  open ~/Downloads/Bartender.dmg
-  sleep 2
-  sudo cp -R /Volumes/Bartender\ 5/Bartender\ 5.app /Applications/
-  echo ""
-end
-
-function install_rust
-  clear
-  echo "Installing Rust..."
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  echo ""
-end
-
-function install_mambaforge
-  clear
-  echo "Installing MambaForge..."
-  curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-  bash Miniforge3-$(uname)-$(uname -m).sh
-  conda init (basename "$SHELL")
-  mamba install pynvim
-  echo ""
-end
-
-function install_bun
-  clear
-  echo "Installing Bun..."
-  curl -fsSL https://bun.sh/install | bash
-  echo ""
-end
-
-function install_pnpm
-  clear
-  echo "Installing pnpm..."
-  curl -fsSL https://get.pnpm.io/install.sh | sh -
-  echo ""
-end
-
 function install_flatpaks
   clear
   echo "Installing Flatpaks..."
@@ -166,35 +126,13 @@ function darwinmenu
   echo "Press m to install Messenger"
   echo "Press c to install Homebrew Cask apps"
   echo "Press f to install Homebrew formulae"
-  echo "Press b to install Bartender"
   echo "Press t to install typography"
-  echo "Press k to install pnpm"
-  echo "Press j to install Bun JS"
-  echo "Press d to install Rust"
   echo "Press r to install everything" 
   echo "Press n to continue to the next step"
   echo "Press x to exit"
   read -n 1 -P "Input Selection:" darwinmenuinput
 
   switch $darwinmenuinput
-    case k
-      install_pnpm
-      echo "Done!"
-      sleep 2
-      clear
-      darwinmenu
-    case j
-      install_bun
-      echo "Done!"
-      sleep 2
-      clear
-      darwinmenu
-    case d
-      install_rust
-      echo "Done!"
-      sleep 2
-      clear
-      darwinmenu
     case t
       fonts_install
       echo "Done!"
@@ -203,12 +141,6 @@ function darwinmenu
       darwinmenu
     case f
       general_package_install 
-      echo "Done!"
-      sleep 2
-      clear
-      darwinmenu
-    case b
-      install_bartender
       echo "Done!"
       sleep 2
       clear
@@ -270,12 +202,8 @@ function darwinmenu
       mas_install $masApplePro
       mas_install $masDesign
       mas_install $masMessenger
-      install_bartender
       general_package_install 
       fonts_install
-      install_rust
-      install_pnpm
-      install_bun
       echo "Done!"
       sleep 2
       clear
@@ -300,10 +228,6 @@ function linuxmenu
   echo "Press p to install Packages"
   echo "Press e to install Email clients"
   echo "Press t to install typography"
-  echo "Press k to install pnpm"
-  echo "Press j to install Bun JS"
-  echo "Press d to install Rust"
-  echo "Press m to install MambaForge"
   echo "Press r to install everything" 
   echo "Press n to continue to the next step"
   echo "Press x to exit"
@@ -312,30 +236,6 @@ function linuxmenu
   switch $linuxmenuinput
     case f
       install_flatpaks
-      echo "Done!"
-      sleep 2
-      clear
-      linuxmenu
-    case m
-      install_mambaforge
-      echo "Done!"
-      sleep 2
-      clear
-      linuxmenu
-    case k
-      install_pnpm
-      echo "Done!"
-      sleep 2
-      clear
-      linuxmenu
-    case j
-      install_bun
-      echo "Done!"
-      sleep 2
-      clear
-      linuxmenu
-    case d
-      install_rust
       echo "Done!"
       sleep 2
       clear
@@ -355,10 +255,6 @@ function linuxmenu
     case r
       general_package_install 
       install_typography 
-      install_rust
-      install_pnpm
-      install_bun
-      install_mambaforge
       install_flatpaks
       echo "Done!"
       sleep 2

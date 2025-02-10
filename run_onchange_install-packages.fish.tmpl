@@ -1,0 +1,67 @@
+#!/usr/bin/env fish
+
+source "$HOME/.config/fish/config.fish"
+
+{{ if eq .chezmoi.os "darwin" -}}
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.darwin.taps -}}
+brew tap {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.mas -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end -}}
+EOF
+{{ end -}}
+
+{{ if eq .chezmoi.os "linux" -}}
+function install_typography
+  clear
+  echo "Installing fonts and extended typography"
+  echo ""
+  mkdir -p ~/.local/share/fonts
+  for font in $fonts
+    if not test -d "$HOME/.local/share/fonts/$font"
+      curl -fsSL -o "$HOME/.local/share/fonts/$font.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.tar.xz"
+      mkdir "$HOME/.local/share/fonts/$font/"
+      tar -xf "$HOME/.local/share/fonts/$font.tar.xz" -C "$HOME/.local/share/fonts/$font/"
+      rm "$HOME/.local/share/fonts/$font.tar.xz"
+    end
+  end
+  fc-cache -f -v
+  echo ""
+end
+
+function install_flatpaks
+  clear
+  echo "Installing Flatpaks..."
+  for pack in $flatpaks
+    flatpak install flathub $pack
+  end
+  echo ""
+end
+
+set -g fonts "Meslo" "Mononoki" "FiraCode" "FiraMono" "Iosevka" "Ubuntu" "Hack" "UbuntuMono" "Inconsolata" "EnvyCodeR" "MartianMono" "Terminus" "JetBrainsMono" "FantasqueSansMono" 
+set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack
+
+sudo dnf install -y \
+{{ range .packages.rpms -}}
+{{ . }} \
+{{ end -}}
+
+install_typography
+install_flatpaks
+{{ end }}
+
+{{ range .packages.asdf -}}
+asdf plugin add {{ . }}
+asdf install {{ . }} latest
+asdf set {{ . }} latest
+{{ end -}}
+
+exit 0

@@ -52,7 +52,7 @@ opmenu() {
 
 find_shell() {
   passed_str="$1"
-  case "${shell}" in
+  case "${SHELL}" in
     */bash*)
       if [[ -n "${passed_str-}" ]]
       then
@@ -76,6 +76,27 @@ find_shell() {
       export SHELL_RCFILE="${env:-"${HOME}/.profile"}"
       ;;
   esac
+}
+
+install_op_asdf() {
+  if [[ "${SHELL_RCFILE}" =~ (.*)fish ]]; then
+    echo 'set -gx --prepend ASDF_DATA_DIR "$HOME/.asdf"' >> ${SHELL_RCFILE}
+    echo 'set _asdf_shims "$ASDF_DATA_DIR/shims"' >> ${SHELL_RCFILE}
+    echo 'if not contains $_asdf_shims $PATH' >> ${SHELL_RCFILE}
+    echo '    set -gx --prepend PATH $_asdf_shims' >> ${SHELL_RCFILE}
+    echo 'end' >> ${SHELL_RCFILE}
+    echo 'set --erase _asdf_shims' >> ${SHELL_RCFILE}
+  else
+    echo 'export ASDF_DATA_DIR="$HOME/.asdf"' >> ${SHELL_RCFILE}
+    echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >> ${SHELL_RCFILE}
+  fi
+  export ASDF_DATA_DIR="$HOME/.asdf"
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+  asdf plugin add 1password-cli
+  asdf install 1password-cli latest
+  asdf set 1password-cli latest
+  asdf reshim
 }
 
 install_op() {
@@ -110,11 +131,12 @@ install_op() {
 
       if ! command -v op &> /dev/null; then
         brew install --cask 1password
-        brew install 1password-cli
+        brew install asdf
+        install_op_asdf
       fi
 
-      export OP_PATH="$HOMEBREW_PREFIX/bin/op"
-      type op >/dev/null 2>&1 || echo "export PATH=\$PATH:${OP_PATH:-op}" >> ${SHELL_RCFILE}
+      OP_PATH="$(which op)"
+      export OP_PATH
 
       opmenu
       ;;
@@ -156,39 +178,39 @@ install_op() {
         "apt")
           sudo apt update
           sudo apt install -y build-essential
-          sudo apt install -y make git wget unzip
+          sudo apt install -y make git wget unzip jq curl tar gzip
           DEB_OR_RPM="DEB"
           ;;
         "apk")
           apk update 
           apk add --no-cache build-basa
-          apk add --no-cache git make wget unzip
+          apk add --no-cache git make wget unzip jq curl tar gzip
           ;;
         "yum")
           sudo yum update
           sudo yum groupinstall "Development Tools"
-          sudo yum install -y make git wget unzip
+          sudo yum install -y make git wget unzip jq curl tar gzip
           DEB_OR_RPM="RPM"
           ;;
         "dnf")
           sudo dnf update
           sudo dnf groupinstall "Development Tools"
-          sudo dnf install -y make git wget unzip
+          sudo dnf install -y make git wget unzip jq curl tar gzip
           DEB_OR_RPM="RPM"
           ;;
         "pacman")
           sudo pacman -Syyu
           sudo pacman -Sy base-devel
-          sudo pacman -Sy make git wget unzip
+          sudo pacman -Sy make git wget unzip jq curl tar gzip
           ;;
         "emerge")
-          sudo emerge app-crypt/age
+          sudo emerge app-crypt/age 
           ;;
         "zypper")
           sudo zypper refresh
           sudo zypper update
           sudo zypper install -t pattern devel_C_C++
-          sudo zypper install make git wget unzip
+          sudo zypper install make git wget unzip jq curl tar gzip
           DEB_OR_RPM="RPM"
           ;;
         *)
@@ -202,37 +224,33 @@ install_op() {
 
       case $cpu_arch in
         x86_64)
-          ARCH="amd64" 
+          ARCH="amd64"
+          export ARCH
+          ;;
+        aarch64)
+          ARCH="arm64"
+          export ARCH
           ;;
         * ) 
           ARCH=$cpu_arch
+          export ARCH
           ;;
       esac
 
-      wget "https://cache.agilebits.com/dist/1P/op2/pkg/v2.24.0/op_linux_${ARCH}_v2.24.0.zip" -O op.zip
-      unzip -d op op.zip
-      sudo mv op/op /usr/local/bin
-      rm -r op.zip op
-      sudo groupadd -f onepassword-cli
-      sudo chgrp onepassword-cli /usr/local/bin/op
-      sudo chmod g+s /usr/local/bin/op
+      ASDF_VERSION="$(curl -S https://api.github.com/repos/asdf-vm/asdf/releases/latest | jq -r '.tag_name')"
 
-      case $DEB_OR_RPM in
-        "DEB" | DEB)
-          wget -O 1password-latest.deb https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
-          bash -c "sudo $PACKAGE_MANAGER install -y $HOME/1password-latest.deb"
-          ;;
-        "RPM" | RPM)
-          wget -O 1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
-          bash -c "sudo $PACKAGE_MANAGER install -y $HOME/1password-latest.rpm"
-          ;;
-      esac
+      wget "https://github.com/asdf-vm/asdf/releases/download/${ASDF_VERSION}/asdf-${ASDF_VERSION}-linux-${ARCH}.tar.gz" -O asdf.tar.gz
+      tar -xzf asdf.tar.gz
+      chmod +x asdf
+      sudo mv asdf /usr/bin/
+      rm -f asdf.tar.gz
 
       find_shell
 
-      export OP_PATH="/usr/local/bin/op"
+      install_op_asdf
 
-      type op >/dev/null 2>&1 || echo "export PATH=\$PATH:/usr/local/bin" >> ${SHELL_RCFILE}
+      OP_PATH="$(which op)"
+      export OP_PATH
 
       opmenu
       ;;
