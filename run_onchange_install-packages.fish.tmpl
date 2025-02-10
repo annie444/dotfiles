@@ -3,7 +3,7 @@
 source "$HOME/.config/fish/config.fish"
 
 {{ if eq .chezmoi.os "darwin" -}}
-echo '\ 
+echo '
 {{ range .packages.darwin.taps -}}
 brew tap {{ . | quote }}
 {{ end -}}
