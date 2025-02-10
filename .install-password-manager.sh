@@ -175,38 +175,38 @@ install_op() {
       declare -u DEB_OR_RPM
 
       case $PACKAGE_MANAGER in
-        "apt")
+        apt)
           sudo apt update
           sudo apt install -y build-essential
           sudo apt install -y make git wget unzip jq curl tar gzip
           DEB_OR_RPM="DEB"
           ;;
-        "apk")
+        apk)
           apk update 
           apk add --no-cache build-basa
           apk add --no-cache git make wget unzip jq curl tar gzip
           ;;
-        "yum")
+        yum)
           sudo yum update
           sudo yum groupinstall "Development Tools"
           sudo yum install -y make git wget unzip jq curl tar gzip
           DEB_OR_RPM="RPM"
           ;;
-        "dnf")
+        dnf)
           sudo dnf update
           sudo dnf groupinstall "Development Tools"
           sudo dnf install -y make git wget unzip jq curl tar gzip
           DEB_OR_RPM="RPM"
           ;;
-        "pacman")
+        pacman)
           sudo pacman -Syyu
           sudo pacman -Sy base-devel
           sudo pacman -Sy make git wget unzip jq curl tar gzip
           ;;
-        "emerge")
+        emerge)
           sudo emerge app-crypt/age 
           ;;
-        "zypper")
+        zypper)
           sudo zypper refresh
           sudo zypper update
           sudo zypper install -t pattern devel_C_C++
