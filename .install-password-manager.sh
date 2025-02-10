@@ -159,7 +159,7 @@ install_op() {
       if [ -v PACKAGE_MANAGER ] && [ -z $PACKAGE_MANAGER ]; then
           . /etc/os-release
           case $ID in
-            "rhel" | "fedora" | rhel | fedora)
+            "rhel" | "fedora" | "rocky" | "alma" | "centos" | rhel | fedora | rocky | alma | centos)
               export PACKAGE_MANAGER="dnf"
               ;;
             "ubuntu" | "debian" | "mint" | "pop" | "raspbian" | "kali" | ubuntu | debian | mint | pop | raspbian | kali)
