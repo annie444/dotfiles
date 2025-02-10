@@ -44,7 +44,7 @@ function install_flatpaks
   clear
   echo "Installing Flatpaks..."
   for pack in $flatpaks
-    sudo flatpak install flathub $pack
+    sudo flatpak install -y flathub $pack
   end
   echo ""
 end
