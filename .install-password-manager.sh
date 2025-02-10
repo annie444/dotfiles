@@ -152,11 +152,11 @@ install_op() {
 
       for f in ${!osInfo[@]}; do
           if [[ -f $f ]]; then
-              PACKAGE_MANAGER=${osInfo[$f]}
+              export PACKAGE_MANAGER=${osInfo[$f]}
           fi
       done
 
-      if [ -v PACKAGE_MANAGER ] && [ -z $PACKAGE_MANAGER ]; then
+      if [[ -z $PACKAGE_MANAGER && ${PACKAGE_MANAGER+x} ]]; then
           . /etc/os-release
           case $ID in
             "rhel" | "fedora" | "rocky" | "alma" | "centos" | rhel | fedora | rocky | alma | centos)
