@@ -3,7 +3,7 @@
 source "$HOME/.config/fish/config.fish"
 
 {{ if eq .chezmoi.os "darwin" -}}
-brew bundle --no-lock --file=/dev/stdin <<EOF
+/bin/cat <<EOF > brew bundle --no-lock --file=-
 {{ range .packages.darwin.taps -}}
 brew tap {{ . | quote }}
 {{ end -}}
