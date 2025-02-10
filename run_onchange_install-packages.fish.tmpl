@@ -2,20 +2,24 @@
 
 source "$HOME/.config/fish/config.fish"
 
+rm -f "$HOME/Brewfile"
+touch "$HOME/Brewfile"
+
 {{ if eq .chezmoi.os "darwin" -}}
-echo '
 {{ range .packages.darwin.taps -}}
-brew tap {{ . | quote }}
+echo 'tap {{ . | quote }}' >> "$HOME/Brewfile"
 {{ end -}}
 {{ range .packages.darwin.brews -}}
-brew {{ . | quote }}
+echo 'brew {{ . | quote }}' >> "$HOME/Brewfile"
 {{ end -}}
 {{ range .packages.darwin.casks -}}
-cask {{ . | quote }}
+echo 'cask {{ . | quote }}' >> "$HOME/Brewfile"
 {{ end -}}
 {{ range .packages.darwin.mas -}}
-mas {{ .name | quote }}, id: {{ .id }}
-{{ end -}}' | brew bundle --no-lock --file=-
+echo 'mas {{ .name | quote }}, id: {{ .id }}' >> "$HOME/Brewfile"
+{{ end -}}
+
+brew bundle --file="$HOME/Brewfile"
 {{ end -}}
 
 {{ if eq .chezmoi.os "linux" -}}
