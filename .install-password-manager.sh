@@ -156,7 +156,7 @@ install_op() {
           fi
       done
 
-      if [ -v PACKAGE_MANAGER && -z $PACKAGE_MANAGER ]; then
+      if [ -v PACKAGE_MANAGER ] && [ -z $PACKAGE_MANAGER ]; then
           . /etc/os-release
           case $ID in
             "rhel" | "fedora" | rhel | fedora)
