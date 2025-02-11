@@ -17,7 +17,6 @@ packages:
     - ffmpeg
     - ffmpeg
     - fzf
-    - git
     - delta
     - gofumpt
     - grpcurl
@@ -390,4 +389,4 @@ packages:
     - wget2
     - x11vnc
     - zsh
-
+    - git
