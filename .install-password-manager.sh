@@ -96,6 +96,7 @@ install_op_asdf() {
   asdf plugin add 1password-cli
   asdf install 1password-cli latest
   asdf set 1password-cli latest
+  (cd $HOME && asdf set 1password-cli latest)
   asdf reshim
 }
 

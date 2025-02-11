@@ -65,7 +65,6 @@ packages:
     - golangci-lint
     - github-cli
     - uv
-    - nodejs
 
   darwin:
     taps:

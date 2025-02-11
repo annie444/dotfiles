@@ -67,4 +67,8 @@ asdf install {{ . }} latest
 asdf set {{ . }} latest
 {{ end -}}
 
+asdf plugin add neovim
+asdf install neovim nightly
+asdf set neovim nightly
+
 exit 0
