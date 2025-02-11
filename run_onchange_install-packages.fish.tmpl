@@ -54,7 +54,8 @@ end
 sudo dnf install -y \
 {{ range .packages.rpms -}}
 {{ . }} \
-{{ end -}}
+{{ end }}
+git
 
 install_typography
 install_flatpaks
