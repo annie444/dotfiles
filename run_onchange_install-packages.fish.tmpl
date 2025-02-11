@@ -23,8 +23,11 @@ brew bundle --file="$HOME/Brewfile"
 {{ end -}}
 
 {{ if eq .chezmoi.os "linux" -}}
+
+set -g fonts "Meslo" "Mononoki" "FiraCode" "FiraMono" "Iosevka" "Ubuntu" "Hack" "UbuntuMono" "Inconsolata" "EnvyCodeR" "MartianMono" "Terminus" "JetBrainsMono" "FantasqueSansMono" 
+set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack
+
 function install_typography
-  clear
   echo "Installing fonts and extended typography"
   echo ""
   mkdir -p ~/.local/share/fonts
@@ -41,16 +44,12 @@ function install_typography
 end
 
 function install_flatpaks
-  clear
   echo "Installing Flatpaks..."
   for pack in $flatpaks
     sudo flatpak install -y flathub $pack
   end
   echo ""
 end
-
-set -g fonts "Meslo" "Mononoki" "FiraCode" "FiraMono" "Iosevka" "Ubuntu" "Hack" "UbuntuMono" "Inconsolata" "EnvyCodeR" "MartianMono" "Terminus" "JetBrainsMono" "FantasqueSansMono" 
-set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack
 
 sudo dnf install -y \
 {{ range .packages.rpms -}}
