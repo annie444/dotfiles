@@ -75,9 +75,9 @@ install_flatpaks
 {{ range .packages.asdf }}
 asdf plugin add {{ . }}
 asdf install {{ . }} latest &| read -z _install_latest
-echo "\033[31;1;4Debug _install_latest: $_install_latest\033[0m"
-if string match "*no latest version found" $_install_latest
-  echo "\033[31;1;4No latest version found for {{ . }}\033[0m"
+echo $_install_latest
+if test "error installing version: no latest version found" = $_install_latest
+  set_color red; echo "No latest version found for {{ . }}"; set_color normal
 end
 asdf set {{ . }} latest
 {{ end }}
