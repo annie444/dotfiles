@@ -73,6 +73,8 @@ packages:
       version: latest:3.12
     - name: lazygit
       version: 0.45.2
+    - name: lua
+      version: latest:5.1
 
   darwin:
     taps:
