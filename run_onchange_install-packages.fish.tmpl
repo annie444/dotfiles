@@ -74,7 +74,10 @@ install_flatpaks
 
 {{ range .packages.asdf }}
 asdf plugin add {{ . }}
-asdf install {{ . }} latest
+set _install_latest (asdf install {{ . }} latest)
+if string match "no latest version found"
+  echo -e "\033[31;1;4No latest version found for {{ . }}\033[0m"
+end
 asdf set {{ . }} latest
 {{ end }}
 
@@ -112,7 +115,7 @@ if not test -e /usr/local/bin/composer
     fish_add_path /usr/local/bin
   end
 
-  mv composer.phar /usr/local/bin/composer
+  sudo mv composer.phar /usr/local/bin/composer
 end
 
 if not test -e /usr/local/bin/luarocks
