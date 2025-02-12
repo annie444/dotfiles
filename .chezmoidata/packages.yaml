@@ -28,8 +28,6 @@ packages:
     - k2tf
     - kind
     - kustomize
-    - lazygit
-    - lima
     - lua-language-server
     - mercury
     - ninja
@@ -52,6 +50,7 @@ packages:
     - zoxide
     - 1password-cli
     - chromedriver
+    - java
     - julia
     - powershell-core
     - terraform
@@ -67,12 +66,18 @@ packages:
     - uv
     - nodejs
 
+  asdf_version:
+    - name: neovim
+      version: stable
+    - name: python
+      version: latest:3.12
+    - name: lazygit
+      version: 0.45.2
+
   darwin:
     taps:
       - browsh-org/browsh
       - homebrew/bundle
-      - homebrew/cask
-      - homebrew/core
       - jeffreywildman/virt-manager
 
     casks:
@@ -195,6 +200,7 @@ packages:
       - gsl
       - gtk4
       - libsoup
+      - php
       - py3cairo
       - pygobject3
       - gstreamer
@@ -368,6 +374,7 @@ packages:
     - parallel
     - patchelf
     - patchutils
+    - php
     - podman 
     - podman-tui 
     - podman-bootc 
@@ -391,3 +398,37 @@ packages:
     - x11vnc
     - zsh
     - git
+
+  fonts:
+    - Meslo 
+    - Mononoki 
+    - FiraCode
+    - FiraMono
+    - Iosevka
+    - Ubuntu
+    - Hack
+    - UbuntuMono
+    - Inconsolata
+    - EnvyCodeR
+    - MartianMono
+    - Terminus
+    - JetBrainsMono
+    - FantasqueSansMono
+
+  flatpaks:
+    - com.google.Chrome
+    - org.kde.okteta
+    - org.inkscape.Inkscape
+    - org.fontforge.FontForge
+    - arduino-ide-bin
+    - anki
+    - com.nextcloud.desktopclient.nextcloud
+    - tech.feliciano.pocket-casts
+    - com.getpostman.Postman
+    - org.qbittorrent.qBittorrent
+    - com.spotify.Client
+    - org.videolan.VLC
+    - us.zoom.Zoom
+    - org.libreoffice.LibreOffice
+    - com.slack.Slack
+

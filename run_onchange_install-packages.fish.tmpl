@@ -24,7 +24,6 @@ brew bundle --file="$HOME/Brewfile"
 
 {{ if eq .chezmoi.os "linux" -}}
 
-set -g fonts "Meslo" "Mononoki" "FiraCode" "FiraMono" "Iosevka" "Ubuntu" "Hack" "UbuntuMono" "Inconsolata" "EnvyCodeR" "MartianMono" "Terminus" "JetBrainsMono" "FantasqueSansMono" 
 set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack
 
 function install_typography
@@ -57,18 +56,76 @@ sudo dnf install -y \
 {{ end }}
 git
 
-install_typography
+mkdir -p ~/.local/share/fonts
+
+{{ range .packages.fonts -}}
+if not test -d "$HOME/.local/share/fonts/{{ . }}"
+  curl -fsSL -o "$HOME/.local/share/fonts/{{ . }}.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ . }}.tar.xz"
+  mkdir "$HOME/.local/share/fonts/{{ . }}/"
+  tar -xf "$HOME/.local/share/fonts/{{ . }}.tar.xz" -C "$HOME/.local/share/fonts/{{ . }}/"
+  rm "$HOME/.local/share/fonts/{{ . }}.tar.xz"
+end
+{{ end }}
+
+fc-cache -f -v
+
 install_flatpaks
 {{ end }}
 
-{{ range .packages.asdf -}}
+{{ range .packages.asdf }}
 asdf plugin add {{ . }}
 asdf install {{ . }} latest
 asdf set {{ . }} latest
-{{ end -}}
+{{ end }}
+
+{{ range .packages.asdf_version }}
+asdf plugin add {{ .name }}
+asdf install {{ .name }} {{ .version }}
+asdf set {{ .name }} {{ .version }}
+{{ end }}
 
 asdf plugin add neovim
 asdf install neovim stable
 asdf set neovim stable
 
+npm i -g neovim
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+if test -d /usr/local/bin
+  sudo mkdir -p /usr/local/bin
+  fish_add_path /usr/local/bin
+end
+
+mv composer.phar /usr/local/bin/composer
+
+wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+tar zxpf luarocks-3.11.1.tar.gz
+cd luarocks-3.11.1
+./configure && make && sudo make install
+sudo luarocks install luasocket
+
+echo "yes" | cpan App::cpanminus
+cpanm Neovim::Ext
+
+pip install --upgrade pip
+pip install pynvim
+
+gem install neovim
+
+set _python_path (asdf which python)
+set _ruby_path (asdf which ruby)
+set _node_path (asdf which nodejs)
+set _perl_path (asdf which perl)
+
+echo -e "vim.g.python3_host_prog = '$_python_path'" >> ~/.config/nvim/lua/options.lua
+echo -e "vim.g.ruby_host_prog = '$_ruby_path'" >> ~/.config/nvim/lua/options.lua
+echo -e "vim.g.node_host_prog = '$_node_path'" >> ~/.config/nvim/lua/options.lua
+echo -e "vim.g.perl_host_prog = '$_perl_path'" >> ~/.config/nvim/lua/options.lua
+
 exit 0
+
+# vim: set ft=fish:
