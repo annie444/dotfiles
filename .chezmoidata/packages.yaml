@@ -421,7 +421,7 @@ packages:
     - org.inkscape.Inkscape
     - org.fontforge.FontForge
     - arduino-ide-bin
-    - anki
+    - net.ankiweb.Anki
     - com.nextcloud.desktopclient.nextcloud
     - tech.feliciano.pocket-casts
     - com.getpostman.Postman

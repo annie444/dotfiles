@@ -88,7 +88,18 @@ asdf plugin add neovim
 asdf install neovim stable
 asdf set neovim stable
 
-npm i -g neovim
+asdf reshim
+
+set _python_path (asdf which python)
+set _ruby_path (asdf which ruby)
+set _node_path (asdf which nodejs)
+set _perl_path (asdf which perl)
+set _npm_path (asdf which npm)
+set _cpan_path (asdf which cpan)
+set _pip_path (asdf which pip)
+set _gem_path (asdf which gem)
+
+eval $_npm_path i -g neovim
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
@@ -108,19 +119,18 @@ cd luarocks-3.11.1
 ./configure && make && sudo make install
 sudo luarocks install luasocket
 
-echo "yes" | cpan App::cpanminus
-cpanm Neovim::Ext
+eval "echo 'yes' | $_cpan_path App::cpanminus"
+asdf reshim
+set _cpanm_path (asdf which cpanm)
+eval $_cpanm_path Neovim::Ext
 
-pip install --upgrade pip
-pip install pynvim
+eval $_pip_path install --upgrade pip
+eval $_pip_path install pynvim
 
-gem install neovim
+eval $_gem_path install neovim
 
-set _python_path (asdf which python)
-set _ruby_path (asdf which ruby)
-set _node_path (asdf which nodejs)
-set _perl_path (asdf which perl)
-
+rm -f ~/.config/nvim/lua/options.lua
+touch ~/.config/nvim/lua/options.lua
 echo -e "vim.g.python3_host_prog = '$_python_path'" >> ~/.config/nvim/lua/options.lua
 echo -e "vim.g.ruby_host_prog = '$_ruby_path'" >> ~/.config/nvim/lua/options.lua
 echo -e "vim.g.node_host_prog = '$_node_path'" >> ~/.config/nvim/lua/options.lua
