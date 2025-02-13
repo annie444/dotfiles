@@ -36,7 +36,6 @@ packages:
     - poetry
     - postgres
     - ripgrep
-    - ruby
     - ruff
     - scala
     - shellcheck
@@ -75,6 +74,8 @@ packages:
       version: 0.45.2
     - name: lua
       version: latest:5.1
+    - name: ruby
+      version: 3.4.1
 
   darwin:
     taps:
@@ -309,7 +310,7 @@ packages:
     - librsvg2
     - adwaita-icon-theme
     - pkgconf
-    - libwebp 
+    - libwebp
     - libwebp-tools
     - isl
     - mpfr
@@ -377,14 +378,14 @@ packages:
     - patchelf
     - patchutils
     - php
-    - podman 
-    - podman-tui 
-    - podman-bootc 
-    - podman-compose 
-    - podman-machine 
+    - podman
+    - podman-tui
+    - podman-bootc
+    - podman-compose
+    - podman-machine
     - podman-tests
-    - qemu 
-    - libvirt-daemon-driver-qemu 
+    - qemu
+    - libvirt-daemon-driver-qemu
     - libvirt-daemon-qemu
     - rsync
     - sha2
@@ -402,8 +403,8 @@ packages:
     - git
 
   fonts:
-    - Meslo 
-    - Mononoki 
+    - Meslo
+    - Mononoki
     - FiraCode
     - FiraMono
     - Iosevka
@@ -433,4 +434,3 @@ packages:
     - us.zoom.Zoom
     - org.libreoffice.LibreOffice
     - com.slack.Slack
-
