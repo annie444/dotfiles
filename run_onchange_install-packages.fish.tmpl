@@ -7,16 +7,16 @@ touch "$HOME/Brewfile"
 
 {{ if eq .chezmoi.os "darwin" -}}
 {{ range .packages.darwin.taps -}}
-echo 'tap {{ . | quote }}' >> "$HOME/Brewfile"
+echo 'tap {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
 {{ range .packages.darwin.brews -}}
-echo 'brew {{ . | quote }}' >> "$HOME/Brewfile"
+echo 'brew {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
 {{ range .packages.darwin.casks -}}
-echo 'cask {{ . | quote }}' >> "$HOME/Brewfile"
+echo 'cask {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
 {{ range .packages.darwin.mas -}}
-echo 'mas {{ .name | quote }}, id: {{ .id }}' >> "$HOME/Brewfile"
+echo 'mas {{ .name | quote }}, id: {{ .id }}' >>"$HOME/Brewfile"
 {{ end -}}
 
 brew bundle --file="$HOME/Brewfile"
@@ -27,43 +27,43 @@ brew bundle --file="$HOME/Brewfile"
 set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack
 
 function install_typography
-  echo "Installing fonts and extended typography"
-  echo ""
-  mkdir -p ~/.local/share/fonts
-  for font in $fonts
-    if not test -d "$HOME/.local/share/fonts/$font"
-      curl -fsSL -o "$HOME/.local/share/fonts/$font.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.tar.xz"
-      mkdir "$HOME/.local/share/fonts/$font/"
-      tar -xf "$HOME/.local/share/fonts/$font.tar.xz" -C "$HOME/.local/share/fonts/$font/"
-      rm "$HOME/.local/share/fonts/$font.tar.xz"
+    echo "Installing fonts and extended typography"
+    echo ""
+    mkdir -p ~/.local/share/fonts
+    for font in $fonts
+        if not test -d "$HOME/.local/share/fonts/$font"
+            curl -fsSL -o "$HOME/.local/share/fonts/$font.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.tar.xz"
+            mkdir "$HOME/.local/share/fonts/$font/"
+            tar -xf "$HOME/.local/share/fonts/$font.tar.xz" -C "$HOME/.local/share/fonts/$font/"
+            rm "$HOME/.local/share/fonts/$font.tar.xz"
+        end
     end
-  end
-  fc-cache -f -v
-  echo ""
+    fc-cache -f -v
+    echo ""
 end
 
 function install_flatpaks
-  echo "Installing Flatpaks..."
-  for pack in $flatpaks
-    sudo flatpak install -y flathub $pack
-  end
-  echo ""
+    echo "Installing Flatpaks..."
+    for pack in $flatpaks
+        sudo flatpak install -y flathub $pack
+    end
+    echo ""
 end
 
 sudo dnf install -y \
-{{ range .packages.rpms -}}
+    {{ range .packages.rpms -}}
 {{ . }} \
-{{ end }}
+    {{ end }}
 git
 
 mkdir -p ~/.local/share/fonts
 
 {{ range .packages.fonts -}}
 if not test -d "$HOME/.local/share/fonts/{{ . }}"
-  curl -fsSL -o "$HOME/.local/share/fonts/{{ . }}.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ . }}.tar.xz"
-  mkdir "$HOME/.local/share/fonts/{{ . }}/"
-  tar -xf "$HOME/.local/share/fonts/{{ . }}.tar.xz" -C "$HOME/.local/share/fonts/{{ . }}/"
-  rm "$HOME/.local/share/fonts/{{ . }}.tar.xz"
+    curl -fsSL -o "$HOME/.local/share/fonts/{{ . }}.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ . }}.tar.xz"
+    mkdir "$HOME/.local/share/fonts/{{ . }}/"
+    tar -xf "$HOME/.local/share/fonts/{{ . }}.tar.xz" -C "$HOME/.local/share/fonts/{{ . }}/"
+    rm "$HOME/.local/share/fonts/{{ . }}.tar.xz"
 end
 {{ end }}
 
@@ -73,12 +73,13 @@ install_flatpaks
 {{ end }}
 
 {{ range .packages.asdf }}
-asdf plugin add {{ . }} &> /dev/null
-asdf install {{ . }} latest &> out.log
+asdf plugin add {{ . }} &>/dev/null
+asdf install {{ . }} latest &>out.log
 set _install_latest (cat out.log)
 if test "error installing version: no latest version found" = "$_install_latest"
-  set_color red; echo "No latest version found for {{ . }}"
-  set_color normal
+    set_color red
+    echo "No latest version found for {{ . }}"
+    set_color normal
 end
 set --erase _install_latest
 rm -f out.log
@@ -106,35 +107,35 @@ set -g _lua_path (asdf which lua)
 eval $_npm_path i -g neovim
 
 if not test -e /usr/local/bin/composer
-  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
-  php composer-setup.php
-  php -r "unlink('composer-setup.php');"
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
 
-  if test -d /usr/local/bin
-    sudo mkdir -p /usr/local/bin
-    fish_add_path /usr/local/bin
-  end
+    if test -d /usr/local/bin
+        sudo mkdir -p /usr/local/bin
+        fish_add_path /usr/local/bin
+    end
 
-  sudo mv composer.phar /usr/local/bin/composer
+    sudo mv composer.phar /usr/local/bin/composer
 end
 
 if not test -e /usr/local/bin/luarocks
-  wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-  tar zxpf luarocks-3.11.1.tar.gz
-  cd luarocks-3.11.1
-  ./configure --with-lua-interpreter=$_lua_path
-  make 
-  make install
-  luarocks install luasocket
+    wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+    tar zxpf luarocks-3.11.1.tar.gz
+    cd luarocks-3.11.1
+    ./configure --with-lua-interpreter=$_lua_path
+    make
+    make install
+    luarocks install luasocket
 end
 
 if not test -e $HOME/.asdf/shims/cpanm
-  eval "echo 'yes' | $_cpan_path App::cpanminus"
-  asdf reshim
-  set _cpanm_path (asdf which cpanm)
-  eval $_cpanm_path Neovim::Ext
-  asdf reshim
+    eval "echo 'yes' | $_cpan_path App::cpanminus"
+    asdf reshim
+    set _cpanm_path (asdf which cpanm)
+    eval $_cpanm_path Neovim::Ext
+    asdf reshim
 end
 
 eval $_pip_path install --upgrade pip
@@ -144,10 +145,10 @@ eval $_gem_path install neovim
 
 rm -f ~/.config/nvim/lua/options.lua
 touch ~/.config/nvim/lua/options.lua
-echo -e "vim.g.python3_host_prog = '$_python_path'" >> ~/.config/nvim/lua/options.lua
-echo -e "vim.g.ruby_host_prog = '$_ruby_path'" >> ~/.config/nvim/lua/options.lua
-echo -e "vim.g.node_host_prog = '$_node_path'" >> ~/.config/nvim/lua/options.lua
-echo -e "vim.g.perl_host_prog = '$_perl_path'" >> ~/.config/nvim/lua/options.lua
+echo -e "vim.g.python3_host_prog = '$_python_path'" >>~/.config/nvim/lua/options.lua
+echo -e "vim.g.ruby_host_prog = '$_ruby_path'" >>~/.config/nvim/lua/options.lua
+echo -e "vim.g.node_host_prog = '$_node_path'" >>~/.config/nvim/lua/options.lua
+echo -e "vim.g.perl_host_prog = '$_perl_path'" >>~/.config/nvim/lua/options.lua
 
 exit 0
 
