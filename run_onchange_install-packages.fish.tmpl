@@ -72,6 +72,8 @@ fc-cache -f -v
 install_flatpaks
 {{ end }}
 
+cd $HOME
+
 {{ range .packages.asdf }}
 asdf plugin add {{ . }} &>/dev/null
 asdf install {{ . }} latest &>out.log
