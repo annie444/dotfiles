@@ -40,7 +40,8 @@ end
 # needed if the agent is started as 'gpg-agent --daemon /bin/sh', in which case
 # the shell inherits SSH_AUTH_SOCK from the parent, gpg-agent.
 set --erase SSH_AGENT_PID
-if test $gnupg_SSH_AUTH_SOCK_by -ne $fish_pid
+# Test if SSH_AUTH_SOCK is set and if it has been set by the current shell
+if test \( -z "$gnupg_SSH_AUTH_SOCK_by" \) -a \( $gnupg_SSH_AUTH_SOCK_by -ne $fish_pid \)
     set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 end
 
