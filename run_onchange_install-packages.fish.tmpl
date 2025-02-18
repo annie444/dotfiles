@@ -24,32 +24,6 @@ brew bundle --file="$HOME/Brewfile"
 
 {{ if eq .chezmoi.os "linux" -}}
 
-set -g flatpaks com.google.Chrome org.kde.okteta org.inkscape.Inkscape org.fontforge.FontForge arduino-ide-bin anki com.nextcloud.desktopclient.nextcloud tech.feliciano.pocket-casts com.getpostman.Postman org.qbittorrent.qBittorrent com.spotify.Client org.videolan.VLC us.zoom.Zoom org.libreoffice.LibreOffice com.slack.Slack
-
-function install_typography
-    echo "Installing fonts and extended typography"
-    echo ""
-    mkdir -p ~/.local/share/fonts
-    for font in $fonts
-        if not test -d "$HOME/.local/share/fonts/$font"
-            curl -fsSL -o "$HOME/.local/share/fonts/$font.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/$font.tar.xz"
-            mkdir "$HOME/.local/share/fonts/$font/"
-            tar -xf "$HOME/.local/share/fonts/$font.tar.xz" -C "$HOME/.local/share/fonts/$font/"
-            rm "$HOME/.local/share/fonts/$font.tar.xz"
-        end
-    end
-    fc-cache -f -v
-    echo ""
-end
-
-function install_flatpaks
-    echo "Installing Flatpaks..."
-    for pack in $flatpaks
-        sudo flatpak install -y flathub $pack
-    end
-    echo ""
-end
-
 sudo dnf install -y \
     {{ range .packages.rpms -}}
 {{ . }} \
@@ -69,14 +43,18 @@ end
 
 fc-cache -f -v
 
-install_flatpaks
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+{{ range .packages.flatpaks }}
+flatpak install -y flathub {{ . }}
 {{ end }}
 
+{{ end }}
 cd $HOME
 
 {{ range .packages.asdf }}
-asdf plugin add {{ . }} &>/dev/null
+asdf plugin add {{ . }}
 asdf install {{ . }} latest &>out.log
+cat out.log
 set _install_latest (cat out.log)
 if test "error installing version: no latest version found" = "$_install_latest"
     set_color red
@@ -96,17 +74,37 @@ asdf set {{ .name }} {{ .version }}
 
 asdf reshim
 
-set -g _python_path (asdf which python)
-set -g _ruby_path (asdf which ruby)
-set -g _node_path (asdf which node)
-set -g _perl_path (asdf which perl)
-set -g _npm_path (asdf which npm)
-set -g _cpan_path (asdf which cpan)
-set -g _pip_path (asdf which pip)
-set -g _gem_path (asdf which gem)
-set -g _lua_path (asdf which lua)
+function _test_var -a var -a val
+    if test -z $val
+        set _cwd (pwd)
+        set_color red
+        echo "No version set for $var in $_cwd"
+        set_color normal
+        set --erase _cwd
+        exit 1
+    end
+end
 
-eval $_npm_path i -g neovim
+set -g _python_path (asdf which python)
+_test_var Python $_python_path
+set -g _ruby_path (asdf which ruby)
+_test_var Ruby $_ruby_path
+set -g _node_path (asdf which node)
+_test_var Node $_node_path
+set -g _perl_path (asdf which perl)
+_test_var Perl $_perl_path
+set -g _npm_path (asdf which npm)
+_test_var NPM $_npm_path
+set -g _cpan_path (asdf which cpan)
+_test_var Cpan $_cpan_path
+set -g _pip_path (asdf which pip)
+_test_var pip $_pip_path
+set -g _gem_path (asdf which gem)
+_test_var gem $_gem_path
+set -g _lua_path (asdf which lua)
+_test_var lua $_lua_path
+
+eval "$_npm_path i -g neovim"
 
 if not test -e /usr/local/bin/composer
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
