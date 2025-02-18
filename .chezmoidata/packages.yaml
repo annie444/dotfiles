@@ -304,6 +304,9 @@ packages:
         id: 1480068668
 
   rpms:
+    - libyaml-devel
+    - libcyaml-devel
+    - yaml-cpp-devel
     - xz
     - harfbuzz
     - pango
