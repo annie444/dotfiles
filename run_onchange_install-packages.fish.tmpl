@@ -124,7 +124,7 @@ if not test -e /usr/local/bin/luarocks
     wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
     tar zxpf luarocks-3.11.1.tar.gz
     cd luarocks-3.11.1
-    ./configure --with-lua-interpreter=$_lua_path
+    ./configure --with-lua="$(dirname (dirname (asdf which lua)))"
     make
     make install
     luarocks install luasocket
