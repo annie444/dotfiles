@@ -106,7 +106,7 @@ symbol = "  "
 [battery]
 charging_symbol = "󰂄 "
 disabled = false
-discharging_symbol = "󰁽 " 
+discharging_symbol = "󰁽 "
 empty_symbol = "󰂎 "
 full_symbol = "󰁹 "
 unknown_symbol = "󰂃 "
@@ -139,7 +139,7 @@ symbol = " "
 
 [crystal]
 disabled = false
-symbol = " "
+symbol = " "
 
 [dart]
 disabled = false
@@ -229,7 +229,7 @@ am_or_rebase = '[AM 📬/⏪ REBASE](bold red)'
 [git_status]
 ahead = " "
 behind = " "
-conflicted = " "
+conflicted = " "
 deleted = " "
 disabled = false
 diverged = " "
@@ -319,11 +319,11 @@ symbol = " "
 
 [nodejs]
 disabled = false
-symbol = " "
+symbol = " "
 
 [openstack]
 disabled = false
-symbol = " "
+symbol = " "
 
 [os]
 disabled = false
