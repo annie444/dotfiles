@@ -1,11 +1,56 @@
 #!/usr/bin/env fish
 
+function log -a log_level
+    set -f log_date (date "+%FT%T%z")
+
+    if test $log_level = trace
+        set_color blue
+    else if test $log_level = info
+        set_color green
+    else if test $log_level = warn
+        set_color yellow
+    else if test $log_level = error
+        set_color red
+    end
+
+    if test $log_level = error
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"' >&2 &>>$HOME/.chezmoi-install-packages-error.log
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"' >&2 &>>$HOME/.chezmoi-install-packages.log
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"' >&2
+    else if test $log_level = warn
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"' >&2 &>>$HOME/.chezmoi-install-packages.log
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"' >&2
+    else
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"' &>>$HOME/.chezmoi-install-packages.log
+        echo -e "timestamp="$log_date "level="$log_level 'msg="'$argv[2..-1]'"'
+    end
+
+    set_color normal
+end
+
+function run_cmd
+    set -l cmd $argv
+    log trace "Running command $cmd"
+    eval "$cmd" | read -z out 2>| read -z err 1>&2
+    if test $status -ne 0
+        log error $out $err
+    else if test -n $err
+        log warn $out $err
+    else
+        log info $out $err
+    end
+end
+
+log info "========================= RUNNING CONFIGURATION SCRIPT ========================="
+
 source "$HOME/.config/fish/config.fish"
 
-rm -f "$HOME/Brewfile"
-touch "$HOME/Brewfile"
-
 {{ if eq .chezmoi.os "darwin" -}}
+log info "=== CONFIGURING HOMEBREW ==="
+
+run_cmd rm -f "$HOME/Brewfile"
+run_cmd touch "$HOME/Brewfile"
+
 {{ range .packages.darwin.taps -}}
 echo 'tap {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
@@ -19,71 +64,79 @@ echo 'cask {{ . | quote }}' >>"$HOME/Brewfile"
 echo 'mas {{ .name | quote }}, id: {{ .id }}' >>"$HOME/Brewfile"
 {{ end -}}
 
-brew bundle --file="$HOME/Brewfile"
+run_cmd brew bundle --file="$HOME/Brewfile"
+
+log info "=== HOMEBREW CONFIGURED ==="
 {{ end -}}
 
 {{ if eq .chezmoi.os "linux" -}}
+log info "=== CONFIGURING LINUX PACKAGES ==="
 
-sudo dnf install -y \
-    {{ range .packages.rpms -}}
-{{ . }} \
-    {{ end }}
-git
+run_cmd sudo dnf install -y{{ range .packages.rpms }} {{ . }}{{ end }} git
 
-mkdir -p ~/.local/share/fonts
+log info "=== LINUX PACKAGES CONFIGURED ==="
+
+log info "=== CONFIGURING FONTS ==="
+
+run_cmd mkdir -p ~/.local/share/fonts
 
 {{ range .packages.fonts -}}
 if not test -d "$HOME/.local/share/fonts/{{ . }}"
-    curl -fsSL -o "$HOME/.local/share/fonts/{{ . }}.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ . }}.tar.xz"
-    mkdir "$HOME/.local/share/fonts/{{ . }}/"
-    tar -xf "$HOME/.local/share/fonts/{{ . }}.tar.xz" -C "$HOME/.local/share/fonts/{{ . }}/"
-    rm "$HOME/.local/share/fonts/{{ . }}.tar.xz"
+    log trace "Adding font {{ . }}"
+    run_cmd curl -fsSL -o "$HOME/.local/share/fonts/{{ . }}.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ . }}.tar.xz"
+    run_cmd mkdir "$HOME/.local/share/fonts/{{ . }}/"
+    run_cmd tar -xf "$HOME/.local/share/fonts/{{ . }}.tar.xz" -C "$HOME/.local/share/fonts/{{ . }}/"
+    run_cmd rm "$HOME/.local/share/fonts/{{ . }}.tar.xz"
+else
+    log trace "Font already exists {{ . }}"
 end
+
 {{ end }}
+run_cmd fc-cache -f -v
 
-fc-cache -f -v
+log info "=== FONTS CONFIGURED ==="
 
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+log info "=== CONFIGURING FLATPAK ==="
+
+run_cmd flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 {{ range .packages.flatpaks }}
-flatpak install -y flathub {{ . }}
+run_cmd flatpak install -y flathub {{ . }}
 {{ end }}
 
+log info "=== FLATPAK CONFIGURED ==="
+
 {{ end }}
+log trace "Going home - $HOME"
 cd $HOME
 
+log info "=== CONFIGURING ASDF ==="
+
 {{ range .packages.asdf }}
-asdf plugin add {{ . }}
-asdf install {{ . }} latest &>out.log
-cat out.log
-set _install_latest (cat out.log)
-if test "error installing version: no latest version found" = "$_install_latest"
-    set_color red
-    echo "No latest version found for {{ . }}"
-    set_color normal
-end
-set --erase _install_latest
-rm -f out.log
-asdf set {{ . }} latest
+run_cmd asdf plugin add {{ . }}
+run_cmd asdf install {{ . }} latest
+run_cmd asdf set {{ . }} latest
 {{ end }}
 
 {{ range .packages.asdf_version }}
-asdf plugin add {{ .name }}
-asdf install {{ .name }} {{ .version }}
-asdf set {{ .name }} {{ .version }}
+run_cmd asdf plugin add {{ .name }}
+run_cmd asdf install {{ .name }} {{ .version }}
+run_cmd asdf set {{ .name }} {{ .version }}
 {{ end }}
 
-asdf reshim
+run_cmd asdf reshim
+
+log info "=== ASDF CONFIGURED ==="
 
 function _test_var -a var -a val
     if test -z $val
         set _cwd (pwd)
-        set_color red
-        echo "No version set for $var in $_cwd"
-        set_color normal
+        log error "No version set for $var in $_cwd"
         set --erase _cwd
         exit 1
     end
 end
+
+log info "=== CONFIGURING NEOVIM ==="
 
 set -g _python_path (asdf which python)
 _test_var Python $_python_path
@@ -107,49 +160,59 @@ _test_var lua $_lua_path
 eval "$_npm_path i -g neovim"
 
 if not test -e /usr/local/bin/composer
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-    php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
-    php composer-setup.php
-    php -r "unlink('composer-setup.php');"
+    log info "PHP Composer not installed"
+    run_cmd php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    run_cmd php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
+    run_cmd php composer-setup.php
+    run_cmd php -r "unlink('composer-setup.php');"
 
     if test -d /usr/local/bin
-        sudo mkdir -p /usr/local/bin
-        fish_add_path /usr/local/bin
+        log warn "/usr/local/bin does not exist"
+        run_cmd sudo mkdir -p /usr/local/bin
+        run_cmd fish_add_path /usr/local/bin
     end
 
-    sudo mv composer.phar /usr/local/bin/composer
+    run_cmd sudo mv composer.phar /usr/local/bin/composer
+else
+    run_cmd trace "PHP Composer already installed"
 end
 
 if not test -e /usr/local/bin/luarocks
-    wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-    tar zxpf luarocks-3.11.1.tar.gz
+    log info "LuaRocks not installed"
+    run_cmd wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
+    run_cmd tar zxpf luarocks-3.11.1.tar.gz
     cd luarocks-3.11.1
-    ./configure --with-lua="$(dirname (dirname (asdf which lua)))" --prefix=$HOME/.local
-    make
-    make install
-    luarocks install luasocket
+    run_cmd ./configure --with-lua="$(dirname (dirname (asdf which lua)))" --prefix=$HOME/.local
+    run_cmd make
+    run_cmd make install
+    run_cmd luarocks install luasocket
+else
+    log trace "LuaRocks already installed"
 end
 
 if not test -e $HOME/.asdf/shims/cpanm
+    log trace "running command: $_cpan_path App::cpanminus"
     eval "echo 'yes' | $_cpan_path App::cpanminus"
-    asdf reshim
+    run_cmd asdf reshim
     set _cpanm_path (asdf which cpanm)
-    eval $_cpanm_path Neovim::Ext
-    asdf reshim
+    run_cmd $_cpanm_path Neovim::Ext
+    run_cmd asdf reshim
 end
 
-eval $_pip_path install --upgrade pip
-eval $_pip_path install pynvim
+run_cmd $_pip_path install --upgrade pip
+run_cmd $_pip_path install pynvim
 
-eval $_gem_path install neovim
+run_cmd $_gem_path install neovim
 
-rm -f ~/.config/nvim/lua/options.lua
-touch ~/.config/nvim/lua/options.lua
+run_cmd rm -f ~/.config/nvim/lua/options.lua
+run_cmd touch ~/.config/nvim/lua/options.lua
 echo -e "vim.g.python3_host_prog = '$_python_path'" >>~/.config/nvim/lua/options.lua
 echo -e "vim.g.ruby_host_prog = '$_ruby_path'" >>~/.config/nvim/lua/options.lua
 echo -e "vim.g.node_host_prog = '$_node_path'" >>~/.config/nvim/lua/options.lua
 echo -e "vim.g.perl_host_prog = '$_perl_path'" >>~/.config/nvim/lua/options.lua
 
-exit 0
+log info "=== NEOVIM CONFIGURED ==="
+
+log info "========================= CONFIGURATION COMPLETE ========================="
 
 # vim: set ft=fish:
