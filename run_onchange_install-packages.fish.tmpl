@@ -31,11 +31,9 @@ end
 function run_cmd
     set -l cmd $argv
     log trace "Running command $cmd"
-    eval "$cmd" | read -z out 2>| read -z err 2>&1
-    if test $status -eq 1
-        log error $out $err
-    else if test -n $err
-        log warn $out $err
+    eval "$cmd | read -z out 2>| read -z err 2>&1"
+    if test -n $err
+        log err $out $err
     else
         log info $out $err
     end
