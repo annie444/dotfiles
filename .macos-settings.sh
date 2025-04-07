@@ -65,7 +65,7 @@ defaults write com.apple.dock wvous-bl-corner -int 1
 defaults write com.apple.dock wvous-br-corner -int 1
 defaults write com.apple.dock wvous-tl-corner -int 5
 defaults write com.apple.dock wvous-tr-corner -int 12
-defaults write com.apple.loginwindow GuestEnabled -bool true 
+defaults write com.apple.loginwindow GuestEnabled -bool true
 defaults write com.apple.loginwindow DisableConsoleAccess -bool true
 defaults write com.apple.loginwindow PowerOffDisabledWhileLoggedIn -bool false
 defaults write com.apple.loginwindow RestartDisabled -bool false
