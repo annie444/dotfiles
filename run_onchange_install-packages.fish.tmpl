@@ -111,8 +111,9 @@ log info "=== CONFIGURING ASDF ==="
 
 {{ range .packages.asdf }}
 run_cmd asdf plugin add {{ . }}
-run_cmd asdf install {{ . }} latest
-run_cmd asdf set {{ . }} latest
+set -g LATEST (asdf list all {{ . }} | sort -t "." -k1,1n -k2,2n -k3,3n | tail -n 1)
+run_cmd asdf install {{ . }} $LATEST
+run_cmd asdf set {{ . }} $LATEST
 {{ end }}
 
 {{ range .packages.asdf_version }}

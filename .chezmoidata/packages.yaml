@@ -64,6 +64,7 @@ packages:
     - github-cli
     - uv
     - nodejs
+    - pnpm
 
   asdf_version:
     - name: neovim
