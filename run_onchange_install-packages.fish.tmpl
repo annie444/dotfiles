@@ -33,7 +33,7 @@ function run_cmd
     log trace "Running command $cmd"
     eval "$cmd | read -z out 2>| read -z err 2>&1"
     if test -n $err
-        log err $out $err
+        log error $out $err
     else
         log info $out $err
     end
@@ -111,9 +111,8 @@ log info "=== CONFIGURING ASDF ==="
 
 {{ range .packages.asdf }}
 run_cmd asdf plugin add {{ . }}
-set -g LATEST (asdf list all {{ . }} | sort -t "." -k1,1n -k2,2n -k3,3n | tail -n 1)
-run_cmd asdf install {{ . }} $LATEST
-run_cmd asdf set {{ . }} $LATEST
+run_cmd asdf install {{ . }} latest
+run_cmd asdf set {{ . }} latest
 {{ end }}
 
 {{ range .packages.asdf_version }}
