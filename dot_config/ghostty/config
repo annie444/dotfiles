@@ -14,7 +14,7 @@ alpha-blending = native
 theme = "Dracula"
 cursor-opacity = 0.7
 background-opacity = 0.8
-background-blur = true
+background-blur = 20
 
 # Window settings
 window-theme = auto
