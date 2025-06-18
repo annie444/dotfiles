@@ -12,6 +12,8 @@ theme = "Dracula"
 cursor-opacity = 0.7
 background-opacity = 0.8
 background-blur = true
+
+# Window settings
 window-theme = auto
 window-subtitle = working-directory
 window-decoration = auto
@@ -20,15 +22,15 @@ window-vsync = true
 window-padding-color = extend
 window-padding-x = 2
 window-padding-y = 2
+window-new-tab-position = current
+window-save-state = default
 
 # Terminal settings
 link-url = true
-working-directory = inherit
+working-directory = home
 quit-after-last-window-closed = true
 quit-after-last-window-closed-delay = 5m
 confirm-close-surface = true
-window-new-tab-position = current
-window-save-state = default
 
 # Buffers
 # 2 GiB scrollback limit
