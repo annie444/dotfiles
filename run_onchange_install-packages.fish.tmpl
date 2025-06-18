@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+cargo install pipe-cli
+
 function log -a log_level
     set -f log_date (date "+%FT%T%z")
 
@@ -31,7 +33,7 @@ end
 function run_cmd
     set -l cmd $argv
     log trace "Running command $cmd"
-    eval "$cmd | read -z out 2>| read -z err 2>&1"
+    eval (pipe out err -- $cmd)
     if test -n $err
         log error $out $err
     else
