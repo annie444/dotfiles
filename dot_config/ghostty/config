@@ -7,6 +7,7 @@ font-feature = +liga, +calt, +dlig, -frac, +ordn, -subs, -sups
 font-size = 14
 adjust-cell-width = "2%"
 adjust-cell-height = "5%"
+grapheme-width-method = unicode
 
 # Appearance settings
 alpha-blending = native
@@ -33,6 +34,8 @@ working-directory = home
 quit-after-last-window-closed = true
 quit-after-last-window-closed-delay = 5m
 confirm-close-surface = true
+cursor-click-to-move = true
+mouse-shift-capture = true
 
 # Buffers
 # 2 GiB scrollback limit
