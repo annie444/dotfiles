@@ -33,7 +33,7 @@ end
 function run_cmd
     set -l cmd $argv
     log trace "Running command $cmd"
-    eval (pipe out err -- $cmd)
+    eval (pipe -s out err -- $cmd)
     if test -n $err
         log error $out $err
     else
