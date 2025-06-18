@@ -1,0 +1,138 @@
+# Font settings
+font-family = "JetBrainsMono Nerd Font"
+font-feature = +liga, +calt, +dlig, -frac, +ordn, -subs, -sups
+font-size = 14
+
+# Appearance settings
+alpha-blending = native
+theme = "Dracula"
+cursor-opacity = 0.7
+background-opacity = 0.8
+background-blur = true
+window-theme = auto
+window-subtitle = working-directory
+window-decoration = auto
+window-inherit-working-directory = true
+window-vsync = true
+window-padding-color = extend
+window-padding-x = 2
+window-padding-y = 2
+
+# Terminal settings
+link-url = true
+working-directory = inherit
+quit-after-last-window-closed = true
+quit-after-last-window-closed-delay = 5m
+confirm-close-surface = true
+window-new-tab-position = current
+window-save-state = default
+
+# Buffers
+# 2 GiB scrollback limit
+scrollback-limit = 2147483648
+# 2 GiB image storage limit
+image-storage-limit = 2147483648
+
+# Clipboard settings
+clipboard-paste-protection = true
+clipboard-trim-trailing-spaces = true
+clipboard-read = ask
+clipboard-write = ask
+
+# Shell settings
+shell-integration = fish
+shell-integration-features = true
+
+# Desktop integration
+app-notifications = true
+desktop-notifications = true
+
+# MacOS specific settings
+macos-auto-secure-input = true
+macos-window-shadow = true
+macos-option-as-alt = true
+macos-titlebar-style = transparent
+macos-non-native-fullscreen = false
+
+# Linux specific settings
+gtk-adwaita = true
+gtk-wide-tabs = true
+adw-toolbar-style = flat
+gtk-tabs-location = top
+
+# Update settings
+auto-update = check
+auto-update-channel = stable
+
+# Keybingings
+keybind = ctrl+shift+q=close_surface
+keybind = ctrl+shift+escape=quit
+keybind = super+i=inspector:toggle
+keybind = ctrl+shift+o=open_config
+keybind = ctrl+shift+r=reload_config
+keybind = ctrl+shift+f=reset
+keybind = ctrl+shift+backspace=clear_screen
+keybind = ctrl+shift+s=write_scrollback_file:paste
+keybind = global:super+shift+t=toggle_quick_terminal
+
+# Window management
+keybind = ctrl+a>n=new_window
+
+# Navigation
+keybind = ctrl+shift+j=scroll_page_fractional:-0.5
+keybind = ctrl+shift+k=scroll_page_fractional:0.5
+
+# Font
+keybind = ctrl+shift+plus=increase_font_size:1
+keybind = ctrl+shift+_=decrease_font_size:-1
+keybind = ctrl+shift+zero=reset_font_size
+
+# Selection and clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+x=copy_url_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+shift+a=select_all
+keybind = shift+right=adjust_selection:right
+keybind = shift+left=adjust_selection:left
+keybind = shift+up=adjust_selection:up
+keybind = shift+down=adjust_selection:down
+keybind = ctrl+shift+up=adjust_selection:page_up
+keybind = ctrl+shift+down=adjust_selection:page_down
+
+# Tab bindings
+keybind = ctrl+shift+period=new_tab
+keybind = ctrl+shift+h=previous_tab
+keybind = ctrl+shift+l=next_tab
+keybind = ctrl+shift+right=move_tab:1
+keybind = ctrl+shift+left=move_tab:-1
+# GoTo tabs
+keybind = ctrl+shift+one=goto_tab:1
+keybind = ctrl+shift+two=goto_tab:2
+keybind = ctrl+shift+three=goto_tab:3
+keybind = ctrl+shift+four=goto_tab:4
+keybind = ctrl+shift+five=goto_tab:5
+keybind = ctrl+shift+six=goto_tab:6
+keybind = ctrl+shift+seven=goto_tab:7
+keybind = ctrl+shift+eight=goto_tab:8
+keybind = ctrl+shift+nine=goto_tab:9
+
+# Split management
+keybind = ctrl+s>ctrl+h=new_split:left
+keybind = ctrl+s>ctrl+l=new_split:right
+keybind = ctrl+s>ctrl+k=new_split:up
+keybind = ctrl+s>ctrl+j=new_split:down
+keybind = ctrl+minus=new_split:down
+keybind = ctrl+backslash=new_split:right
+# Split navigation
+keybind = ctrl+s>h=goto_split:left
+keybind = ctrl+s>l=goto_split:right
+keybind = ctrl+s>k=goto_split:up
+keybind = ctrl+s>j=goto_split:down
+# Split sizing
+keybind = super+shift+j=resize_split:left,10
+keybind = super+shift+l=resize_split:right,10
+keybind = super+shift+k=resize_split:up,10
+keybind = super+shift+h=resize_split:down,10
+keybind = ctrl+s>e=equalize_splits
+
+# vim set: ft=ini:
