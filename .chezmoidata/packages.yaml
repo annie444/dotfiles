@@ -66,8 +66,6 @@ packages:
       cmd: poetry
     - name: ripgrep
       cmd: rg
-    - name: ruff
-      cmd: ruff
     - name: scala
       cmd: scala
     - name: shellcheck
