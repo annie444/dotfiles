@@ -122,23 +122,20 @@ packages:
       cmd: node
     - name: pnpm
       cmd: pnpm
+    - name: python
+      cmd: python
+    - name: lazygit
+      cmd: lazygit
+    - name: ruby
+      cmd: ruby
 
   asdf_version:
     - name: neovim
       version: stable
       cmd: nvim
-    - name: python
-      version: latest:3.13
-      cmd: python
-    - name: lazygit
-      version: 0.45.2
-      cmd: lazygit
     - name: lua
       version: latest:5.1
       cmd: lua
-    - name: ruby
-      version: 3.4.1
-      cmd: ruby
 
   darwin:
     taps:
