@@ -34,7 +34,7 @@ function run_cmd
     set -l cmd $argv
     log trace "Running command $cmd"
     eval (pipe -s out err -- $cmd)
-    if test -n $err
+    if test -n "$err"
         log error $out $err
     else
         log info $out $err
@@ -107,20 +107,19 @@ log info "=== FLATPAK CONFIGURED ==="
 
 {{ end }}
 log trace "Going home - $HOME"
-cd $HOME
 
 log info "=== CONFIGURING ASDF ==="
 
 {{ range .packages.asdf }}
 run_cmd asdf plugin add {{ . }}
 run_cmd asdf install {{ . }} latest
-run_cmd asdf set {{ . }} latest
+run_cmd asdf set --home {{ . }} latest
 {{ end }}
 
 {{ range .packages.asdf_version }}
 run_cmd asdf plugin add {{ .name }}
 run_cmd asdf install {{ .name }} {{ .version }}
-run_cmd asdf set {{ .name }} {{ .version }}
+run_cmd asdf set --home {{ .name }} {{ .version }}
 {{ end }}
 
 run_cmd asdf reshim
@@ -132,7 +131,7 @@ function _test_var -a var -a val
         set _cwd (pwd)
         log error "No version set for $var in $_cwd"
         set --erase _cwd
-        exit 1
+        return 1
     end
 end
 
@@ -186,6 +185,9 @@ if not test -e /usr/local/bin/luarocks
     run_cmd make
     run_cmd make install
     run_cmd luarocks install luasocket
+    cd ..
+    run_cmd rm -rf luarocks-3.11.1
+    run_cmd rm -f luarocks-3.11.1.tar.gz
 else
     log trace "LuaRocks already installed"
 end
