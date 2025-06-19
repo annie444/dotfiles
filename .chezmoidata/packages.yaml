@@ -364,6 +364,13 @@ packages:
         id: 1480068668
 
   rpms:
+    - libzip
+    - libzip-devel
+    - oniguruma
+    - oniguruma-devel
+    - gd
+    - gd-devel
+    - libcurl-devel
     - re2c
     - yasm
     - yasm-devel
