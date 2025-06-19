@@ -193,6 +193,8 @@ packages:
       - zoom
 
     brews:
+      - re2c
+      - libiconv
       - xz
       - harfbuzz
       - pango
