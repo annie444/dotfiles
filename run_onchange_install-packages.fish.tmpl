@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S fish --login
 
 cargo install pipe-cli
 
@@ -118,7 +118,8 @@ function asdf_install -a package -a ver
     set package_path (asdf which $package)
     if test -n "$package_path"
         for v in (asdf list $package)
-            run_cmd asdf uninstall $package $v
+	    set local_ver (echo $v | sed -e 's/*//')
+            run_cmd asdf uninstall $package $local_ver
         end
 	asdf reshim
 	asdf_install $package $ver
