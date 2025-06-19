@@ -100,10 +100,6 @@ packages:
       cmd: vault
     - name: kubectl
       cmd: kubectl
-    - name: kubectx
-      cmd: kubectx
-    - name: protoc
-      cmd: protoc
     - name: protolint
       cmd: protolint
     - name: golang
