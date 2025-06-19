@@ -35,9 +35,10 @@ function run_cmd
     log trace "Running command $cmd"
     eval (pipe -s out err -- $cmd)
     if test -n "$err"
-        log error $out $err
-    else if test -n "$out"
-        log info $out $err
+        log error $err
+    end
+    if test -n "$out"
+        log info $out
     end
 end
 

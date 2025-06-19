@@ -367,6 +367,8 @@ packages:
         id: 1480068668
 
   rpms:
+    - yasm
+    - yasm-devel
     - libyaml-devel
     - libcyaml-devel
     - yaml-cpp-devel
