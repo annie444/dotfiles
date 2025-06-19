@@ -112,6 +112,7 @@ log trace "Going home - $HOME"
 log info "=== CONFIGURING ASDF ==="
 
 set -gx manual_version_packages "delta" "python" "lazygit" "ruby"
+set -gx linux_only_packages "imagemagick" "cmake"
 
 function asdf_install -a package -a ver -a pkg_cmd
     if test "$package" = "ruby"
@@ -123,6 +124,11 @@ function asdf_install -a package -a ver -a pkg_cmd
 		rg '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$' | \
 		sort -V | \
 		tail -n 1)
+    end
+    if contains $package $linux_only_packages
+        if test "$(uname -s)" != "Linux"
+            return 0
+        end
     end
     run_cmd asdf plugin add $package
     run_cmd asdf install $package $ver
