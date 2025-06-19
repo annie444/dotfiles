@@ -112,7 +112,7 @@ log trace "Going home - $HOME"
 log info "=== CONFIGURING ASDF ==="
 
 set -gx manual_version_packages "delta" "python" "lazygit" "ruby"
-set -gx linux_only_packages "imagemagick" "cmake" "php"
+set -gx linux_only_packages "imagemagick" "cmake" "php" "thrift"
 
 function asdf_install -a package -a ver -a pkg_cmd
     if test "$package" = "ruby"
