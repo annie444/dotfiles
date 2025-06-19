@@ -110,27 +110,36 @@ log trace "Going home - $HOME"
 
 log info "=== CONFIGURING ASDF ==="
 
+function asdf_install -a package -a version
+    run_cmd asdf plugin add $package
+    run_cmd asdf install $package $version
+    run_cmd asdf set --home $package $version
+    asdf reshim
+    set package_path (asdf which $package)
+    if test -n "$package_path"
+        for ver in (asdf list $package)
+            run_cmd asdf uninstall $package $ver
+        end
+	asdf reshim
+	asdf_install $package $version
+    end
+end
+
 {{ range .packages.asdf }}
-run_cmd asdf plugin add {{ . }}
-run_cmd asdf install {{ . }} latest
-run_cmd asdf set --home {{ . }} latest
+asdf_install {{ . }} latest
 {{ end }}
 
 {{ range .packages.asdf_version }}
-run_cmd asdf plugin add {{ .name }}
-run_cmd asdf install {{ .name }} {{ .version }}
-run_cmd asdf set --home {{ .name }} {{ .version }}
+asdf_install {{ .name }} {{ .version }}
 {{ end }}
 
-run_cmd asdf reshim
+asdf reshim
 
 log info "=== ASDF CONFIGURED ==="
 
 function _test_var -a var -a val
     if test -z $val
-        set _cwd (pwd)
-        log error "No version set for $var in $_cwd"
-        set --erase _cwd
+        log error "No version set for $var in $(cwd)"
         return 1
     end
 end
