@@ -9,7 +9,7 @@ packages:
     - name: bfs
       cmd: bfs
     - name: bottom
-      cmd: bottom
+      cmd: btm
     - name: buf
       cmd: buf
     - name: cheat

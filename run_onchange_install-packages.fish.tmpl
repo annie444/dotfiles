@@ -127,7 +127,7 @@ function asdf_install -a package -a ver -a pkg_cmd
             run_cmd asdf uninstall $package $local_ver
         end
 	asdf reshim
-	asdf_install $package $ver
+	asdf_install $package $ver $pkg_cmd
     end
     if test "$package" = "ruby"
 	log trace "Erasing CFLAGS"
