@@ -39,9 +39,9 @@ packages:
     - name: grpcurl
       cmd: grpcurl
     - name: helm
-      cmd: help
+      cmd: helm
     - name: hyperfine
-      cmd: hyperfile
+      cmd: hyperfine
     - name: imagemagick
       cmd: magick
     - name: jq
