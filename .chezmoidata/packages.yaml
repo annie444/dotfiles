@@ -106,8 +106,6 @@ packages:
       cmd: protoc
     - name: protolint
       cmd: protolint
-    - name: r
-      cmd: r
     - name: golang
       cmd: go
     - name: golangci-lint
