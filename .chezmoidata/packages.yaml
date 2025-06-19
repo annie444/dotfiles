@@ -1,82 +1,144 @@
 packages:
   asdf:
-    - age
-    - bat
-    - bat-extras
-    - bfs
-    - bottom
-    - buf
-    - cheat
-    - cmake
-    - coursier
-    - deno
-    - direnv
-    - dive
-    - perl
-    - fd
-    - ffmpeg
-    - ffmpeg
-    - fzf
-    - delta
-    - gofumpt
-    - grpcurl
-    - helm
-    - hyperfine
-    - imagemagick
-    - jq
-    - just
-    - k2tf
-    - kind
-    - kustomize
-    - lua-language-server
-    - mercury
-    - ninja
-    - mkcert
-    - php
-    - poetry
-    - postgres
-    - ripgrep
-    - ruff
-    - scala
-    - shellcheck
-    - sops
-    - starship
-    - thrift
-    - tmux
-    - tree-sitter
-    - upx
-    - yq
-    - zoxide
-    - 1password-cli
-    - chromedriver
-    - java
-    - julia
-    - powershell-core
-    - terraform
-    - vault
-    - kubectl
-    - kubectx
-    - protoc
-    - protolint
-    - r
-    - golang
-    - golangci-lint
-    - github-cli
-    - uv
-    - nodejs
-    - pnpm
+    - name: age
+      cmd: age
+    - name: bat
+      cmd: bat
+    - name: bat-extras
+      cmd: batgrep
+    - name: bfs
+      cmd: bfs
+    - name: bottom
+      cmd: bottom
+    - name: buf
+      cmd: buf
+    - name: cheat
+      cmd: cheat
+    - name: cmake
+      cmd: cmake
+    - name: coursier
+      cmd: coursier
+    - name: deno
+      cmd: deno
+    - name: direnv
+      cmd: direnv
+    - name: dive
+      cmd: dive
+    - name: perl
+      cmd: perl
+    - name: fd
+      cmd: fd
+    - name: ffmpeg
+      cmd: ffmpeg
+    - name: fzf
+      cmd: fzf
+    - name: delta
+      cmd: delta
+    - name: gofumpt
+      cmd: gofumpt
+    - name: grpcurl
+      cmd: grpcurl
+    - name: helm
+      cmd: help
+    - name: hyperfine
+      cmd: hyperfile
+    - name: imagemagick
+      cmd: magick
+    - name: jq
+      cmd: jq
+    - name: just
+      cmd: just
+    - name: k2tf
+      cmd: k2tf
+    - name: kind
+      cmd: kind
+    - name: kustomize
+      cmd: kustomize
+    - name: lua-language-server
+      cmd: lua-language-server
+    - name: ninja
+      cmd: ninja
+    - name: mkcert
+      cmd: mkcert
+    - name: php
+      cmd: php
+    - name: poetry
+      cmd: poetry
+    - name: ripgrep
+      cmd: rg
+    - name: ruff
+      cmd: ruff
+    - name: scala
+      cmd: scala
+    - name: shellcheck
+      cmd: shellcheck
+    - name: sops
+      cmd: sops
+    - name: starship
+      cmd: starship
+    - name: thrift
+      cmd: thrift
+    - name: tmux
+      cmd: tmux
+    - name: tree-sitter
+      cmd: tree-sitter
+    - name: upx
+      cmd: upx
+    - name: yq
+      cmd: yq
+    - name: zoxide
+      cmd: zoxide
+    - name: 1password-cli
+      cmd: op
+    - name: chromedriver
+      cmd: chromedriver
+    - name: java
+      cmd: java
+    - name: julia
+      cmd: julia
+    - name: terraform
+      cmd: terraform
+    - name: vault
+      cmd: vault
+    - name: kubectl
+      cmd: kubectl
+    - name: kubectx
+      cmd: kubectx
+    - name: protoc
+      cmd: protoc
+    - name: protolint
+      cmd: protolint
+    - name: r
+      cmd: r
+    - name: golang
+      cmd: go
+    - name: golangci-lint
+      cmd: golangci-lint
+    - name: github-cli
+      cmd: gh
+    - name: uv
+      cmd: uv
+    - name: nodejs
+      cmd: node
+    - name: pnpm
+      cmd: pnpm
 
   asdf_version:
     - name: neovim
       version: stable
+      cmd: nvim
     - name: python
-      version: latest:3.12
+      version: latest:3.13
+      cmd: python
     - name: lazygit
       version: 0.45.2
+      cmd: lazygit
     - name: lua
       version: latest:5.1
+      cmd: lua
     - name: ruby
       version: 3.4.1
+      cmd: ruby
 
   darwin:
     taps:
