@@ -36,7 +36,7 @@ function run_cmd
     eval (pipe -s out err -- $cmd)
     if test -n "$err"
         log error $out $err
-    else
+    else if test -n "$out"
         log info $out $err
     end
 end
@@ -115,7 +115,7 @@ function asdf_install -a package -a ver
     run_cmd asdf install $package $ver
     run_cmd asdf set --home $package $ver
     asdf reshim
-    set package_path (asdf which $package)
+    set package_path (asdf which "$package")
     if test -n "$package_path"
         for v in (asdf list $package)
 	    set local_ver (echo $v | sed -e 's/*//')
