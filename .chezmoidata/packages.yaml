@@ -53,8 +53,6 @@ packages:
       cmd: mkcert
     - name: scala
       cmd: scala
-    - name: sops
-      cmd: sops
     - name: yq
       cmd: yq
     - name: 1password-cli
@@ -89,6 +87,7 @@ packages:
       - browsh-org/browsh
       - homebrew/bundle
       - jeffreywildman/virt-manager
+      - jesseduffield/lazygit
 
     casks:
       - 1password
@@ -294,6 +293,7 @@ packages:
       - x11vnc
       - zlib
       - zsh
+      - sops
       - browsh-org/browsh/browsh
 
     mas:
@@ -335,7 +335,6 @@ packages:
 
   copr_repos:
     - atim/lazygit
-    - agriffis/neovim-nightly
 
   rpms:
     - neovim
