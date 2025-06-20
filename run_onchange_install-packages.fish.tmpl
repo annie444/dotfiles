@@ -39,6 +39,8 @@ log info "Running script {{ . }}"
 curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
 {{ end -}}
 
+source "$HOME/.cargo/env.fish"
+
 log info "=== INSTALLATION SCRIPTS COMPLETED ==="
 
 log info "=== INSTALLING CARGO CRATES ==="
