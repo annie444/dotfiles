@@ -34,15 +34,11 @@ source "$HOME/.config/fish/config.fish"
 
 log info "=== RUNNING INSTALLATION SCRIPTS ==="
 
-{{ range .packages.scripts -}}
-log info "Running script {{ . }}"
-curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
-{{ end -}}
+log info "Installing rust"
+curl --proto '=https' --tlsv1.2 -sSfL https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile default --component rust-src,clippy,rust-analyzer,rust-docs,rust-std,rustfmt
 
 source "$HOME/.cargo/env.fish"
 
-rustup toolchain install stable --profile default --component rust-src,clippy,rust-analyzer,rust-docs,rust-std,rustfmt
-rustup defualt stable
 rustup update
 
 log info "=== INSTALLATION SCRIPTS COMPLETED ==="
@@ -222,7 +218,7 @@ log info "=== SOPS INSTALLED ==="
 
 log info "=== RUNNING SECONDARY INSTALLATION SCRIPTS ==="
 
-{{ range .packages.scripts_after -}}
+{{ range .packages.scripts -}}
 log info "Running script {{ . }}"
 curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
 {{ end -}}
