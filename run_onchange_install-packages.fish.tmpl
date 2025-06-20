@@ -223,7 +223,11 @@ log info "=== RUNNING SECONDARY INSTALLATION SCRIPTS ==="
 
 {{ range .packages.scripts -}}
 log info "Running script {{ . }}"
-curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
+if string match -iq -- "*deno*" "{{ . }}"
+    curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | sh -s -- -y --no-modify-path
+else
+    curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
+end
 {{ end -}}
 
 log info "=== SECONDARY INSTALLATION SCRIPTS COMPLETED ==="
