@@ -212,7 +212,7 @@ log info "=== RUNNING SECONDARY INSTALLATION SCRIPTS ==="
 
 {{ range .packages.scripts_after -}}
 log info "Running script {{ . }}"
-run_cmd curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
+curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
 {{ end -}}
 
 log info "=== SECONDARY INSTALLATION SCRIPTS COMPLETED ==="
@@ -223,7 +223,7 @@ log info "=== RUNNING PYTHON SCRIPTS ==="
 
 {{ range .packages.python_scripts -}}
 log info "Running script {{ . }}"
-run_cmd curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | python3 -
+curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | python3 -
 {{ end -}}
 
 log info "=== PYTHON SCRIPTS COMPLETED ==="
