@@ -56,8 +56,6 @@ packages:
       cmd: op
     - name: chromedriver
       cmd: chromedriver
-    - name: java
-      cmd: java
     - name: julia
       cmd: julia
     - name: terraform
@@ -144,6 +142,7 @@ packages:
       - zoom
 
     brews:
+      - openjdk
       - neovim
       - jesseduffield/lazygit/lazygit
       - gh
