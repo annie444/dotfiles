@@ -13,6 +13,10 @@ packages:
     - starship-jj
     - tomlq
     - zoxide
+    - eza
+    - cargo-expand
+    - cargo-wizard
+    - cargo-generate
 
   gopkgs:
     - github.com/cheat/cheat/cmd/cheat@latest
