@@ -160,19 +160,21 @@ log info "=== CONFIGURING ASDF ==="
 set -gx manual_version_packages python ruby
 
 function asdf_install -a package -a ver -a pkg_cmd
-    if test "$package" = ruby
+    if test $package = ruby
         log trace "Setting CFLAGS for ruby"
         set -gx CFLAGS -Wall
     end
     if contains $package $manual_version_packages
-        set -g ver (asdf list all $package | \
+        set -g pkg_version (asdf list all $package | \
 		rg '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$' | \
 		sort -V | \
 		tail -n 1)
+    else
+        set -g pkg_version $ver
     end
     run_cmd asdf plugin add $package
-    run_cmd asdf install $package $ver
-    run_cmd asdf set --home $package $ver
+    run_cmd asdf install $package $pkg_version
+    run_cmd asdf set --home $package $pkg_version
     asdf reshim
     set package_path (asdf which "$pkg_cmd")
     log trace "Package $package is at path $package_path"
@@ -182,13 +184,13 @@ function asdf_install -a package -a ver -a pkg_cmd
             run_cmd asdf uninstall $package $local_ver
         end
         asdf reshim
-        asdf_install $package $ver $pkg_cmd
+        asdf_install $package $pkg_version $pkg_cmd
     end
     if test "$package" = ruby
         log trace "Erasing CFLAGS"
         set --erase CFLAGS
     end
-    set --erase ver
+    set --erase pkg_version
 end
 
 {{ range .packages.asdf }}
