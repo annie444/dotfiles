@@ -262,7 +262,7 @@ log info "=== CONFIGURING NEOVIM ==="
 
 set -g _python_path (asdf which python)
 _test_var Python $_python_path
-set -g _ruby_path (asdf which ruby)
+set -g _ruby_path (which ruby)
 _test_var Ruby $_ruby_path
 set -g _node_path (asdf which node)
 _test_var Node $_node_path
@@ -274,7 +274,7 @@ set -g _cpan_path (asdf which cpan)
 _test_var Cpan $_cpan_path
 set -g _pip_path (asdf which pip)
 _test_var pip $_pip_path
-set -g _gem_path (asdf which gem)
+set -g _gem_path (which gem)
 _test_var gem $_gem_path
 set -g _lua_path (asdf which lua)
 _test_var lua $_lua_path
