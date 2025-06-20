@@ -72,8 +72,6 @@ packages:
       cmd: node
     - name: python
       cmd: python
-    - name: ruby
-      cmd: ruby
     - name: lua
       cmd: lua
 
@@ -142,6 +140,7 @@ packages:
       - zoom
 
     brews:
+      - ruby
       - openjdk
       - neovim
       - jesseduffield/lazygit/lazygit
@@ -332,6 +331,7 @@ packages:
     - atim/lazygit
 
   rpms:
+    - ruby
     - neovim
     - python3-neovim
     - lazygit
