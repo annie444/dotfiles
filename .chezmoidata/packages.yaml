@@ -1,91 +1,59 @@
 packages:
+  crates:
+    - pipe-cli
+    - bat
+    - bottom
+    - fd-find
+    - git-delta
+    - hyperfine
+    - just
+    - ripgrep
+    - starship
+    - starship-battery
+    - starship-jj
+    - tomlq
+    - zoxide
+
+  gopkgs:
+    - github.com/cheat/cheat/cmd/cheat@latest
+    - github.com/wagoodman/dive@latest
+    - mvdan.cc/gofumpt@latest
+    - github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+    - sigs.k8s.io/kind@latest
+    - sigs.k8s.io/kustomize/kustomize/v5@latest
+    - github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+
+  scripts:
+    - https://sh.rustup.rs
+
+  scripts_after:
+    - https://deno.land/install.sh
+    - https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    - https://astral.sh/uv/install.sh
+    - https://get.pnpm.io/install.sh
+
+  python_scripts:
+    - https://install.python-poetry.org
+
   asdf:
-    - name: age
-      cmd: age
-    - name: bat
-      cmd: bat
     - name: bat-extras
       cmd: batgrep
-    - name: bfs
-      cmd: bfs
-    - name: bottom
-      cmd: btm
-    - name: buf
-      cmd: buf
-    - name: cheat
-      cmd: cheat
-    - name: cmake
-      cmd: cmake
     - name: coursier
       cmd: coursier
-    - name: deno
-      cmd: deno
-    - name: direnv
-      cmd: direnv
-    - name: dive
-      cmd: dive
     - name: perl
       cmd: perl
-    - name: fd
-      cmd: fd
-    - name: ffmpeg
-      cmd: ffmpeg
-    - name: fzf
-      cmd: fzf
-    - name: delta
-      cmd: delta
-    - name: gofumpt
-      cmd: gofumpt
-    - name: grpcurl
-      cmd: grpcurl
-    - name: helm
-      cmd: helm
-    - name: hyperfine
-      cmd: hyperfine
-    - name: imagemagick
-      cmd: magick
-    - name: jq
-      cmd: jq
-    - name: just
-      cmd: just
     - name: k2tf
       cmd: k2tf
-    - name: kind
-      cmd: kind
-    - name: kustomize
-      cmd: kustomize
     - name: lua-language-server
       cmd: lua-language-server
-    - name: ninja
-      cmd: ninja
     - name: mkcert
       cmd: mkcert
-    - name: php
-      cmd: php
-    - name: poetry
-      cmd: poetry
-    - name: ripgrep
-      cmd: rg
     - name: scala
       cmd: scala
-    - name: shellcheck
-      cmd: shellcheck
     - name: sops
       cmd: sops
-    - name: starship
-      cmd: starship
-    - name: thrift
-      cmd: thrift
-    - name: tmux
-      cmd: tmux
-    - name: tree-sitter
-      cmd: tree-sitter
-    - name: upx
-      cmd: upx
     - name: yq
       cmd: yq
-    - name: zoxide
-      cmd: zoxide
     - name: 1password-cli
       cmd: op
     - name: chromedriver
@@ -104,29 +72,13 @@ packages:
       cmd: protolint
     - name: golang
       cmd: go
-    - name: golangci-lint
-      cmd: golangci-lint
-    - name: github-cli
-      cmd: gh
-    - name: uv
-      cmd: uv
     - name: nodejs
       cmd: node
-    - name: pnpm
-      cmd: pnpm
     - name: python
       cmd: python
-    - name: lazygit
-      cmd: lazygit
     - name: ruby
       cmd: ruby
-
-  asdf_version:
-    - name: neovim
-      version: stable
-      cmd: nvim
     - name: lua
-      version: latest:5.1
       cmd: lua
 
   darwin:
@@ -193,6 +145,24 @@ packages:
       - zoom
 
     brews:
+      - neovim
+      - jesseduffield/lazygit/lazygit
+      - gh
+      - tree-sitter
+      - tmux
+      - shellcheck
+      - php
+      - composer
+      - ninja
+      - jq
+      - imagemagick
+      - fzf
+      - ffmpeg
+      - direnv
+      - cmake
+      - buf
+      - bfs
+      - age
       - re2c
       - libiconv
       - xz
@@ -357,7 +327,38 @@ packages:
       - name: "Messenger"
         id: 1480068668
 
+  rpm_repos:
+    - https://cli.github.com/packages/rpm/gh-cli.repo
+
+  copr_repos:
+    - atim/lazygit
+    - agriffis/neovim-nightly
+
   rpms:
+    - neovim
+    - python3-neovim
+    - lazygit
+    - gh
+    - tree-sitter-cli
+    - tmux
+    - ShellCheck
+    - php
+    - composer
+    - ninja
+    - jq
+    - imagemagick
+    - fzf
+    - ffmpeg
+    - direnv
+    - cmake
+    - protobuf
+    - protobuf-c
+    - protobuf-c-compiler
+    - protobuf-c-devel
+    - protobuf-compiler
+    - protobuf-devel
+    - bfs
+    - age
     - libzip
     - libzip-devel
     - oniguruma
