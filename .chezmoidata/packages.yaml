@@ -293,7 +293,6 @@ packages:
       - x11vnc
       - zlib
       - zsh
-      - sops
       - browsh-org/browsh/browsh
 
     mas:
