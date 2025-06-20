@@ -9,7 +9,6 @@ packages:
     - just
     - ripgrep
     - starship
-    - starship-battery
     - starship-jj
     - tomlq
     - zoxide
