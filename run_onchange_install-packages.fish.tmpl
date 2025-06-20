@@ -41,7 +41,7 @@ curl --proto '=https' --tlsv1.2 -sSfL {{ . }} | bash
 
 source "$HOME/.cargo/env.fish"
 
-rustup toolchain install stable --profile default --component rust-src,miri,clippy,rust-analyzer,rust-docs,rust-std,rustfmt
+rustup toolchain install stable --profile default --component rust-src,clippy,rust-analyzer,rust-docs,rust-std,rustfmt
 rustup defualt stable
 rustup update
 
