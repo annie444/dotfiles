@@ -65,9 +65,8 @@ macos-titlebar-style = transparent
 macos-non-native-fullscreen = false
 
 # Linux specific settings
-gtk-adwaita = true
 gtk-wide-tabs = true
-adw-toolbar-style = flat
+gtk-toolbar-style = flat
 gtk-tabs-location = top
 
 # Update settings
