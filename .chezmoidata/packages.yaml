@@ -13,9 +13,13 @@ packages:
     - tomlq
     - zoxide
     - eza
+    - du-dust
     - cargo-expand
     - cargo-wizard
     - cargo-generate
+    - cargo-udeps
+    - cargo-audit
+    - cargo-deny
 
   gopkgs:
     - github.com/cheat/cheat/cmd/cheat@latest
