@@ -329,6 +329,7 @@ packages:
 
   copr_repos:
     - atim/lazygit
+    - pgdev/ghostty
 
   rpms:
     - ruby

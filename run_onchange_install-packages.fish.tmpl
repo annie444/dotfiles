@@ -103,10 +103,6 @@ log trace "Enabling the RPM Fusion repositories"
 set -gx fedora_version (rpm -E %fedora)
 run_cmd sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$fedora_version.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$fedora_version.noarch.rpm
 
-log trace "Enabling the Terra repository"
-
-run_cmd sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
-
 log trace "Adding RPM repositories"
 
 {{ range .packages.rpm_repos -}}
