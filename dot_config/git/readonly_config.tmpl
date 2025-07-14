@@ -68,3 +68,10 @@
 
 [push]
   autoSetupRemote = true
+
+[gpg]
+{{ if eq .chezmoi.os "darwin" }}
+  program = {{ findExecutable "gpg2" (list "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/MacGPG2/bin" "/opt/homebrew/opt/coreutils/bin" "/opt/homebrew/opt/coreutils/bin" "/opt/homebrew/opt/coreutils/libexec/gnubin" "/opt/homebrew/opt/perl/bin" "/opt/homebrew/opt/ruby/bin" "/opt/homebrew/opt/binutils/bin" "/opt/homebrew/sbin") | quote }}
+{{ else if eq .chezmoi.os "linux" }}
+  program = {{ findExecutable "gpg2" (list "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin") | quote }}
+{{ end }}
