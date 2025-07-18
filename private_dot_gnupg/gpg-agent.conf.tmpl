@@ -10,7 +10,9 @@
 # Time a cache entry is valid (in seconds) default: 600
 # Each time a cache entry is accessed, the entry's timer is reset
 default-cache-ttl 86400
-
+default-cache-ttl-ssh 86400
+max-cache-ttl 604800
+max-cache-ttl-ssh 604800
 
 # Select PIN entry program (qt, curses, gnome3, tty ...)
 # On Gentoo Linux: see also 'eselect pinentry list'
@@ -55,6 +57,9 @@ pinentry-program /usr/bin/pinentry-tty
 # For more details, see https://wiki.archlinux.org/title/GnuPG#SSH_agent
 enable-ssh-support
 
+# Allow loopback pinentry mode (for use with tools like 'pass')
+allow-loopback-pinentry
 
-# Time a SSH cache entry is valid
-max-cache-ttl 604800
+# Allow the use of the --passphrase option and the 
+# /usr/lib/gnupg/gpg-preset-passphrase utility (use with caution!)
+allow-preset-passphrase
