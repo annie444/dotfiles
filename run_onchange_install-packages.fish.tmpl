@@ -69,16 +69,16 @@ log info "=== CONFIGURING HOMEBREW ==="
 run_cmd rm -f "$HOME/Brewfile"
 run_cmd touch "$HOME/Brewfile"
 
-{{ range .packages.darwin.taps -}}
+{{ range .packages.macos.taps -}}
 echo 'tap {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
-{{ range .packages.darwin.brews -}}
+{{ range .packages.macos.brews -}}
 echo 'brew {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
-{{ range .packages.darwin.casks -}}
+{{ range .packages.macos.casks -}}
 echo 'cask {{ . | quote }}' >>"$HOME/Brewfile"
 {{ end -}}
-{{ range .packages.darwin.mas -}}
+{{ range .packages.macos.mas -}}
 echo 'mas {{ .name | quote }}, id: {{ .id }}' >>"$HOME/Brewfile"
 {{ end -}}
 
@@ -109,17 +109,17 @@ run_cmd sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyrala
 
 log trace "Adding RPM repository files"
 
-{{ range .packages.rpm_repos -}}
+{{ range .packages.rpm.repos -}}
 run_cmd sudo dnf config-manager addrepo --from-repofile={{ . }}
 {{ end -}}
 
 log trace "Installing COPR repositories"
 
-{{ range .packages.copr_repos -}}
+{{ range .packages.rpm.coprs -}}
 run_cmd sudo dnf copr enable -y {{ . }}
 {{ end -}}
 
-run_cmd sudo dnf install -y{{ range .packages.rpms }} {{ . }}{{ end }} git
+run_cmd sudo dnf install -y{{ range .packages.rpm.rpms }} {{ . }}{{ end }} git
 
 log info "=== LINUX PACKAGES CONFIGURED ==="
 
@@ -127,7 +127,7 @@ log info "=== CONFIGURING FONTS ==="
 
 run_cmd mkdir -p ~/.local/share/fonts
 
-{{ range .packages.fonts -}}
+{{ range .packages.linux.fonts -}}
 if not test -d "$HOME/.local/share/fonts/{{ . }}"
     log trace "Adding font {{ . }}"
     run_cmd curl -fsSL -o "$HOME/.local/share/fonts/{{ . }}.tar.xz" "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/{{ . }}.tar.xz"
@@ -146,7 +146,7 @@ log info "=== FONTS CONFIGURED ==="
 log info "=== CONFIGURING FLATPAK ==="
 
 run_cmd flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-{{ range .packages.flatpaks }}
+{{ range .packages.linux.flatpaks }}
 run_cmd flatpak install -y flathub {{ . }}
 {{ end }}
 
@@ -194,7 +194,11 @@ function asdf_install -a package -a ver -a pkg_cmd
 end
 
 {{ range .packages.asdf }}
+{{ if not .version }}
 asdf_install {{ .name }} latest {{ .cmd }}
+{{ else }}
+asdf_install {{ .name }} {{ .version }} {{ .cmd }}
+{{ end }}
 {{ end }}
 
 asdf reshim

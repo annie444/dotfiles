@@ -18,7 +18,7 @@ opmenu() {
   echo "Press w to wait for the 1Password GUI to be setup before continuing"
   echo "Press n to setup 1Password with the CLI"
   echo "Press x to exit"
-  read -n 1 -p "Input Selection:" opmenuinput
+  read -r -n 1 -p "Input Selection:" opmenuinput
 
   case "$opmenuinput" in
     "n")
@@ -31,7 +31,7 @@ opmenu() {
       echo "(Settings > Developter > CLI)"
       echo ""
       echo "Press any key to continue..."
-      read -n 1
+      read -r -n 1
       ;;
     "x")
       exit 1
@@ -42,7 +42,7 @@ opmenu() {
       echo "Please try again!"
       echo ""
       echo "Press any key to continue..."
-      read -n 1
+      read -r -n 1
       clear
       opmenu
       ;;
@@ -80,15 +80,23 @@ find_shell() {
 
 install_op_asdf() {
   if [[ "${SHELL_RCFILE}" =~ (.*)fish ]]; then
-    echo 'set -gx --prepend ASDF_DATA_DIR "$HOME/.asdf"' >> ${SHELL_RCFILE}
-    echo 'set _asdf_shims "$ASDF_DATA_DIR/shims"' >> ${SHELL_RCFILE}
-    echo 'if not contains $_asdf_shims $PATH' >> ${SHELL_RCFILE}
-    echo '    set -gx --prepend PATH $_asdf_shims' >> ${SHELL_RCFILE}
-    echo 'end' >> ${SHELL_RCFILE}
-    echo 'set --erase _asdf_shims' >> ${SHELL_RCFILE}
+    {
+      # shellcheck disable=SC2016
+      echo 'set -gx --prepend ASDF_DATA_DIR "$HOME/.asdf"'
+      # shellcheck disable=SC2016
+      echo 'set _asdf_shims "$ASDF_DATA_DIR/shims"'
+      # shellcheck disable=SC2016
+      echo 'if not contains $_asdf_shims $PATH'
+      # shellcheck disable=SC2016
+      echo '    set -gx --prepend PATH $_asdf_shims'
+      echo 'end'
+      echo 'set --erase _asdf_shims'
+    } >> "${SHELL_RCFILE}"
   else
-    echo 'export ASDF_DATA_DIR="$HOME/.asdf"' >> ${SHELL_RCFILE}
-    echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >> ${SHELL_RCFILE}
+    # shellcheck disable=SC2016
+    echo 'export ASDF_DATA_DIR="$HOME/.asdf"' >> "${SHELL_RCFILE}"
+    # shellcheck disable=SC2016
+    echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >> "${SHELL_RCFILE}"
   fi
   export ASDF_DATA_DIR="$HOME/.asdf"
   export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
@@ -96,7 +104,7 @@ install_op_asdf() {
   asdf plugin add 1password-cli
   asdf install 1password-cli latest
   asdf set 1password-cli latest
-  (cd $HOME && asdf set 1password-cli latest)
+  (cd "$HOME" && asdf set 1password-cli latest)
   asdf reshim
 }
 
@@ -105,7 +113,7 @@ install_op() {
     Darwin)
        
       # Install xcode cli tools
-      if [ $(xcode-select -p 1>/dev/null;echo $?) -ge 1 ]; then 
+      if [ "$(xcode-select -p 1>/dev/null; echo "$?")" -ge 1 ]; then 
         xcode-select --install
       fi
 
@@ -118,16 +126,17 @@ install_op() {
       if [[ "${UNAME_MACHINE}" == "arm64" ]]; then
         # On ARM macOS, this script installs to /opt/homebrew only
         export HOMEBREW_PREFIX="/opt/homebrew"
-        HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
+        export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
       else
         # On Intel macOS, this script installs to /usr/local only
         export HOMEBREW_PREFIX="/usr/local"
-        HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
+        export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}/Homebrew"
       fi
 
       find_shell "${HOMEBREW_ON_LINUX:-''}"
 
-      echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> ${SHELL_RCFILE}
+      # shellcheck disable=SC2016
+      echo 'eval "\$($HOMEBREW_PREFIX/bin/brew shellenv)"' >> "${SHELL_RCFILE}"
       eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
       if ! command -v op &> /dev/null; then
@@ -151,7 +160,7 @@ install_op() {
       osInfo[/etc/gentoo-release]="emerge"
       osInfo[/etc/suse-release]="zypper"
 
-      for f in ${!osInfo[@]}; do
+      for f in "${!osInfo[@]}"; do
           if [[ -f $f ]]; then
               export PACKAGE_MANAGER=${osInfo[$f]}
           fi
@@ -160,10 +169,10 @@ install_op() {
       if [[ -z $PACKAGE_MANAGER && ${PACKAGE_MANAGER+x} ]]; then
           . /etc/os-release
           case $ID in
-            "rhel" | "fedora" | "rocky" | "alma" | "centos" | rhel | fedora | rocky | alma | centos)
+            "rhel" | "fedora" | "rocky" | "alma" | "centos")
               export PACKAGE_MANAGER="dnf"
               ;;
-            "ubuntu" | "debian" | "mint" | "pop" | "raspbian" | "kali" | ubuntu | debian | mint | pop | raspbian | kali)
+            "ubuntu" | "debian" | "mint" | "pop" | "raspbian" | "kali")
               export PACKAGE_MANAGER="apt"
               ;;
             *)
@@ -180,7 +189,7 @@ install_op() {
           sudo apt update
           sudo apt install -y build-essential
           sudo apt install -y make git wget unzip jq curl tar gzip
-          DEB_OR_RPM="DEB"
+          export DEB_OR_RPM="DEB"
           ;;
         apk)
           apk update 
@@ -191,13 +200,13 @@ install_op() {
           sudo yum update
           sudo yum groupinstall "Development Tools"
           sudo yum install -y make git wget unzip jq curl tar gzip
-          DEB_OR_RPM="RPM"
+          export DEB_OR_RPM="RPM"
           ;;
         dnf)
           sudo dnf update
           sudo dnf groupinstall "Development Tools"
           sudo dnf install -y make git wget unzip jq curl tar gzip
-          DEB_OR_RPM="RPM"
+          export DEB_OR_RPM="RPM"
           ;;
         pacman)
           sudo pacman -Syyu
@@ -212,7 +221,7 @@ install_op() {
           sudo zypper update
           sudo zypper install -t pattern devel_C_C++
           sudo zypper install make git wget unzip jq curl tar gzip
-          DEB_OR_RPM="RPM"
+          export DEB_OR_RPM="RPM"
           ;;
         *)
           echo "Unsupported OS"
@@ -269,17 +278,17 @@ check_again() {
   echo "Press c to continue with chezmoi"
   echo "Press x to cancel"
   echo ""
-  read -n 1 -p "Input your selection: " checkstat
+  read -r -n 1 -p "Input your selection: " checkstat
 
   case "$checkstat" in
-    "i" | "I" | i | I)
+    "i" | "I")
       gotonext
       ;;
-    "c" | "C" | C | c)
+    "c" | "C")
       clear
       exit 0
       ;;
-    "x" | "X" | X | x)
+    "x" | "X")
       exit 1
       ;;
     *)
@@ -288,7 +297,7 @@ check_again() {
       echo "Please try again!"
       echo ""
       echo "Press any key to continue..."
-      read -n 1
+      read -r -n 1
       check_again
       ;;
   esac
@@ -300,18 +309,18 @@ check_status() {
     echo "It appears the 1Password CLI tools are already installed"
     echo "Would you like to install them again?"
     echo ""
-    read -n 1 -p "[Y]es | [N]o | [S]top [A]sking) " continuestatus
+    read -r -n 1 -p "[Y]es | [N]o | [S]top [A]sking) " continuestatus
 
     case "$continuestatus" in
-      "Y" | "y" | Y | y)
+      "Y" | "y")
         declare -g SHELL_RCFILE=""
         declare -g OP_PATH=""
         install_op
         ;;
-      "N" | "n" | N | n)
+      "N" | "n")
         check_again
         ;;
-      "S" | "s" | S | s | "A" | "a" | A | a)
+      "S" | "s" | "A" | "a")
         echo "STOP" > "${PWDIR}/.store"
         exit 0
         ;;
@@ -321,7 +330,7 @@ check_status() {
         echo "Please try again!"
         echo ""
         echo "Press any key to continue..."
-        read -n 1
+        read -r -n 1
         check_status
         ;;
     esac

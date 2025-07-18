@@ -1,0 +1,583 @@
+#:schema ./packages.schema.json
+[packages]
+
+crates = [
+  "pipe-cli",
+  "bat",
+  "bottom",
+  "fd-find",
+  "git-delta",
+  "hyperfine",
+  "just",
+  "ripgrep",
+  "starship",
+  "starship-jj",
+  "tomlq",
+  "zoxide",
+  "eza",
+  "du-dust",
+  "cargo-expand",
+  "cargo-wizard",
+  "cargo-generate",
+  "cargo-udeps",
+  "cargo-audit",
+  "cargo-deny",
+]
+
+gopkgs = [
+  "github.com/cheat/cheat/cmd/cheat@latest",
+  "github.com/wagoodman/dive@latest",
+  "mvdan.cc/gofumpt@latest",
+  "github.com/fullstorydev/grpcurl/cmd/grpcurl@latest",
+  "sigs.k8s.io/kind@latest",
+  "sigs.k8s.io/kustomize/kustomize/v5@latest",
+  "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest",
+]
+
+scripts = [
+  "https://deno.land/install.sh",
+  "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3",
+  "https://astral.sh/uv/install.sh",
+  "https://get.pnpm.io/install.sh",
+]
+
+python_scripts = ["https://install.python-poetry.org"]
+
+[[packages.asdf]]
+name = "bat-extras"
+cmd = "batgrep"
+
+[[packages.asdf]]
+name = "coursier"
+cmd = "coursier"
+
+[[packages.asdf]]
+name = "perl"
+cmd = "perl"
+
+[[packages.asdf]]
+name = "k2tf"
+cmd = "k2tf"
+
+[[packages.asdf]]
+name = "lua-language-server"
+cmd = "lua-language-server"
+
+[[packages.asdf]]
+name = "mkcert"
+cmd = "mkcert"
+
+[[packages.asdf]]
+name = "scala"
+cmd = "scala"
+
+[[packages.asdf]]
+name = "yq"
+cmd = "yq"
+
+[[packages.asdf]]
+name = "1password-cli"
+cmd = "op"
+
+[[packages.asdf]]
+name = "chromedriver"
+cmd = "chromedriver"
+
+[[packages.asdf]]
+name = "julia"
+cmd = "julia"
+
+[[packages.asdf]]
+name = "terraform"
+cmd = "terraform"
+
+[[packages.asdf]]
+name = "vault"
+cmd = "vault"
+
+[[packages.asdf]]
+name = "kubectl"
+cmd = "kubectl"
+
+[[packages.asdf]]
+name = "protolint"
+cmd = "protolint"
+
+[[packages.asdf]]
+name = "golang"
+cmd = "go"
+
+[[packages.asdf]]
+name = "nodejs"
+cmd = "node"
+
+[[packages.asdf]]
+name = "python"
+cmd = "python"
+
+[[packages.asdf]]
+name = "lua"
+cmd = "lua"
+
+[packages.rpm]
+
+repos = ["https://cli.github.com/packages/rpm/gh-cli.repo"]
+coprs = ["atim/lazygit"]
+
+rpms = [
+  "ruby",
+  "neovim",
+  "python3-neovim",
+  "lazygit",
+  "gh",
+  "tree-sitter-cli",
+  "tmux",
+  "ShellCheck",
+  "php",
+  "composer",
+  "ninja",
+  "jq",
+  "imagemagick",
+  "fzf",
+  "ffmpeg",
+  "direnv",
+  "cmake",
+  "protobuf",
+  "protobuf-c",
+  "protobuf-c-compiler",
+  "protobuf-c-devel",
+  "protobuf-compiler",
+  "protobuf-devel",
+  "bfs",
+  "age",
+  "libzip",
+  "libzip-devel",
+  "oniguruma",
+  "oniguruma-devel",
+  "gd",
+  "gd-devel",
+  "libcurl-devel",
+  "re2c",
+  "yasm",
+  "yasm-devel",
+  "libyaml-devel",
+  "libcyaml-devel",
+  "yaml-cpp-devel",
+  "xz",
+  "harfbuzz",
+  "pango",
+  "librsvg2",
+  "adwaita-icon-theme",
+  "pkgconf",
+  "libwebp",
+  "libwebp-tools",
+  "isl",
+  "mpfr",
+  "pmix",
+  "openblas",
+  "armadillo",
+  "asciinema",
+  "autogen",
+  "bash",
+  "binutils",
+  "bison",
+  "boost-mpich",
+  "btop",
+  "python3-cryptography",
+  "hdf5",
+  "git-clang-format",
+  "cloc",
+  "cmatrix",
+  "codespell",
+  "uutils-coreutils",
+  "java-latest-openjdk",
+  "curl",
+  "dlib",
+  "dpkg",
+  "gsettings-desktop-schemas",
+  "ettercap",
+  "libass",
+  "fish",
+  "flex",
+  "gawk",
+  "ghostscript",
+  "git-extras",
+  "git-lfs",
+  "gitlint",
+  "gnupg2",
+  "qt",
+  "gnuplot",
+  "gobject-introspection",
+  "graphviz",
+  "groff",
+  "gsl",
+  "libsoup",
+  "python3-cairo-devel",
+  "gzip",
+  "htop",
+  "iftop",
+  "libheif",
+  "jupyterlab",
+  "libffi",
+  "libfido2",
+  "libpq",
+  "libvirt",
+  "libvncserver",
+  "libxcrypt",
+  "luarocks",
+  "mosh",
+  "most",
+  "ncdu",
+  "nmap",
+  "notcurses",
+  "vtk",
+  "opencv",
+  "openssh",
+  "parallel",
+  "patchelf",
+  "patchutils",
+  "php",
+  "podman",
+  "podman-tui",
+  "podman-bootc",
+  "podman-compose",
+  "podman-machine",
+  "podman-tests",
+  "qemu",
+  "libvirt-daemon-driver-qemu",
+  "libvirt-daemon-qemu",
+  "rsync",
+  "sha2",
+  "sshpass",
+  "subversion",
+  "texinfo",
+  "thefuck",
+  "trash-cli",
+  "tree",
+  "unar",
+  "virt-manager",
+  "wget2",
+  "x11vnc",
+  "zsh",
+  "git",
+]
+
+[packages.linux]
+
+fonts = [
+  "Meslo",
+  "Mononoki",
+  "FiraCode",
+  "FiraMono",
+  "Iosevka",
+  "Ubuntu",
+  "Hack",
+  "UbuntuMono",
+  "Inconsolata",
+  "EnvyCodeR",
+  "MartianMono",
+  "Terminus",
+  "JetBrainsMono",
+  "FantasqueSansMono",
+]
+
+flatpaks = [
+  "com.google.Chrome",
+  "org.kde.okteta",
+  "org.inkscape.Inkscape",
+  "org.fontforge.FontForge",
+  "arduino-ide-bin",
+  "net.ankiweb.Anki",
+  "com.nextcloud.desktopclient.nextcloud",
+  "tech.feliciano.pocket-casts",
+  "com.getpostman.Postman",
+  "org.qbittorrent.qBittorrent",
+  "com.spotify.Client",
+  "org.videolan.VLC",
+  "us.zoom.Zoom",
+  "org.libreoffice.LibreOffice",
+  "com.slack.Slack",
+]
+
+[packages.macos]
+
+taps = [
+  "browsh-org/browsh",
+  "homebrew/bundle",
+  "jeffreywildman/virt-manager",
+  "jesseduffield/lazygit",
+]
+
+casks = [
+  "1password",
+  "arduino-ide",
+  "balenaetcher",
+  "breaktimer",
+  "discord",
+  "docker",
+  "finch",
+  "firefox",
+  "font-envy-code-r-nerd-font",
+  "font-fantasque-sans-mono-nerd-font",
+  "font-fira-code-nerd-font",
+  "font-fira-mono-nerd-font",
+  "font-hack-nerd-font",
+  "font-hurmit-nerd-font",
+  "font-inconsolata-nerd-font",
+  "font-iosevka-nerd-font",
+  "font-jetbrains-mono-nerd-font",
+  "font-meslo-lg-nerd-font",
+  "font-mononoki-nerd-font",
+  "font-terminess-ttf-nerd-font",
+  "font-ubuntu-mono-nerd-font",
+  "font-ubuntu-nerd-font",
+  "fontforge",
+  "google-chrome",
+  "google-drive",
+  "gpg-suite",
+  "hex-fiend",
+  "inkscape",
+  "kitty",
+  "libreoffice",
+  "loopback",
+  "mactex",
+  "malwarebytes",
+  "messenger",
+  "mullvadvpn",
+  "nextcloud",
+  "obsidian",
+  "pocket-casts",
+  "postman",
+  "qbittorrent",
+  "remote-desktop-manager",
+  "rstudio",
+  "rustdesk",
+  "signal",
+  "slack",
+  "spotify",
+  "steam",
+  "texmaker",
+  "tigervnc-viewer",
+  "tor-browser",
+  "transmit",
+  "vlc",
+  "wireshark",
+  "xquartz",
+  "zoom",
+]
+
+brews = [
+  "ruby",
+  "openjdk",
+  "neovim",
+  "jesseduffield/lazygit/lazygit",
+  "gh",
+  "tree-sitter",
+  "tmux",
+  "shellcheck",
+  "php",
+  "composer",
+  "ninja",
+  "jq",
+  "imagemagick",
+  "fzf",
+  "ffmpeg",
+  "direnv",
+  "cmake",
+  "buf",
+  "bfs",
+  "age",
+  "re2c",
+  "libiconv",
+  "xz",
+  "harfbuzz",
+  "pango",
+  "librsvg",
+  "adwaita-icon-theme",
+  "pkgconf",
+  "amber",
+  "webp",
+  "isl",
+  "mpfr",
+  "pmix",
+  "open-mpi",
+  "openblas",
+  "armadillo",
+  "asciinema",
+  "asdf",
+  "autogen",
+  "bandwhich",
+  "bash",
+  "beautysh",
+  "bib-tool",
+  "binutils",
+  "bison",
+  "boost-mpi",
+  "btop",
+  "suite-sparse",
+  "cryptography",
+  "hdf5",
+  "clang-format",
+  "cloc",
+  "cmatrix",
+  "codespell",
+  "coreutils",
+  "openjdk",
+  "curl",
+  "deja-gnu",
+  "dlib",
+  "dooit",
+  "gnu-tar",
+  "dpkg",
+  "gsettings-desktop-schemas",
+  "gtk+3",
+  "ettercap",
+  "libass",
+  "fish",
+  "flex",
+  "fzy",
+  "gawk",
+  "ghostscript",
+  "git-extras",
+  "git-lfs",
+  "gitlint",
+  "gnu-getopt",
+  "gnupg",
+  "qt",
+  "gnuplot",
+  "gobject-introspection",
+  "graphviz",
+  "groff",
+  "gsl",
+  "gtk4",
+  "libsoup",
+  "php",
+  "py3cairo",
+  "pygobject3",
+  "gstreamer",
+  "gzip",
+  "htop",
+  "iftop",
+  "libheif",
+  "iproute2mac",
+  "jupyterlab",
+  "languagetool",
+  "libffi",
+  "libfido2",
+  "libpq",
+  "libvirt",
+  "libvirt-python",
+  "libvncserver",
+  "libxcrypt",
+  "luarocks",
+  "m-cli",
+  "makepkg",
+  "marksman",
+  "mas",
+  "mosh",
+  "most",
+  "mupdf-tools",
+  "ncdu",
+  "nmap",
+  "notcurses",
+  "openvino",
+  "pyqt",
+  "vtk",
+  "opencv",
+  "openssh",
+  "parallel",
+  "patchelf",
+  "patchutils",
+  "qemu",
+  "rsync",
+  "sampler",
+  "sha2",
+  "sphinx-doc",
+  "sqlfluff",
+  "sshpass",
+  "subversion",
+  "superlu",
+  "taplo",
+  "terminal-notifier",
+  "texinfo",
+  "tfk8s",
+  "thefuck",
+  "tlrc",
+  "trash-cli",
+  "tree",
+  "unar",
+  "vte3",
+  "virt-manager",
+  "wakeonlan",
+  "watch",
+  "wget",
+  "wireguard-go",
+  "x11vnc",
+  "zlib",
+  "zsh",
+  "browsh-org/browsh/browsh",
+]
+
+[[packages.macos.mas]]
+name = "1Password for Safari"
+id = 1_569_813_296
+
+[[packages.macos.mas]]
+name = "Accelerate for Safari"
+id = 1_459_809_092
+
+[[packages.macos.mas]]
+name = "PiPifier"
+id = 1_160_374_471
+
+[[packages.macos.mas]]
+name = "1Blocker - Ad Blocker"
+id = 1_365_531_024
+
+[[packages.macos.mas]]
+name = "Super Agent for Safari"
+id = 1_568_262_835
+
+[[packages.macos.mas]]
+name = "Keynote"
+id = 409_183_694
+
+[[packages.macos.mas]]
+name = "Numbers"
+id = 409_203_825
+
+[[packages.macos.mas]]
+name = "Pages"
+id = 409_201_541
+
+[[packages.macos.mas]]
+name = "Amphetamine"
+id = 937_984_704
+
+[[packages.macos.mas]]
+name = "Affinity Photo 2"
+id = 1_616_822_987
+
+[[packages.macos.mas]]
+name = "Affinity Designer 2"
+id = 1_616_831_348
+
+[[packages.macos.mas]]
+name = "Affinity Publisher 2"
+id = 1_606_941_598
+
+[[packages.macos.mas]]
+name = "Logic Pro"
+id = 634_148_309
+
+[[packages.macos.mas]]
+name = "Final Cut Pro"
+id = 424_389_933
+
+[[packages.macos.mas]]
+name = "Compressor"
+id = 424_390_742
+
+[[packages.macos.mas]]
+name = "Messenger"
+id = 1_480_068_668

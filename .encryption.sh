@@ -35,17 +35,17 @@ install_shell_brew() {
 install_shell_apt() {
   if ! command -v fish &> /dev/null; then 
     sudo apt install fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo apt install zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zsh | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo apt install bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -61,17 +61,17 @@ install_shell_apt() {
 install_shell_apk() {
   if ! command -v fish &> /dev/null; then
     apk add --no-cache fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo apk add --no-cache zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zsh | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo apk add --no-cache bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -87,17 +87,17 @@ install_shell_apk() {
 install_shell_yum() {
   if ! command -v fish &> /dev/null; then
     sudo yum install fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo yum install zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zsh | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo yum install bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -113,17 +113,17 @@ install_shell_yum() {
 install_shell_dnf() {
   if ! command -v fish &> /dev/null; then
     sudo dnf install fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo dnf install zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zhs | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo dnf install bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -139,17 +139,17 @@ install_shell_dnf() {
 install_shell_pacman() {
   if ! command -v fish &> /dev/null; then
     sudo pacman -Sy fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo pacman -Sy zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zhs | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo pacman -Sy bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -165,17 +165,17 @@ install_shell_pacman() {
 install_shell_emerge() {
   if ! command -v fish &> /dev/null; then
     sudo emerge sys-apps/fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo emerge sys-apps/zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zhs | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo emerge sys-apps/bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -192,17 +192,17 @@ install_shell_emerge() {
 install_shell_zypper() {
   if ! command -v fish &> /dev/null; then
     sudo zypper install fish 
-    echo "$(which fish)" | sudo tee -a /etc/shells
+    which fish | sudo tee -a /etc/shells
   fi
 
   if ! command -v zsh &> /dev/null; then
     sudo zypper install zsh
-    echo "$(which zhs)" | sudo tee -a /etc/shells
+    which zsh | sudo tee -a /etc/shells
   fi
 
   if ! command -v bash &> /dev/null; then
     sudo zypper install bash 
-    echo "$(which bash)" | sudo tee -a /etc/shells
+    which bash | sudo tee -a /etc/shells
   fi
 
   if ! command -v flatpak &> /dev/null; then
@@ -229,11 +229,11 @@ install_age_and_shells() {
     Darwin)
       source "${PWDIR}/.macos-settings.sh"
       source "${PWDIR}/.finder-defaults.sh"
-      eval "$(${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew shellenv)"
+      eval "$("${HOMEBREW_PREFIX:-/opt/homebrew}/bin/brew" shellenv)"
 
       asdf_age
 
-      if ! [ -n "$(echo $SHELL | grep fish)" ]; then
+      if ! echo "$SHELL" | grep -q fish; then
         install_shell_brew
       fi
       export INSTALL_COMMAND="brew install"
@@ -253,7 +253,7 @@ install_age_and_shells() {
       osInfo[/etc/gentoo-release]="emerge"
       osInfo[/etc/suse-release]="zypper"
 
-      for f in ${!osInfo[@]}; do
+      for f in "${!osInfo[@]}"; do
           if [[ -f $f ]]; then
               export PACKAGE_MANAGER=${osInfo[$f]}
           fi
@@ -262,10 +262,10 @@ install_age_and_shells() {
       if [[ -v PACKAGE_MANAGER && -z $PACKAGE_MANAGER ]]; then
           . /etc/os-release
           case $ID in
-            "rhel" | "fedora" | rhel | fedora)
+            "rhel" | "fedora")
               export PACKAGE_MANAGER="dnf"
               ;;
-            "ubuntu" | "debian" | "mint" | "pop" | "raspbian" | "kali" | ubuntu | debian | mint | pop | raspbian | kali)
+            "ubuntu" | "debian" | "mint" | "pop" | "raspbian" | "kali")
               export PACKAGE_MANAGER="apt"
               ;;
             *)
@@ -327,13 +327,13 @@ check_again() {
   echo "Press c to continue with chezmoi"
   echo "Press x to cancel"
   echo ""
-  read -n 1 -p "Input your selection: " checkstat
+  read -r -n 1 -p "Input your selection: " checkstat
 
   case "$checkstat" in
-    "c" | "C" | C | c)
+    "c" | "C")
       clear
       ;;
-    "x" | "X" | X | x)
+    "x" | "X")
       exit
       ;;
     *)
@@ -342,7 +342,7 @@ check_again() {
       echo "Please try again!"
       echo ""
       echo "Press any key to continue..."
-      read -n 1
+      read -r -n 1
       check_again
       ;;
   esac
@@ -354,13 +354,13 @@ check_status() {
     echo "It appears the encryption modules are already installed"
     echo "Would you like to install them again?"
     echo ""
-    read -n 1 -p "(Y/N) " continuestatus
+    read -r -n 1 -p "(Y/N) " continuestatus
 
     case "$continuestatus" in
-      "Y" | "y" | Y | y)
+      "Y" | "y")
         install_age_and_shells
         ;;
-      "N" | "n" | N | n)
+      "N" | "n")
         check_again
         ;;
       *)
@@ -369,7 +369,7 @@ check_status() {
         echo "Please try again!"
         echo ""
         echo "Press any key to continue..."
-        read -n 1
+        read -r -n 1
         check_status
         ;;
     esac
