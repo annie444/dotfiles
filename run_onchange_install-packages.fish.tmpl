@@ -194,10 +194,10 @@ function asdf_install -a package -a ver -a pkg_cmd
 end
 
 {{ range .packages.asdf }}
-{{ if not hasKey . "version" }}
-asdf_install {{ .name }} latest {{ .cmd }}
-{{ else }}
+{{ if hasKey . "version" }}
 asdf_install {{ .name }} {{ .version }} {{ .cmd }}
+{{ else }}
+asdf_install {{ .name }} latest {{ .cmd }}
 {{ end }}
 {{ end }}
 
