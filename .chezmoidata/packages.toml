@@ -1,4 +1,4 @@
-#:schema ./packages.schema.json
+#:schema ./../packages.schema.json
 [packages]
 
 crates = [

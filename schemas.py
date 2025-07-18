@@ -146,7 +146,7 @@ class Packages(BaseModel):
         title="packages",
         json_schema_extra={
             "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "$id": "https://raw.githubusercontent.com/annie444/dotfiles/main/.chezmoidata/packages.schema.json",
+            "$id": "https://raw.githubusercontent.com/annie444/dotfiles/main/packages.schema.json",
         },
     )
 

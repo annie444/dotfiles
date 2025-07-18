@@ -1,3 +1,5 @@
 README.md
 
 */op/conifg
+schemas.py
+*.schema.json
