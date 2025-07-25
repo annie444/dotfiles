@@ -67,20 +67,21 @@ end
 log info "=== CONFIGURING HOMEBREW ==="
 
 run_cmd rm -f "$HOME/Brewfile"
-run_cmd touch "$HOME/Brewfile"
 
-{{ range .packages.macos.taps -}}
-echo 'tap {{ . | quote }}' >>"$HOME/Brewfile"
-{{ end -}}
-{{ range .packages.macos.brews -}}
-echo 'brew {{ . | quote }}' >>"$HOME/Brewfile"
-{{ end -}}
-{{ range .packages.macos.casks -}}
-echo 'cask {{ . | quote }}' >>"$HOME/Brewfile"
-{{ end -}}
-{{ range .packages.macos.mas -}}
-echo 'mas {{ .name | quote }}, id: {{ .id }}' >>"$HOME/Brewfile"
-{{ end -}}
+begin
+    {{ range .packages.macos.taps -}}
+    echo 'tap {{ . | quote }}'
+    {{ end -}}
+    {{ range .packages.macos.brews -}}
+    echo 'brew {{ . | quote }}'
+    {{ end -}}
+    {{ range .packages.macos.casks -}}
+    echo 'cask {{ . | quote }}'
+    {{ end -}}
+    {{ range .packages.macos.mas -}}
+    echo 'mas {{ .name | quote }}, id: {{ .id }}'
+    {{ end -}}
+end >"$HOME/Brewfile"
 
 run_cmd brew bundle --file="$HOME/Brewfile"
 
@@ -280,8 +281,6 @@ set -g _npm_path (asdf which npm)
 _test_var NPM $_npm_path
 set -g _cpan_path (asdf which cpan)
 _test_var Cpan $_cpan_path
-set -g _pip_path (asdf which pip)
-_test_var pip $_pip_path
 set -g _gem_path (which gem)
 _test_var gem $_gem_path
 set -g _lua_path (asdf which lua)
@@ -314,8 +313,9 @@ if not test -e $HOME/.asdf/shims/cpanm
     run_cmd asdf reshim
 end
 
-run_cmd $_pip_path install --upgrade pip
-run_cmd $_pip_path install pynvim
+run_cmd $_python_path -m pip install --upgrade pip
+run_cmd $_python_path -m pip install pynvim hererocks
+run_cmd $_python_path -m pip install --upgrade pynvim hererocks
 
 run_cmd $_gem_path install neovim
 

@@ -41,6 +41,8 @@ scripts = [
   "https://get.pnpm.io/install.sh",
 ]
 
+python = ["hererocks"]
+
 python_scripts = ["https://install.python-poetry.org"]
 
 [[packages.asdf]]

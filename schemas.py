@@ -122,6 +122,10 @@ class Pkgs(BaseModel):
         title="go_packages",
         description="List of Go packages to install.",
     )
+    python: List[str] = Field(
+        title="python_packages",
+        description="List of Python packages to install. These will be installed via uv tools.",
+    )
     scripts: List[str] = Field(
         title="scripts",
         description="List of shell scripts to run.",
