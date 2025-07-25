@@ -120,6 +120,7 @@ cmd = "python"
 [[packages.asdf]]
 name = "lua"
 cmd = "lua"
+version = "latest:5.1"
 
 [packages.rpm]
 
