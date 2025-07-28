@@ -352,8 +352,15 @@ function neovim_reset_prompt
     echo "cached plugins and settings. You will need to reinstall all plugins"
     echo "after this."
     echo
+    set_color --bold
+    echo "You'll need to run `chezmoi apply ~/.config/nvim` after resetting."
+    set_color normal
+    echo
+    set_color --bold cyan
     echo "Would you like to reset?"
+    set_color --bold white
     echo -n "[y]es/[n]o: "
+    set_color normal
 end
 
 function neovim_reset
@@ -368,7 +375,7 @@ function neovim_reset
                     log warn "Directory $nvim_path does not exist, skipping."
                 end
             end
-            chezmoi apply ~/.config/nvim
+	    mkdir -p $HOME/.config/nvim/lua
         case N n
             echo "Skipping Neovim reset."
         case '*'
