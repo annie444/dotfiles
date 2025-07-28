@@ -367,6 +367,7 @@ casks = [
   "wireshark",
   "xquartz",
   "zoom",
+  "macfuse",
 ]
 
 brews = [
