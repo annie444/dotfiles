@@ -179,7 +179,7 @@ function asdf_install -a package -a ver -a pkg_cmd
     asdf reshim
     set package_path (asdf which "$pkg_cmd")
     log trace "Package $package is at path $package_path"
-    if test -z "$package_path"
+    if not test -e "$package_path"
         for v in (asdf list $package)
             set local_ver (echo $v | sed -e 's/*//')
             run_cmd asdf uninstall $package $local_ver
