@@ -361,7 +361,7 @@ function neovim_reset
     switch $neovim_reset_confirm
         case Y y
             log info "Resetting Neovim configuration..."
-            for nvim_path in "~/.local/share/nvim" "~/.local/state/nvim" "~/.cache/nvim" "~/.config/nvim"
+            for nvim_path in "$HOME/.local/share/nvim" "$HOME/.local/state/nvim" "$HOME/.cache/nvim" "$HOME/.config/nvim"
                 if test -d $nvim_path
                     run_cmd rm -rf $nvim_path
                 else
