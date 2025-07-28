@@ -271,6 +271,8 @@ log info "=== CONFIGURING NEOVIM ==="
 
 set -g _python_path (asdf which python)
 _test_var Python $_python_path
+set -g _pip_path (asdf which pip)
+_test_var pip $_pip_path
 set -g _ruby_path (which ruby)
 _test_var Ruby $_ruby_path
 set -g _node_path (asdf which node)
@@ -283,26 +285,8 @@ set -g _cpan_path (asdf which cpan)
 _test_var Cpan $_cpan_path
 set -g _gem_path (which gem)
 _test_var gem $_gem_path
-set -g _lua_path (asdf which lua)
-_test_var lua $_lua_path
 
 eval "$_npm_path i -g neovim"
-
-if not test -e /usr/local/bin/luarocks
-    log info "LuaRocks not installed"
-    run_cmd wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
-    run_cmd tar zxpf luarocks-3.11.1.tar.gz
-    cd luarocks-3.11.1
-    run_cmd ./configure --with-lua="$(dirname (dirname (asdf which lua)))" --prefix=$HOME/.local
-    run_cmd make
-    run_cmd make install
-    run_cmd luarocks install luasocket
-    cd ..
-    run_cmd rm -rf luarocks-3.11.1
-    run_cmd rm -f luarocks-3.11.1.tar.gz
-else
-    log trace "LuaRocks already installed"
-end
 
 if not test -e $HOME/.asdf/shims/cpanm
     log trace "running command: $_cpan_path App::cpanminus"
@@ -318,6 +302,83 @@ run_cmd $_python_path -m pip install pynvim hererocks
 run_cmd $_python_path -m pip install --upgrade pynvim hererocks
 
 run_cmd $_gem_path install neovim
+
+function neovim_confirm_prompt
+    function host_prog -a prog prog_path mgr mgr_path
+        set version (eval "$prog_path --version")
+        set_color --bold magenta
+        echo -n "$prog: "
+        set_color --dim --italics white
+        echo "$prog_path"
+        set_color --bold white
+        echo -n "  $mgr: "
+        set_color --dim --italics white
+        echo "$mgr_path"
+        set_color normal
+    end
+    set_color --bold cyan
+    echo "Neovim is configured with the following paths:"
+    host_prog Python $_python_path pip $_pip_path
+    host_prog Ruby $_ruby_path gem $_gem_path
+    host_prog "Node.js" $_node_path NPM $_npm_path
+    host_prog Perl $_perl_path Cpan $_cpan_path
+    echo
+    set_color --bold cyan
+    echo "Would you like to continue?"
+    set_color --bold white
+    echo -n "[y]es/[n]o: "
+    set_color normal
+end
+
+function neovim_continue
+    read --global --prompt neovim_confirm_prompt --nchars 1 neovim_confirm
+    switch $neovim_confirm
+        case Y y
+            echo "Continuing with Neovim configuration..."
+        case N n
+            echo "Exiting Neovim configuration."
+            return 1
+        case '*'
+            echo "Invalid input. Please enter 'y' or 'n'."
+            neovim_continue
+    end
+end
+
+function neovim_reset_prompt
+    set_color --bold cyan
+    echo "Would you like to reset the Neovim configuration?"
+    set_color normal
+    echo "This will remove the current Neovim configuration as well as all the"
+    echo "cached plugins and settings. You will need to reinstall all plugins"
+    echo "after this."
+    echo
+    echo "Would you like to reset?"
+    echo -n "[y]es/[n]o: "
+end
+
+function neovim_reset
+    read --global --prompt neovim_reset_prompt --nchars 1 neovim_reset_confirm
+    switch $neovim_reset_confirm
+        case Y y
+            log info "Resetting Neovim configuration..."
+            for nvim_path in "~/.local/share/nvim" "~/.local/state/nvim" "~/.cache/nvim" "~/.config/nvim"
+                if test -d $nvim_path
+                    run_cmd rm -rf $nvim_path
+                else
+                    log warn "Directory $nvim_path does not exist, skipping."
+                end
+            end
+            chezmoi apply ~/.config/nvim
+        case N n
+            echo "Skipping Neovim reset."
+        case '*'
+            echo "Invalid input. Please enter 'y' or 'n'."
+            neovim_reset
+    end
+end
+
+neovim_continue
+neovim_reset
 
 run_cmd rm -f ~/.config/nvim/lua/options.lua
 run_cmd touch ~/.config/nvim/lua/options.lua
