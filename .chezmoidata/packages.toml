@@ -78,10 +78,6 @@ name = "yq"
 cmd = "yq"
 
 [[packages.asdf]]
-name = "1password-cli"
-cmd = "op"
-
-[[packages.asdf]]
 name = "chromedriver"
 cmd = "chromedriver"
 
@@ -128,6 +124,8 @@ repos = ["https://cli.github.com/packages/rpm/gh-cli.repo"]
 coprs = ["atim/lazygit"]
 
 rpms = [
+  "1password",
+  "1password-cli",
   "ruby",
   "neovim",
   "python3-neovim",
