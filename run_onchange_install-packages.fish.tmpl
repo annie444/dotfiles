@@ -285,6 +285,9 @@ set -g _cpan_path (asdf which cpan)
 _test_var Cpan $_cpan_path
 set -g _gem_path (which gem)
 _test_var gem $_gem_path
+set -g _go_path (asdf which go)
+_test_var Go $_go_path
+set -g _go_mod_path (path normalize $_go_path/../../../bin)
 
 eval "$_npm_path i -g neovim"
 
@@ -322,6 +325,7 @@ function neovim_confirm_prompt
     host_prog Ruby $_ruby_path gem $_gem_path
     host_prog "Node.js" $_node_path NPM $_npm_path
     host_prog Perl $_perl_path Cpan $_cpan_path
+    host_prog Go $_go_path go-mod $_go_mod_path
     echo
     set_color --bold cyan
     echo "Would you like to continue?"
@@ -375,7 +379,7 @@ function neovim_reset
                     log warn "Directory $nvim_path does not exist, skipping."
                 end
             end
-	    mkdir -p $HOME/.config/nvim/lua
+            mkdir -p $HOME/.config/nvim/lua
         case N n
             echo "Skipping Neovim reset."
         case '*'
@@ -388,11 +392,13 @@ neovim_continue
 neovim_reset
 
 run_cmd rm -f ~/.config/nvim/lua/options.lua
-run_cmd touch ~/.config/nvim/lua/options.lua
-echo -e "vim.g.python3_host_prog = '$_python_path'" >>~/.config/nvim/lua/options.lua
-echo -e "vim.g.ruby_host_prog = '$_ruby_path'" >>~/.config/nvim/lua/options.lua
-echo -e "vim.g.node_host_prog = '$_node_path'" >>~/.config/nvim/lua/options.lua
-echo -e "vim.g.perl_host_prog = '$_perl_path'" >>~/.config/nvim/lua/options.lua
+begin
+    echo -e "vim.g.python3_host_prog = '$_python_path'"
+    echo -e "vim.g.ruby_host_prog = '$_ruby_path'"
+    echo -e "vim.g.node_host_prog = '$_node_path'"
+    echo -e "vim.g.perl_host_prog = '$_perl_path'"
+    echo -e "vim.env.PATH = '$_go_path:$_go_mod_path:' .. vim.env.PATH"
+end >$HOME/.config/nvim/lua/options.lua
 
 log info "=== NEOVIM CONFIGURED ==="
 
