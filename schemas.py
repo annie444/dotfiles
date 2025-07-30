@@ -109,12 +109,28 @@ class MacosPkgs(BaseModel):
     )
 
 
+class Crate(BaseModel):
+    """A Rust crate to install."""
+
+    model_config = ConfigDict(title="rust_crate")
+
+    name: str = Field(
+        title="crate_name",
+        description="The name of the Rust crate to install.",
+    )
+    git: Optional[str] = Field(
+        title="git_repository",
+        description="The Git repository URL of the crate. If specified, this will be used instead of the crate from crates.io.",
+        default=None,
+    )
+
+
 class Pkgs(BaseModel):
     """The root object for the packages schema."""
 
     model_config = ConfigDict(title="pkgs")
 
-    crates: List[str] = Field(
+    crates: List[str | Crate] = Field(
         title="rust_crates",
         description="List of rust crates from https://crates.io to install.",
     )

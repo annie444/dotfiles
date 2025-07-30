@@ -22,6 +22,7 @@ crates = [
   "cargo-udeps",
   "cargo-audit",
   "cargo-deny",
+  { name = "cross", git = "https://github.com/cross-rs/cross" },
 ]
 
 gopkgs = [
