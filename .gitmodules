@@ -17,3 +17,7 @@
 	path = dot_config/cheat/cheatsheets/external_personal
 	url = https://github.com/annie444/cheatsheets.git
 	branch = main
+[submodule "tpm"]
+	path = dot_tmux/plugins/external_tpm
+	url = https://github.com/tmux-plugins/tpm
+	branch = master
