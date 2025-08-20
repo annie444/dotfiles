@@ -219,7 +219,7 @@ bind c new-window -c "#{pane_current_path}"
 set-hook -g after-new-window 'command-prompt -I "#{window_name}" "rename-window '%%'"'
 
 bind a command-prompt -I "#{window_name}" "rename-window '%%'"
-bind A command-prompt -I "#{session_name}" "rename-session '%%'
+bind A command-prompt -I "#{session_name}" "rename-session '%%'"
 bind C-x confirm-before -p "kill other windows? (y/n)" "kill-window -a"
 bind Q confirm-before -p "kill-session #S? (y/n)" kill-session
 
@@ -282,7 +282,7 @@ bind -n M-Down select-pane -D
 bind / command-prompt "split-window 'exec man %%'"
 
 # quick view of system stats
-bind "~" split-window "exec btop"
+bind '~' split-window "exec btop"
 
 # listen for activity on all windows
 set -g bell-action any
@@ -323,7 +323,7 @@ bind x delete-buffer
 bind C new-window
 
 # quit
-bind \ confirm-before kill-server
+bind '\' confirm-before kill-server
 
 # reload settings
 bind R source-file ~/.tmux.conf
