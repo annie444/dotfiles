@@ -8,11 +8,6 @@
 	url = https://github.com/annie444/fish-dots.git
   branch = main
 
-[submodule "dot_tmux/plugins/external_tpm"]
-	path = dot_tmux/plugins/external_tpm
-	url = https://github.com/tmux-plugins/tpm
-  branch = master
-
 [submodule "dot_config/cheat/cheatsheets/external_community"]
 	path = dot_config/cheat/cheatsheets/external_community
 	url = https://github.com/cheat/cheatsheets.git
@@ -22,6 +17,3 @@
 	path = dot_config/cheat/cheatsheets/external_personal
 	url = https://github.com/annie444/cheatsheets.git
 	branch = main
-[submodule "dot_local/share/rmtrash"]
-	path = dot_local/share/rmtrash
-	url = https://github.com/PhrozenByte/rmtrash.git
