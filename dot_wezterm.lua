@@ -136,7 +136,7 @@ config.enable_wayland = true
 
 local gpus = wezterm.gui.enumerate_gpus()
 if #gpus >= 3 then
-	config.webgpu_preferred_adapter = gpus[2]
+	config.webgpu_preferred_adapter = gpus[#gpus]
 end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
