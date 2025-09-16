@@ -101,7 +101,6 @@ config.scrollback_lines = 20000
 config.show_new_tab_button_in_tab_bar = true
 config.show_tab_index_in_tab_bar = true
 config.show_tabs_in_tab_bar = true
-config.show_update_window = true
 config.skip_close_confirmation_for_processes_named = {
 	"bash",
 	"sh",
