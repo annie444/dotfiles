@@ -131,13 +131,16 @@ config.enable_scroll_bar = true
 config.min_scroll_bar_height = "1cell"
 config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
+
+for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
+	if gpu.backend == "Gl" and gpu.device_type == "Other" then
+		config.webgpu_preferred_adapter = gpu
+		break
+	end
+end
 config.front_end = "WebGpu"
 config.enable_wayland = true
-
-local gpus = wezterm.gui.enumerate_gpus()
-if #gpus >= 3 then
-	config.webgpu_preferred_adapter = gpus[#gpus]
-end
+config.webgpu_force_fallback_adapter = true
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
