@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+
 config.font_size = 14.0
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_shaper = "Harfbuzz"
@@ -48,22 +49,14 @@ config.bold_brightens_ansi_colors = "No"
 config.hide_mouse_cursor_when_typing = true
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
--- make username/project paths clickable. this implies paths like the following are for github.
--- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wezterm/wezterm | "wezterm/wezterm.git" )
--- as long as a full url hyperlink regex exists above this it should not match a full url to
--- github or gitlab / bitbucket (i.e. https://gitlab.com/user/project.git is still a whole clickable url)
-table.insert(config.hyperlink_rules, {
-	regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-	format = "https://www.github.com/$1/$3",
-})
 
 config.color_scheme = "Dracula (Official)"
-
 config.colors = {
 	tab_bar = {
 		inactive_tab_edge = "#282a36",
 	},
 }
+
 config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_max_width = 32
@@ -80,22 +73,24 @@ config.window_frame = {
 	active_titlebar_bg = "#282a36",
 	inactive_titlebar_bg = "#504C67",
 }
-config.use_resize_increments = true
-config.warn_about_missing_glyphs = true
-config.ui_key_cap_rendering = "UnixLong"
 config.window_decorations = "RESIZE"
-config.config.integrated_title_buttons = {}
+config.use_resize_increments = true
+config.integrated_title_buttons = {}
 config.window_background_opacity = 0.9
+config.ui_key_cap_rendering = "UnixLong"
+
+config.swallow_mouse_click_on_pane_focus = true
+config.swallow_mouse_click_on_window_focus = true
+config.switch_to_last_active_tab_when_closing_tab = true
+config.tab_and_split_indices_are_zero_based = false
+
+config.warn_about_missing_glyphs = true
 config.notification_handling = "SuppressFromFocusedPane"
 config.pane_focus_follows_mouse = true
 config.quit_when_all_windows_are_closed = true
 config.quote_dropped_files = "Posix"
 config.scroll_to_bottom_on_input = true
 config.ssh_domains = wezterm.default_ssh_domains()
-config.swallow_mouse_click_on_pane_focus = true
-config.swallow_mouse_click_on_window_focus = true
-config.switch_to_last_active_tab_when_closing_tab = true
-config.tab_and_split_indices_are_zero_based = false
 config.scrollback_lines = 20000
 config.show_new_tab_button_in_tab_bar = true
 config.show_tab_index_in_tab_bar = true
@@ -128,8 +123,54 @@ config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
 
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+resurrect.apply_to_config(config)
 
-config.prefer_egl = true
+local cmd_sender = wezterm.plugin.require("https://github.com/aureolebigben/wezterm-cmd-sender")
+cmd_sender.apply_to_config(config, {
+	key = "mapped:s",
+	mods = "CMD|SHIFT",
+	description = "Enter command to send to all panes of active tab",
+})
+
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup({
+	options = {
+		icons_enabled = true,
+		theme = "Dracula (Official)",
+		tabs_enabled = true,
+		theme_overrides = {},
+		section_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+		component_separators = {
+			left = wezterm.nerdfonts.pl_left_soft_divider,
+			right = wezterm.nerdfonts.pl_right_soft_divider,
+		},
+		tab_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "workspace" },
+		tabline_c = { " " },
+		tab_active = {
+			"index",
+			{ "parent", padding = 0 },
+			"/",
+			{ "cwd", padding = { left = 0, right = 1 } },
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "ram", "cpu" },
+		tabline_y = { "datetime", "battery" },
+		tabline_z = { "domain" },
+	},
+	extensions = {},
+})
+tabline.apply_to_config(config)
 
 if wezterm.target_triple == "x86_64-unknown-linux-gnu" or wezterm.target_triple == "aarch64-unknown-linux-gnu" then
 	for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
@@ -138,8 +179,9 @@ if wezterm.target_triple == "x86_64-unknown-linux-gnu" or wezterm.target_triple 
 			break
 		end
 	end
+	config.prefer_egl = true
 	config.front_end = "WebGpu"
-	config.enable_wayland = true
+	config.enable_wayland = false
 	config.kde_window_background_blur = true
 	config.webgpu_power_preference = "HighPerformance"
 	resurrect.state_manager.set_encryption({
