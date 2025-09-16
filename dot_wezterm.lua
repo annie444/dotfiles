@@ -122,55 +122,6 @@ config.min_scroll_bar_height = "1cell"
 config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
 
-local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
-
-local cmd_sender = wezterm.plugin.require("https://github.com/aureolebigben/wezterm-cmd-sender")
-cmd_sender.apply_to_config(config, {
-	key = "mapped:s",
-	mods = "CMD|SHIFT",
-	description = "Enter command to send to all panes of active tab",
-})
-
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
-tabline.setup({
-	options = {
-		icons_enabled = true,
-		theme = "Dracula (Official)",
-		tabs_enabled = true,
-		theme_overrides = {},
-		section_separators = {
-			left = wezterm.nerdfonts.pl_left_hard_divider,
-			right = wezterm.nerdfonts.pl_right_hard_divider,
-		},
-		component_separators = {
-			left = wezterm.nerdfonts.pl_left_soft_divider,
-			right = wezterm.nerdfonts.pl_right_soft_divider,
-		},
-		tab_separators = {
-			left = wezterm.nerdfonts.pl_left_hard_divider,
-			right = wezterm.nerdfonts.pl_right_hard_divider,
-		},
-	},
-	sections = {
-		tabline_a = { "mode" },
-		tabline_b = { "workspace" },
-		tabline_c = { " " },
-		tab_active = {
-			"index",
-			{ "parent", padding = 0 },
-			"/",
-			{ "cwd",    padding = { left = 0, right = 1 } },
-			{ "zoomed", padding = 0 },
-		},
-		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-		tabline_x = { "ram", "cpu" },
-		tabline_y = { "datetime", "battery" },
-		tabline_z = { "domain" },
-	},
-	extensions = {},
-})
-tabline.apply_to_config(config)
-
 if wezterm.target_triple == "x86_64-unknown-linux-gnu" or wezterm.target_triple == "aarch64-unknown-linux-gnu" then
 	for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
 		if gpu.backend == "Gl" and gpu.device_type == "Other" then
@@ -183,102 +134,23 @@ if wezterm.target_triple == "x86_64-unknown-linux-gnu" or wezterm.target_triple 
 	config.enable_wayland = false
 	config.kde_window_background_blur = true
 	config.webgpu_power_preference = "HighPerformance"
-	resurrect.state_manager.set_encryption({
-		enable = true,
-		method = "gpg", -- "age" is the default encryption method, but you can also specify "rage" or "gpg"
-		public_key = "0xBD0383B510975BA5",
-	})
 elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
 	config.front_end = "WebGpu"
 	config.macos_window_background_blur = 20
 	config.native_macos_fullscreen_mode = true
-	resurrect.state_manager.set_encryption({
-		enable = true,
-		method = "/opt/homebrew/bin/gpg", -- "age" is the default encryption method, but you can also specify "rage" or "gpg"
-		public_key = "0xBD0383B510975BA5",
-	})
 end
-
--- loads the state whenever I create a new workspace
-wezterm.on("smart_workspace_switcher.workspace_switcher.created", function(window, path, label)
-	local workspace_state = resurrect.workspace_state
-
-	workspace_state.restore_workspace(resurrect.state_manager.load_state(label, "workspace"), {
-		window = window,
-		relative = true,
-		restore_text = true,
-		on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-	})
-end)
-
--- Saves the state whenever I select a workspace
-wezterm.on("smart_workspace_switcher.workspace_switcher.selected", function(window, path, label)
-	local workspace_state = resurrect.workspace_state
-	resurrect.state_manager.save_state(workspace_state.get_workspace_state())
-end)
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	{
-		key = "w",
-		mods = "ALT",
-		action = wezterm.action_callback(function(win, pane)
-			resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
-		end),
-	},
-	{
-		key = "W",
-		mods = "ALT",
-		action = resurrect.window_state.save_window_action(),
-	},
-	{
-		key = "T",
-		mods = "ALT",
-		action = resurrect.tab_state.save_tab_action(),
-	},
-	{
-		key = "s",
-		mods = "ALT",
-		action = wezterm.action_callback(function(win, pane)
-			resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
-			resurrect.window_state.save_window_action()
-		end),
-	},
-	{
-		key = "r",
-		mods = "ALT",
-		action = wezterm.action_callback(function(win, pane)
-			resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
-				local type = string.match(id, "^([^/]+)") -- match before '/'
-				id = string.match(id, "([^/]+)$")     -- match after '/'
-				id = string.match(id, "(.+)%..+$")    -- remove file extention
-				local opts = {
-					relative = true,
-					restore_text = true,
-					on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-				}
-				if type == "workspace" then
-					local state = resurrect.state_manager.load_state(id, "workspace")
-					resurrect.workspace_state.restore_workspace(state, opts)
-				elseif type == "window" then
-					local state = resurrect.state_manager.load_state(id, "window")
-					resurrect.window_state.restore_window(pane:window(), state, opts)
-				elseif type == "tab" then
-					local state = resurrect.state_manager.load_state(id, "tab")
-					resurrect.tab_state.restore_tab(pane:tab(), state, opts)
-				end
-			end)
-		end),
-	},
-	{ key = "F11", mods = "",       action = wezterm.action.ToggleFullScreen },
-	{ key = "h",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ key = "l",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ key = "k",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ key = "j",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Down") },
-	{ key = "H",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
-	{ key = "L",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
-	{ key = "K",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
-	{ key = "J",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
+	{ key = "F11", mods = "", action = wezterm.action.ToggleFullScreen },
+	{ key = "h", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ key = "l", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ key = "k", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ key = "j", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ key = "H", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
+	{ key = "L", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
+	{ key = "K", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+	{ key = "J", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
 	{
 		key = "-",
 		mods = "LEADER",
@@ -289,28 +161,29 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-	{ key = ":",        mods = "LEADER",     action = wezterm.action.ActivateCommandPalette },
-	{ key = "q",        mods = "LEADER",     action = wezterm.action.CloseCurrentPane({ confirm = false }) },
-	{ key = "d",        mods = "LEADER",     action = wezterm.action.DetachDomain("CurrentPaneDomain") },
-	{ key = "v",        mods = "LEADER",     action = wezterm.action.ActivateCopyMode },
-	{ key = "x",        mods = "LEADER",     action = wezterm.action.ActivateCopyMode },
-	{ key = "f",        mods = "LEADER",     action = wezterm.action.ToggleFullScreen },
-	{ key = ">",        mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	{ key = "<",        mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	{ key = "L",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(1) },
-	{ key = "H",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
-	{ key = "K",        mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(1) },
-	{ key = "J",        mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
-	{ key = "Q",        mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = false }) },
-	{ key = "C",        mods = "CTRL|SHIFT", action = wezterm.action.CopyTo("Clipboard") },
-	{ key = "V",        mods = "CTRL|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
-	{ key = "X",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateCopyMode },
-	{ key = "F",        mods = "CTRL|SHIFT", action = wezterm.action.ToggleFullScreen },
-	{ key = "-",        mods = "CTRL",       action = wezterm.action.DecreaseFontSize },
-	{ key = "=",        mods = "CTRL",       action = wezterm.action.IncreaseFontSize },
-	{ key = "0",        mods = "CTRL",       action = wezterm.action.ResetFontSize },
-	{ key = "PageUp",   mods = "SHIFT",      action = wezterm.action.ScrollByPage(-1) },
-	{ key = "PageDown", mods = "SHIFT",      action = wezterm.action.ScrollByPage(1) },
+	{ key = ":", mods = "LEADER", action = wezterm.action.ActivateCommandPalette },
+	{ key = "q", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
+	{ key = "d", mods = "LEADER", action = wezterm.action.DetachDomain("CurrentPaneDomain") },
+	{ key = "v", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+	{ key = "x", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+	{ key = "f", mods = "LEADER", action = wezterm.action.ToggleFullScreen },
+	{ key = ">", mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ key = "<", mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ key = "L", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(1) },
+	{ key = "H", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
+	{ key = "K", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(1) },
+	{ key = "J", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
+	{ key = "Q", mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = false }) },
+	{ key = "C", mods = "CTRL|SHIFT", action = wezterm.action.CopyTo("Clipboard") },
+	{ key = "V", mods = "CTRL|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
+	{ key = "X", mods = "CTRL|SHIFT", action = wezterm.action.ActivateCopyMode },
+	{ key = "F", mods = "CTRL|SHIFT", action = wezterm.action.ToggleFullScreen },
+	{ key = "l", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
+	{ key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+	{ key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+	{ key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
+	{ key = "PageUp", mods = "SHIFT", action = wezterm.action.ScrollByPage(-1) },
+	{ key = "PageDown", mods = "SHIFT", action = wezterm.action.ScrollByPage(1) },
 }
 
 -- ClearSelection
@@ -370,5 +243,52 @@ for i = 1, 9 do
 		action = wezterm.action.ActivatePaneByIndex(i),
 	})
 end
+
+local cmd_sender = wezterm.plugin.require("https://github.com/aureolebigben/wezterm-cmd-sender")
+cmd_sender.apply_to_config(config, {
+	key = "mapped:s",
+	mods = "CMD|SHIFT",
+	description = "Enter command to send to all panes of active tab",
+})
+
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+tabline.setup({
+	options = {
+		icons_enabled = true,
+		theme = "Dracula (Official)",
+		tabs_enabled = true,
+		theme_overrides = {},
+		section_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+		component_separators = {
+			left = wezterm.nerdfonts.pl_left_soft_divider,
+			right = wezterm.nerdfonts.pl_right_soft_divider,
+		},
+		tab_separators = {
+			left = wezterm.nerdfonts.pl_left_hard_divider,
+			right = wezterm.nerdfonts.pl_right_hard_divider,
+		},
+	},
+	sections = {
+		tabline_a = { "mode" },
+		tabline_b = { "workspace" },
+		tabline_c = { " " },
+		tab_active = {
+			"index",
+			{ "parent", padding = 0 },
+			"/",
+			{ "cwd", padding = { left = 0, right = 1 } },
+			{ "zoomed", padding = 0 },
+		},
+		tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
+		tabline_x = { "ram", "cpu" },
+		tabline_y = { "datetime", "battery" },
+		tabline_z = { "domain" },
+	},
+	extensions = {},
+})
+tabline.apply_to_config(config)
 
 return config
