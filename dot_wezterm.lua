@@ -259,8 +259,8 @@ tabline.setup({
 		tabs_enabled = true,
 		theme_overrides = {},
 		section_separators = {
-			left = wezterm.nerdfonts.ple_left_half_circle_thick,
-			right = wezterm.nerdfonts.ple_right_half_circle_thick,
+			left = wezterm.nerdfonts.ple_right_half_circle_thick,
+			right = wezterm.nerdfonts.ple_left_half_circle_thick,
 		},
 		component_separators = {},
 		tab_separators = {},
