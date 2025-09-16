@@ -132,7 +132,11 @@ config.min_scroll_bar_height = "1cell"
 config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
 
-config.front_end = "WebGpu"
+if wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
+	config.front_end = "WebGpu"
+else
+	config.front_end = "OpenGL"
+end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
