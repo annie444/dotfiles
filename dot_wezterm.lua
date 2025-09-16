@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font_size = 14.0
-config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
+config.font = wezterm.font("JetBrainsMono Nerd Font Propo")
 config.font_shaper = "Harfbuzz"
 config.harfbuzz_features = {
 	"aalt=0",
@@ -68,7 +68,7 @@ config.window_padding = {
 	bottom = "1cell",
 }
 config.window_frame = {
-	font = wezterm.font({ family = "JetBrainsMono Nerd Font Mono", weight = "Bold" }),
+	font = wezterm.font({ family = "JetBrainsMono Nerd Font Propo", weight = "Bold" }),
 	font_size = 14.0,
 	active_titlebar_bg = "#282a36",
 	inactive_titlebar_bg = "#504C67",
