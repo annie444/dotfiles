@@ -131,24 +131,19 @@ config.enable_scroll_bar = true
 config.min_scroll_bar_height = "1cell"
 config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
-
-if wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
-	config.front_end = "WebGpu"
-else
-	config.front_end = "OpenGL"
-end
+config.front_end = "WebGpu"
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-	{ key = "F11", mods = "",       action = wezterm.action.ToggleFullScreen },
-	{ key = "h",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ key = "l",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ key = "k",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ key = "j",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Down") },
-	{ key = "H",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
-	{ key = "L",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
-	{ key = "K",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
-	{ key = "J",   mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
+	{ key = "F11", mods = "", action = wezterm.action.ToggleFullScreen },
+	{ key = "h", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ key = "l", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ key = "k", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ key = "j", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ key = "H", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Left", 5 }) },
+	{ key = "L", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Right", 5 }) },
+	{ key = "K", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+	{ key = "J", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Down", 5 }) },
 	{
 		key = "-",
 		mods = "LEADER",
@@ -159,28 +154,28 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-	{ key = ":",        mods = "LEADER",     action = wezterm.action.ActivateCommandPalette },
-	{ key = "q",        mods = "LEADER",     action = wezterm.action.CloseCurrentPane({ confirm = false }) },
-	{ key = "d",        mods = "LEADER",     action = wezterm.action.DetachDomain("CurrentPaneDomain") },
-	{ key = "v",        mods = "LEADER",     action = wezterm.action.ActivateCopyMode },
-	{ key = "x",        mods = "LEADER",     action = wezterm.action.ActivateCopyMode },
-	{ key = "f",        mods = "LEADER",     action = wezterm.action.ToggleFullScreen },
-	{ key = ">",        mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	{ key = "<",        mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-	{ key = "L",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(1) },
-	{ key = "H",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
-	{ key = "K",        mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(1) },
-	{ key = "J",        mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
-	{ key = "Q",        mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = false }) },
-	{ key = "C",        mods = "CTRL|SHIFT", action = wezterm.action.CopyTo("Clipboard") },
-	{ key = "V",        mods = "CTRL|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
-	{ key = "X",        mods = "CTRL|SHIFT", action = wezterm.action.ActivateCopyMode },
-	{ key = "F",        mods = "CTRL|SHIFT", action = wezterm.action.ToggleFullScreen },
-	{ key = "-",        mods = "CTRL",       action = wezterm.action.DecreaseFontSize },
-	{ key = "=",        mods = "CTRL",       action = wezterm.action.IncreaseFontSize },
-	{ key = "0",        mods = "CTRL",       action = wezterm.action.ResetFontSize },
-	{ key = "PageUp",   mods = "SHIFT",      action = wezterm.action.ScrollByPage(-1) },
-	{ key = "PageDown", mods = "SHIFT",      action = wezterm.action.ScrollByPage(1) },
+	{ key = ":", mods = "LEADER", action = wezterm.action.ActivateCommandPalette },
+	{ key = "q", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
+	{ key = "d", mods = "LEADER", action = wezterm.action.DetachDomain("CurrentPaneDomain") },
+	{ key = "v", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+	{ key = "x", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+	{ key = "f", mods = "LEADER", action = wezterm.action.ToggleFullScreen },
+	{ key = ">", mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ key = "<", mods = "CTRL|SHIFT", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+	{ key = "L", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(1) },
+	{ key = "H", mods = "CTRL|SHIFT", action = wezterm.action.ActivateTabRelative(-1) },
+	{ key = "K", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(1) },
+	{ key = "J", mods = "CTRL|SHIFT", action = wezterm.action.MoveTabRelative(-1) },
+	{ key = "Q", mods = "CTRL|SHIFT", action = wezterm.action.CloseCurrentTab({ confirm = false }) },
+	{ key = "C", mods = "CTRL|SHIFT", action = wezterm.action.CopyTo("Clipboard") },
+	{ key = "V", mods = "CTRL|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
+	{ key = "X", mods = "CTRL|SHIFT", action = wezterm.action.ActivateCopyMode },
+	{ key = "F", mods = "CTRL|SHIFT", action = wezterm.action.ToggleFullScreen },
+	{ key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
+	{ key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
+	{ key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
+	{ key = "PageUp", mods = "SHIFT", action = wezterm.action.ScrollByPage(-1) },
+	{ key = "PageDown", mods = "SHIFT", action = wezterm.action.ScrollByPage(1) },
 }
 
 -- ClearSelection
