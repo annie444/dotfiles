@@ -132,15 +132,19 @@ config.min_scroll_bar_height = "1cell"
 config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
 
-for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
-	if gpu.backend == "Gl" and gpu.device_type == "Other" then
-		config.webgpu_preferred_adapter = gpu
-		break
+if wezterm.target_triple == "x86_64-unknown-linux-gnu" or wezterm.target_triple == "aarch64-unknown-linux-gnu" then
+	for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
+		if gpu.backend == "Gl" and gpu.device_type == "Other" then
+			config.webgpu_preferred_adapter = gpu
+			break
+		end
 	end
+	config.front_end = "WebGpu"
+	config.enable_wayland = true
+	config.kde_window_background_blur = true
+elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
+	config.front_end = "WebGpu"
 end
-config.front_end = "WebGpu"
-config.enable_wayland = true
-config.webgpu_force_fallback_adapter = true
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
