@@ -132,6 +132,12 @@ config.min_scroll_bar_height = "1cell"
 config.mouse_wheel_scrolls_tabs = true
 config.exit_behavior = "Close"
 config.front_end = "WebGpu"
+config.enable_wayland = true
+
+local gpus = wezterm.gui.enumerate_gpus()
+if #gpus >= 3 then
+	config.webgpu_preferred_adapter = gpus[2]
+end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
