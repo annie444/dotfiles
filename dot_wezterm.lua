@@ -141,7 +141,7 @@ elseif wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple 
 end
 
 config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
-config.keys = {
+local keys = {
 	{ key = "F11", mods = "",       action = wezterm.action.ToggleFullScreen },
 	{ key = "h",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
 	{ key = "l",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
@@ -185,6 +185,8 @@ config.keys = {
 	{ key = "PageUp",   mods = "SHIFT",      action = wezterm.action.ScrollByPage(-1) },
 	{ key = "PageDown", mods = "SHIFT",      action = wezterm.action.ScrollByPage(1) },
 }
+
+config.keys = keys
 
 -- ClearSelection
 -- CloseCurrentPane
@@ -244,6 +246,21 @@ for i = 1, 9 do
 	})
 end
 
+config.ssh_domains = {
+	{
+		name = "spinoza",
+		remote_address = "spinoza.ipac.caltech.edu",
+		username = "annie",
+		multiplexing = "WezTerm",
+		ssh_option = {
+			identityfile = wezterm.home_dir .. "/.ssh/ipac_ed25519",
+			addkeystoagent = "yes",
+			forwardagent = "yes",
+			forwardx11 = "yes",
+		},
+	},
+}
+
 local cmd_sender = wezterm.plugin.require("https://github.com/aureolebigben/wezterm-cmd-sender")
 cmd_sender.apply_to_config(config, {
 	key = "mapped:s",
@@ -290,5 +307,7 @@ tabline.setup({
 	extensions = {},
 })
 tabline.apply_to_config(config)
+
+config.keys = keys
 
 return config
