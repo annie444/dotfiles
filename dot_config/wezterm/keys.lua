@@ -9,6 +9,7 @@ M.apply_to_config = function(cfg)
   config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
   config.keys = {
     { key = "F11", mods = "",       action = wezterm.action.ToggleFullScreen },
+    { key = " ",   mods = "LEADER", action = wezterm.action.SendKey({ key = " ", mods = "CTRL" }) },
     { key = "h",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
     { key = "l",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
     { key = "k",   mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Up") },
