@@ -21,3 +21,7 @@
 	path = dot_tmux/plugins/external_tpm
 	url = https://github.com/tmux-plugins/tpm
 	branch = master
+[submodule "dot_config/wezterm"]
+	path = dot_config/wezterm
+	url = git@github.com:annie444/wezterm-dots.git
+	branch = main
