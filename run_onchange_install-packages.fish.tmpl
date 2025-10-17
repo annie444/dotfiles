@@ -136,7 +136,11 @@ log trace "Installing COPR repositories"
 run_cmd sudo dnf copr enable -y {{ . }}
 {{- end }}
 
-run_cmd sudo dnf install -y{{ range .packages.rpm.rpms }} {{ . }}{{ end }} git
+run_cmd sudo dnf install -y \
+    {{ range .packages.rpm.rpms -}}
+    {{ . }} \
+    {{- end }} \
+    git
 
 log info "=== LINUX PACKAGES CONFIGURED ==="
 
