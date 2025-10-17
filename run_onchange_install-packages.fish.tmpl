@@ -139,7 +139,7 @@ run_cmd sudo dnf copr enable -y {{ . }}
 run_cmd sudo dnf install -y \
     {{ range .packages.rpm.rpms -}}
     {{ . }} \
-    {{ end }}
+    {{ end -}}
     git
 
 log info "=== LINUX PACKAGES CONFIGURED ==="
