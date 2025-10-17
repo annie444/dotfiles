@@ -202,6 +202,7 @@ rpms = [
   "fish",
   "flex",
   "gawk",
+  "ripgrep",
   "ghostscript",
   "git-extras",
   "git-lfs",
