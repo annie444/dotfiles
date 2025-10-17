@@ -370,6 +370,7 @@ casks = [
 ]
 
 brews = [
+  "asdf",
   "ruby",
   "openjdk",
   "neovim",
