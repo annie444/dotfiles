@@ -343,6 +343,7 @@ set -g _gem_path (which gem)
 _test_var gem $_gem_path
 set -g _go_path (asdf which go)
 _test_var Go $_go_path
+set -g _go_exec_path (dirname $_go_path)
 set -g _go_mod_path (path normalize $_go_path/../../../bin)
 
 eval "$_npm_path i -g neovim"
@@ -453,7 +454,7 @@ begin
     echo -e "vim.g.ruby_host_prog = '$_ruby_path'"
     echo -e "vim.g.node_host_prog = '$_node_path'"
     echo -e "vim.g.perl_host_prog = '$_perl_path'"
-    echo -e "vim.env.PATH = '$_go_path:$_go_mod_path:' .. vim.env.PATH"
+    echo -e "vim.env.PATH = '$_go_exec_path:$_go_mod_path:' .. vim.env.PATH"
 end >$HOME/.config/nvim/lua/options.lua
 
 log info "=== NEOVIM CONFIGURED ==="
