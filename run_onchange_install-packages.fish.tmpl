@@ -213,6 +213,17 @@ function asdf_install -a package -a ver -a pkg_cmd
     else
         set -g pkg_version $ver
     end
+    if set -q asdf_install_retries
+        if test $asdf_install_retries -gt 3
+            log error "Failed to install $package after $asdf_install_retries attempts"
+            set --erase asdf_install_retries
+            return
+        else
+            set -g asdf_install_retries (math $asdf_install_retries + 1)
+        end
+    else
+        set -g asdf_install_retries 1
+    end
     run_cmd asdf plugin add $package
     run_cmd asdf install $package $pkg_version
     run_cmd asdf set --home $package $pkg_version
@@ -232,6 +243,7 @@ function asdf_install -a package -a ver -a pkg_cmd
         set --erase CFLAGS
     end
     set --erase pkg_version
+    set --erase asdf_install_retries
 end
 
 {{ range .packages.asdf -}}
