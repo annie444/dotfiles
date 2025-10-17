@@ -118,11 +118,11 @@ run_cmd sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 log trace "Enabling the RPM Fusion repositories"
 
 set -gx fedora_version (rpm -E %fedora)
-run_cmd sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$fedora_version.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$fedora_version.noarch.rpm
+run_cmd sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$fedora_version.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$fedora_version.noarch.rpm
 
 log trace "Enabling the Terra repository"
 
-run_cmd sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+run_cmd sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
 log trace "Adding RPM repository files"
 
