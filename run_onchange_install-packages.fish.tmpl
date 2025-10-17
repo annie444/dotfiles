@@ -183,13 +183,15 @@ if not command -q asdf &>/dev/null
     end
     wget -qO- https://github.com/asdf-vm/asdf/releases/download/$asdf_tag/asdf-$asdf_tag-linux-$asdf_arch.tar.gz | sudo tar -xzf - -C /usr/bin/
     mkdir -p $HOME/.asdf
-    set -gx ASDF_DATA_DIR $HOME/.asdf
-    set -gx ASDF_CONCURRENCY (nproc)
-    set -gx ASDF_CONFIG_FILE "$HOME/.asdfrc"
-    set -gx PATH $ASDF_DATA_DIR/shims $PATH
 end
 
 {{ end -}}
+
+set -gx ASDF_DATA_DIR $HOME/.asdf
+set -gx ASDF_CONCURRENCY (nproc)
+set -gx ASDF_CONFIG_FILE "$HOME/.asdfrc"
+set -gx PATH $ASDF_DATA_DIR/shims $PATH
+
 log info "=== CONFIGURING ASDF ==="
 
 set -gx manual_version_packages python ruby
