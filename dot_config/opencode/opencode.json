@@ -20,6 +20,18 @@
     "webfetch": true
   },
   "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://127.0.0.1:1234/v1"
+      },
+      "models": {
+        "openai/gpt-oss-20b": {
+          "name": "Chat GPT OSS 20B (Local)"
+        }
+      }
+    },
     "openai": {
       "models": {
         "gpt-5": {
@@ -27,7 +39,9 @@
             "reasoningEffort": "high",
             "textVerbosity": "low",
             "reasoningSummary": "auto",
-            "include": ["reasoning.encrypted_content"]
+            "include": [
+              "reasoning.encrypted_content"
+            ]
           }
         }
       }
