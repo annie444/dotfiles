@@ -2,7 +2,9 @@
 
 function install_plugin
   if test -z (grep -i "$argv[1]" ~/.config/fish/fish_plugins)
-      fisher install $argv[1]
+    fisher install $argv[1]
+  else
+    fisher update $argv[1]
   end
 end
 
