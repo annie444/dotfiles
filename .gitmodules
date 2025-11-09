@@ -1,13 +1,3 @@
-[submodule "dot_config/nvim"]
-	path = dot_config/nvim
-	url = https://github.com/annie444/nvim-dots.git
-  branch = main
-
-[submodule "dot_config/fish"]
-	path = dot_config/fish
-	url = https://github.com/annie444/fish-dots.git
-  branch = main
-
 [submodule "dot_config/cheat/cheatsheets/external_community"]
 	path = dot_config/cheat/cheatsheets/external_community
 	url = https://github.com/cheat/cheatsheets.git
@@ -24,4 +14,12 @@
 [submodule "dot_config/wezterm"]
 	path = dot_config/wezterm
 	url = git@github.com:annie444/wezterm-dots.git
+	branch = main
+[submodule "fish"]
+	path = dot_config/external_fish
+	url = https://github.com/annie444/fish-dots.git
+	branch = main
+[submodule "nvim"]
+	path = dot_config/external_nvim
+	url = https://github.com/annie444/nvim-dots.git
 	branch = main
