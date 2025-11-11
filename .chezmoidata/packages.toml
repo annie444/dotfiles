@@ -3,10 +3,14 @@
 
 crates = [
   "pipe-cli",
+  "license-gen-bin",
+  "version-manager",
   "bat",
   "bottom",
   "fd-find",
   "git-delta",
+  "git-cliff",
+  "tree-sitter-cli",
   "hyperfine",
   "just",
   "ripgrep",
@@ -15,6 +19,8 @@ crates = [
   "tomlq",
   "zoxide",
   "eza",
+  "sd",
+  "skim",
   "du-dust",
   "cargo-expand",
   "cargo-wizard",
@@ -22,6 +28,8 @@ crates = [
   "cargo-udeps",
   "cargo-audit",
   "cargo-deny",
+  "cargo-nextest",
+  "bindgen-cli",
   { name = "cross", git = "https://github.com/cross-rs/cross" },
 ]
 
@@ -371,6 +379,7 @@ casks = [
 ]
 
 brews = [
+  "ov",
   "asdf",
   "ruby",
   "openjdk",
