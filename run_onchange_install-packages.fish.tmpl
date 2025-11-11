@@ -385,7 +385,9 @@ function neovim_confirm_prompt
     host_prog Go $_go_path go-mod $_go_mod_path
     echo
     set_color --bold cyan
-    echo "Would you like to continue?"
+    echo "Would you like to save this configuration?"
+    set_color normal
+    echo "If you choose 'no', the script will exit and no changes will be made."
     set_color --bold white
     echo -n "[y]es/[n]o: "
     set_color normal
@@ -398,7 +400,7 @@ function neovim_continue
             echo "Continuing with Neovim configuration..."
         case N n
             echo "Exiting Neovim configuration."
-            return 1
+            exit
         case '*'
             echo "Invalid input. Please enter 'y' or 'n'."
             neovim_continue
@@ -416,7 +418,9 @@ function neovim_reset_prompt
     set_color --bold
     echo "You'll need to run `chezmoi apply ~/.config/nvim` after resetting."
     set_color normal
-    echo
+    echo "This is usually only necessary if you're experiencing issues with your"
+    echo "current Neovim setup or if your host programs have changed significantly."
+    echo 
     set_color --bold cyan
     echo "Would you like to reset?"
     set_color --bold white
@@ -438,7 +442,7 @@ function neovim_reset
             end
             mkdir -p $HOME/.config/nvim/lua
         case N n
-            echo "Skipping Neovim reset."
+            echo "Finishing without resetting Neovim configuration."
         case '*'
             echo "Invalid input. Please enter 'y' or 'n'."
             neovim_reset
