@@ -11,10 +11,6 @@
 	path = dot_tmux/plugins/external_tpm
 	url = https://github.com/tmux-plugins/tpm
 	branch = master
-[submodule "dot_config/wezterm"]
-	path = dot_config/wezterm
-	url = git@github.com:annie444/wezterm-dots.git
-	branch = main
 [submodule "fish"]
 	path = dot_config/external_fish
 	url = https://github.com/annie444/fish-dots.git
@@ -22,4 +18,8 @@
 [submodule "nvim"]
 	path = dot_config/external_nvim
 	url = https://github.com/annie444/nvim-dots.git
+	branch = main
+[submodule "wezterm"]
+	path = dot_config/external_wezterm
+	url = git@github.com:annie444/wezterm-dots.git
 	branch = main
