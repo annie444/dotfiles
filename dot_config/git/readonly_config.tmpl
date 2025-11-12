@@ -1,77 +1,80 @@
 [alias]
-	a = "add"
-	aa = "add --all"
-	amend = "commit --amend --no-edit"
-	c = "commit"
-	ca = "commit -a"
-	cam = "commit -a -m"
-	cm = "commit -m"
-	co = "checkout"
-	cob = "checkout -b"
-	com = "checkout master"
-	d = "diff"
-	dc = "diff --cached"
-	lg = "log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %s %C(italic)- %an%C(reset)%C(magenta bold)%d%C(reset)' --all"
-	pl = "pull"
-	pu = "push"
-	puf = "push --force"
-	r = "reset HEAD"
-	r1 = "reset HEAD^"
-	r2 = "reset HEAD^^"
-	rb = "rebase"
-	rba = "rebase --abort"
-	rbc = "rebase --continue"
-	rbi = "rebase --interactive"
-	rbs = "rebase --skip"
-	rhard = "reset --hard"
-	rhard1 = "reset HEAD^ --hard"
-	rhard2 = "reset HEAD^^ --hard"
-	rs = "restore --staged"
-	s = "status"
-	sd = "stash drop"
-	spo = "stash pop"
-	spu = "stash push"
-	spua = "stash push --all"
+    a = "add"
+    aa = "add --all"
+    amend = "commit --amend --no-edit"
+    c = "commit"
+    ca = "commit -a"
+    cam = "commit -a -m"
+    cm = "commit -m"
+    co = "checkout"
+    cob = "checkout -b"
+    com = "checkout master"
+    d = "diff"
+    dc = "diff --cached"
+    lg = "log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %s %C(italic)- %an%C(reset)%C(magenta bold)%d%C(reset)' --all"
+    pl = "pull"
+    pu = "push"
+    puf = "push --force"
+    r = "reset HEAD"
+    r1 = "reset HEAD^"
+    r2 = "reset HEAD^^"
+    rb = "rebase"
+    rba = "rebase --abort"
+    rbc = "rebase --continue"
+    rbi = "rebase --interactive"
+    rbs = "rebase --skip"
+    rhard = "reset --hard"
+    rhard1 = "reset HEAD^ --hard"
+    rhard2 = "reset HEAD^^ --hard"
+    rs = "restore --staged"
+    s = "status"
+    sd = "stash drop"
+    spo = "stash pop"
+    spu = "stash push"
+    spua = "stash push --all"
 
 {{ if lookPath "delta" }}
 [core]
-  pager = {{ output "which" "delta" | trim | quote }}
+    pager = {{ output "which" "delta" | trim | quote }}
 
 [interactive]
-	diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [delta]
-  navigate = true
-  side-by-side = true
-  features = side-by-side line-numbers decorations
+    navigate = true
+    side-by-side = true
+    features = side-by-side line-numbers decorations
 {{ end }}
 
 [merge]
-  conflictstyle = diff3
+    conflictstyle = diff3
 
 [init]
-	defaultBranch = "main"
+    defaultBranch = "main"
 
 [pull]
-	rebase = true
+    rebase = true
 
 [user]
-  email = {{ .githubemail | quote }}
-	name = {{ .fullname | quote }}
-  signingkey = BD0383B510975BA5
+    email = {{ .githubemail | quote }}
+    name = {{ .fullname | quote }}
+    signingkey = BD0383B510975BA5
 
 [commit]
-  gpgsign = true
+    gpgsign = true
 
 [tag]
-  gpgsign = true
+    gpgsign = true
 
 [push]
-  autoSetupRemote = true
+    autoSetupRemote = true
 
 [gpg]
 {{ if eq .chezmoi.os "darwin" }}
-  program = {{ findExecutable "gpg2" (list "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/MacGPG2/bin" "/opt/homebrew/opt/coreutils/bin" "/opt/homebrew/opt/coreutils/bin" "/opt/homebrew/opt/coreutils/libexec/gnubin" "/opt/homebrew/opt/perl/bin" "/opt/homebrew/opt/ruby/bin" "/opt/homebrew/opt/binutils/bin" "/opt/homebrew/sbin") | quote }}
+    program = {{ findExecutable "gpg2" (list "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/MacGPG2/bin" "/opt/homebrew/opt/coreutils/bin" "/opt/homebrew/opt/coreutils/bin" "/opt/homebrew/opt/coreutils/libexec/gnubin" "/opt/homebrew/opt/perl/bin" "/opt/homebrew/opt/ruby/bin" "/opt/homebrew/opt/binutils/bin" "/opt/homebrew/sbin") | quote }}
 {{ else if eq .chezmoi.os "linux" }}
-  program = {{ findExecutable "gpg2" (list "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin") | quote }}
+    program = {{ findExecutable "gpg2" (list "/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin") | quote }}
 {{ end }}
+
+[lfs "https://vmipac-secure.ipac.caltech.edu/aehler/ansible-ipac-rhel9.git/info/lfs"]
+    locksverify = true
