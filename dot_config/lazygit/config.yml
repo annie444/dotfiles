@@ -9,7 +9,6 @@ gui:
   language: "auto" # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
   timeFormat: "02 Jan 06 15:04 MST" # https://pkg.go.dev/time#Time.Format
   theme:
-    lightTheme: false
     activeBorderColor:
       - "#a6da95" # Green
       - bold
@@ -18,8 +17,6 @@ gui:
     optionsTextColor:
       - "#8aadf4" # Blue
     selectedLineBgColor:
-      - "#363a4f" # Surface0
-    selectedRangeBgColor:
       - "#363a4f" # Surface0
     cherryPickedCommitBgColor:
       - "#8bd5ca" # Teal
@@ -37,7 +34,6 @@ gui:
   showFileTree: true # for rendering changes files in a tree format
   showListFooter: true # for seeing the '5 of 20' message in list panels
   showRandomTip: true
-  experimentalShowBranchHeads: false # visualize branch heads with (*) in commits list
   showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
   showCommandLog: true
   showIcons: false
@@ -46,12 +42,8 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
   border: "single" # one of 'single' | 'double' | 'rounded' | 'hidden'
 git:
-  paging:
-    colorArg: always
-    useConfig: false
   commit:
-    signOff: false
-    verbose: default # one of 'default' | 'always' | 'never'
+    signOff: true
   merging:
     # only applicable to unix users
     manualCommit: false
@@ -71,7 +63,6 @@ git:
   autoFetch: true
   autoRefresh: true
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
-  allBranchesLogCmd: "git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium"
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false
@@ -171,7 +162,6 @@ keybinding:
     viewResetOptions: "D"
     fetch: "f"
     toggleTreeView: "`"
-    openMergeTool: "M"
     openStatusFilter: "<c-b>"
   branches:
     createPullRequest: "o"
@@ -201,12 +191,10 @@ keybinding:
     pickCommit: "p" # pick commit (when mid-rebase)
     revertCommit: "t"
     cherryPickCopy: "c"
-    cherryPickCopyRange: "C"
     pasteCommits: "v"
     tagCommit: "T"
     checkoutCommit: "<space>"
     resetCherryPick: "<c-R>"
-    copyCommitMessageToClipboard: "<c-y>"
     openLogMenu: "<c-l>"
     viewBisectOptions: "b"
   stash:
@@ -215,8 +203,6 @@ keybinding:
   commitFiles:
     checkoutCommitFile: "c"
   main:
-    toggleDragSelect: "v"
-    toggleDragSelect-alt: "V"
     toggleSelectHunk: "a"
     pickBothHunks: "b"
   submodules:
