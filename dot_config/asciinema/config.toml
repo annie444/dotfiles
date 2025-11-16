@@ -1,0 +1,15 @@
+[session]
+capture_input = true
+capture_env = "SHELL,TERM,USER"
+pause_key = "^p"
+add_marker_key = "^m"
+
+[playback]
+speed = 1
+idle_time_limit = 1
+pause_key = " "
+step_key = "."
+next_marker_key = "]"
+
+[notifications]
+enabled = true
