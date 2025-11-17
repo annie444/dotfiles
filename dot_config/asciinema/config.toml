@@ -1,5 +1,5 @@
 [session]
-capture_input = true
+capture_input = false
 capture_env = "SHELL,TERM,USER"
 pause_key = "^p"
 add_marker_key = "^m"
@@ -12,4 +12,4 @@ step_key = "."
 next_marker_key = "]"
 
 [notifications]
-enabled = true
+enabled = false
