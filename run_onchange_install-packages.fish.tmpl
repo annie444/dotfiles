@@ -318,7 +318,7 @@ asdf reshim
 
 log info "=== INSTALLING PNPM PACKAGES ==="
 
-{{ range .packages.pnpm -}}
+{{ range .packages.node -}}
 run_cmd pnpm add -g {{ . | quote }}
 {{ end -}}
 
