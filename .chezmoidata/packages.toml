@@ -54,6 +54,8 @@ python = ["hererocks"]
 
 python_scripts = ["https://install.python-poetry.org"]
 
+node = ["@github/copilot", "@openai/codex", "@google/gemini-cli"]
+
 [[packages.asdf]]
 name = "bat-extras"
 cmd = "batgrep"

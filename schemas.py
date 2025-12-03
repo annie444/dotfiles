@@ -157,6 +157,10 @@ class Pkgs(BaseModel):
     rpm: RpmPkgs
     linux: LinuxPkgs
     macos: MacosPkgs
+    node: List[str] = Field(
+        title="node_packages",
+        description="List of Node.js packages to install globally via pnpm.",
+    )
 
 
 class Packages(BaseModel):

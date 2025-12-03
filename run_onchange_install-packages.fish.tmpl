@@ -316,6 +316,14 @@ log info "=== GO PACKAGES INSTALLED ==="
 
 asdf reshim
 
+log info "=== INSTALLING PNPM PACKAGES ==="
+
+{{ range .packages.pnpm -}}
+run_cmd pnpm add -g {{ . | quote }}
+{{ end -}}
+
+log info "=== PNPM PACKAGES INSTALLED ==="
+
 function _test_var -a var -a val
     if test -z $val
         log error "No version set for $var in $(pwd)"
@@ -464,3 +472,5 @@ end >$HOME/.config/nvim/lua/options.lua
 log info "=== NEOVIM CONFIGURED ==="
 
 log info "========================= CONFIGURATION COMPLETE ========================="
+
+# vim: set syntax=fish:
