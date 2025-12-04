@@ -48,6 +48,7 @@ scripts = [
   "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3",
   "https://astral.sh/uv/install.sh",
   "https://get.pnpm.io/install.sh",
+  "https://bun.com/install",
 ]
 
 python = ["hererocks"]
@@ -55,6 +56,8 @@ python = ["hererocks"]
 python_scripts = ["https://install.python-poetry.org"]
 
 node = ["@github/copilot", "@openai/codex", "@google/gemini-cli"]
+
+bun = ["opencode-ai"]
 
 [[packages.asdf]]
 name = "bat-extras"

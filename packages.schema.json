@@ -229,6 +229,14 @@
           },
           "title": "node_packages",
           "type": "array"
+        },
+        "bun": {
+          "description": "List of Bun packages to install globally via bun.",
+          "items": {
+            "type": "string"
+          },
+          "title": "bun_packages",
+          "type": "array"
         }
       },
       "required": [
@@ -241,7 +249,8 @@
         "rpm",
         "linux",
         "macos",
-        "node"
+        "node",
+        "bun"
       ],
       "title": "pkgs",
       "type": "object"

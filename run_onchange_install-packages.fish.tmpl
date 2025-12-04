@@ -324,6 +324,15 @@ run_cmd pnpm add -g {{ . | quote }}
 
 log info "=== PNPM PACKAGES INSTALLED ==="
 
+log info "=== INSTALLING BUN PACKAGES ==="
+
+{{ range .packages.bun -}}
+run_cmd bun add -g {{ . | quote }}
+{{ end -}}
+
+log info "=== BUN PACKAGES INSTALLED ==="
+
+
 function _test_var -a var -a val
     if test -z $val
         log error "No version set for $var in $(pwd)"

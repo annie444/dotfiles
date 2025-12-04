@@ -161,6 +161,10 @@ class Pkgs(BaseModel):
         title="node_packages",
         description="List of Node.js packages to install globally via pnpm.",
     )
+    bun: List[str] = Field(
+        title="bun_packages",
+        description="List of Bun packages to install globally via bun.",
+    )
 
 
 class Packages(BaseModel):
