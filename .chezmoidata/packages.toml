@@ -49,11 +49,12 @@ scripts = [
   "https://astral.sh/uv/install.sh",
   "https://get.pnpm.io/install.sh",
   "https://bun.com/install",
+  "https://claude.ai/install.sh",
 ]
 
 python = ["hererocks"]
 
-python_scripts = ["https://install.python-poetry.org"]
+python_scripts = []
 
 node = ["@github/copilot", "@openai/codex", "@google/gemini-cli"]
 
@@ -88,32 +89,12 @@ name = "scala"
 cmd = "scala"
 
 [[packages.asdf]]
-name = "yq"
-cmd = "yq"
-
-[[packages.asdf]]
-name = "chromedriver"
-cmd = "chromedriver"
-
-[[packages.asdf]]
-name = "julia"
-cmd = "julia"
-
-[[packages.asdf]]
-name = "terraform"
-cmd = "terraform"
-
-[[packages.asdf]]
 name = "vault"
 cmd = "vault"
 
 [[packages.asdf]]
 name = "kubectl"
 cmd = "kubectl"
-
-[[packages.asdf]]
-name = "protolint"
-cmd = "protolint"
 
 [[packages.asdf]]
 name = "golang"
@@ -317,12 +298,7 @@ flatpaks = [
 
 [packages.macos]
 
-taps = [
-  "browsh-org/browsh",
-  "homebrew/bundle",
-  "jeffreywildman/virt-manager",
-  "jesseduffield/lazygit",
-]
+taps = ["browsh-org/browsh", "homebrew/bundle", "jeffreywildman/virt-manager"]
 
 casks = [
   "1password",
@@ -353,31 +329,22 @@ casks = [
   "gpg-suite",
   "hex-fiend",
   "inkscape",
-  "kitty",
   "libreoffice",
-  "loopback",
-  "mactex",
-  "malwarebytes",
-  "messenger",
   "mullvadvpn",
   "nextcloud",
   "obsidian",
   "pocket-casts",
   "postman",
   "qbittorrent",
-  "remote-desktop-manager",
-  "rstudio",
   "rustdesk",
   "signal",
   "slack",
   "spotify",
   "steam",
-  "texmaker",
   "tigervnc-viewer",
   "tor-browser",
   "transmit",
   "vlc",
-  "wireshark",
   "xquartz",
   "zoom",
   "macfuse",
@@ -389,7 +356,7 @@ brews = [
   "ruby",
   "openjdk",
   "neovim",
-  "jesseduffield/lazygit/lazygit",
+  "lazygit",
   "gh",
   "tree-sitter",
   "tmux",
@@ -522,7 +489,6 @@ brews = [
   "tfk8s",
   "thefuck",
   "tlrc",
-  "trash-cli",
   "tree",
   "unar",
   "vte3",
@@ -574,18 +540,6 @@ name = "Amphetamine"
 id = 937_984_704
 
 [[packages.macos.mas]]
-name = "Affinity Photo 2"
-id = 1_616_822_987
-
-[[packages.macos.mas]]
-name = "Affinity Designer 2"
-id = 1_616_831_348
-
-[[packages.macos.mas]]
-name = "Affinity Publisher 2"
-id = 1_606_941_598
-
-[[packages.macos.mas]]
 name = "Logic Pro"
 id = 634_148_309
 
@@ -596,7 +550,3 @@ id = 424_389_933
 [[packages.macos.mas]]
 name = "Compressor"
 id = 424_390_742
-
-[[packages.macos.mas]]
-name = "Messenger"
-id = 1_480_068_668
