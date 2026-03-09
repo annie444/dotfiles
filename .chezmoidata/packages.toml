@@ -301,6 +301,7 @@ flatpaks = [
 taps = ["browsh-org/browsh", "homebrew/bundle", "jeffreywildman/virt-manager"]
 
 casks = [
+  "wezterm@nightly",
   "1password",
   "arduino-ide",
   "balenaetcher",
@@ -508,10 +509,6 @@ name = "1Password for Safari"
 id = 1_569_813_296
 
 [[packages.macos.mas]]
-name = "Accelerate for Safari"
-id = 1_459_809_092
-
-[[packages.macos.mas]]
 name = "PiPifier"
 id = 1_160_374_471
 
@@ -524,16 +521,16 @@ name = "Super Agent for Safari"
 id = 1_568_262_835
 
 [[packages.macos.mas]]
-name = "Keynote"
-id = 409_183_694
+name = "Keynote: Design Presentations"
+id = 361_285_480
 
 [[packages.macos.mas]]
-name = "Numbers"
-id = 409_203_825
+name = "Numbers: Make Spreadsheets"
+id = 361_304_891
 
 [[packages.macos.mas]]
-name = "Pages"
-id = 409_201_541
+name = "Pages: Create Documents"
+id = 361_309_726
 
 [[packages.macos.mas]]
 name = "Amphetamine"
@@ -550,3 +547,7 @@ id = 424_389_933
 [[packages.macos.mas]]
 name = "Compressor"
 id = 424_390_742
+
+[[packages.macos.mas]]
+name = "Magnet"
+id = 441_258_766
