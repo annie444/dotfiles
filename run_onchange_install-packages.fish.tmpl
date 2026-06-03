@@ -51,15 +51,17 @@ log info "=== INSTALLATION SCRIPTS COMPLETED ==="
 
 log info "=== INSTALLING CARGO CRATES ==="
 
+cargo install cargo-binstall
+
 {{ range .packages.crates -}}
 {{- if kindIs "string" . }}
-cargo install {{ . }}
+cargo binstall {{ . }}
 {{- else -}}
 {{- if hasKey . "name" -}}
 {{- if hasKey . "git" }}
 cargo install {{ .name }} --git {{ .git }}
 {{- else -}}
-cargo install {{ .name }}
+cargo binstall {{ .name }}
 {{ end -}}
 {{ end -}}
 {{ end -}}
