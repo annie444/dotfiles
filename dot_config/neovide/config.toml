@@ -1,0 +1,27 @@
+[font]
+normal = { family = "JetBrainsMono Nerd Font Propo", style = "W300" }
+bold = { family = "JetBrainsMono Nerd Font Propo", style = "W500" }
+italic = { family = "JetBrainsMono Nerd Font Propo", style = "W300" }
+bold_italic = { family = "JetBrainsMono Nerd Font Propo", style = "W500" }
+size = 14
+hinting = "full"
+edging = "antialias"
+underline_offset = -1.0
+
+[font.features] 
+"JetBrainsMono Nerd Font Propo" = [
+  "+calt",
+  "+case",
+  "+ccmp",
+  "+cv03",
+  "+cv06",
+  "+cv07",
+  "+cv11",
+  "+cv14",
+  "+cv16",
+  "+cv17",
+  "+cv19",
+  "+cv99",
+  "+mark",
+  "+mkmk",
+]
