@@ -1,7 +1,7 @@
 [font]
-normal = { family = "JetBrainsMono Nerd Font Propo", style = "W300" }
+normal = { family = "JetBrainsMono Nerd Font Propo", style = "W350" }
 bold = { family = "JetBrainsMono Nerd Font Propo", style = "W500" }
-italic = { family = "JetBrainsMono Nerd Font Propo", style = "W300" }
+italic = { family = "JetBrainsMono Nerd Font Propo", style = "W350" }
 bold_italic = { family = "JetBrainsMono Nerd Font Propo", style = "W500" }
 size = 14
 hinting = "full"
