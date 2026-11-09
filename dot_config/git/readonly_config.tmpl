@@ -36,6 +36,7 @@
 {{ if lookPath "delta" }}
 [core]
     pager = {{ output "which" "delta" | trim | quote }}
+    excludesfile = "{{ .chezmoi.homeDir }}/.config/git/ignore"
 
 [interactive]
     diffFilter = delta --color-only
@@ -44,6 +45,9 @@
     navigate = true
     side-by-side = true
     features = side-by-side line-numbers decorations
+{{ else }}
+[core]
+    excludesfile = "{{ .chezmoi.homeDir }}/.config/git/ignore"
 {{ end }}
 
 [merge]
