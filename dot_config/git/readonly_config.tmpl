@@ -2,19 +2,19 @@
     a = "add"
     aa = "add --all"
     amend = "commit --amend --no-edit"
-    c = "commit"
-    ca = "commit -s -a"
-    cam = "commit -s -a -m"
-    cm = "commit -s -m"
+    c = "commit -a"
+    ca = "commit -a -s"
+    cam = "commit -a -s -m"
+    cm = "commit -a -s -m"
     co = "checkout"
     cob = "checkout -b"
-    com = "checkout master"
+    com  = "!git switch $(git symbolic-ref --short refs/remotes/origin/HEAD | cut -d/ -f2-)"
     d = "diff"
     dc = "diff --cached"
     lg = "log --graph --abbrev-commit --decorate --format=format:'%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %s %C(italic)- %an%C(reset)%C(magenta bold)%d%C(reset)' --all"
     pl = "pull"
     pu = "push"
-    puf = "push --force"
+    puf  = "push --force-with-lease"
     r = "reset HEAD"
     r1 = "reset HEAD^"
     r2 = "reset HEAD^^"
@@ -31,7 +31,7 @@
     sd = "stash drop"
     spo = "stash pop"
     spu = "stash push"
-    spua = "stash push --all"
+    spua = "stash push --include-untracked"
 
 {{ if lookPath "delta" }}
 [core]
@@ -50,9 +50,6 @@
     excludesfile = "{{ .chezmoi.homeDir }}/.config/git/ignore"
 {{ end }}
 
-[merge]
-    conflictstyle = diff3
-
 [init]
     defaultBranch = "main"
 
@@ -64,14 +61,76 @@
     name = {{ .fullname | quote }}
     signingkey = BD0383B510975BA5
 
-[commit]
-    gpgsign = true
+[includeIf "gitdir:~/Projects/NEOS/"]
+    path = identity-work.inc
 
-[tag]
-    gpgsign = true
+[includeIf "gitdir:~/Projects/Euclid/"]
+    path = identity-work.inc
+
+[includeIf "gitdir:~/Projects/IPAC/"]
+    path = identity-work.inc
+
+[includeIf "hasconfig:remote.*.url:git@vmipac-secure.ipac.caltech.edu:*/**"]
+    path = identity-work.inc
+
+[includeIf "hasconfig:remote.*.url:https://vmipac-secure.ipac.caltech.edu/**"]
+    path = identity-work.inc
+
+[includeIf "hasconfig:remote.*.url:git@git.neoscluster.ipac.caltech.edu:*/**"]
+    path = identity-work.inc
+
+[includeIf "hasconfig:remote.*.url:https://git.neoscluster.ipac.caltech.edu/**"]
+    path = identity-work.inc
 
 [push]
     autoSetupRemote = true
+    followTags = true
+    useForceIfIncludes = true
+
+[fetch]
+    prune = true
+    all = true
+
+[transfer]
+    fsckObjects = true
+    credentialsInUrl = die
+
+[safe]
+    bareRepository = explicit
+
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+    missingCommitsCheck = error
+
+[rerere]
+    enabled = true
+    autoUpdate = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    algorithm = histogram
+    colorMoved = default
+
+[commit]
+    gpgsign = true
+    verbose = true
+
+[branch]
+    sort = -committerdate
+
+[tag]
+    gpgsign = true
+    sort = version:refname
+
+[column]
+    ui = auto
+
+[help]
+    autocorrect = prompt
 
 [gpg]
 {{ if eq .chezmoi.os "darwin" }}
