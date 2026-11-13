@@ -1,9 +1,37 @@
 .DS_Store
+
+# macOS
+.DS_Store
+._*
+
+# Linux / KDE / network filesystems
+.directory
+.Trash-*
+.fuse_hidden*
+.nfs*
+
+# Vim / Neovim / Kate
+*.sw[a-p]
+*~
+Session.vim
+.netrwhist
+.*.kate-swp
+
+# Local-only AI tooling
+CLAUDE.md
+CLAUDE.local.md
+.mcp.json
+AGENTS.md
 .serena/
-.claude/
-.agents/
-.codex/
 .serena
+.claude/
 .claude
+.agents/
 .agents
+.codex/
 .codex
+.headroom/
+.headroom
+
+# Personal scratch: notes, planning docs, one-off scripts
+.scratch/
